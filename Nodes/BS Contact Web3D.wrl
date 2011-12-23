@@ -2,11 +2,12 @@
 
 ###################################################################
 #
-# Updated by Cecile Muller (wildpeaks@googlemail.com)
+# Updated by Cecile Muller (contact@wildpeaks.fr)
 # This list is maybe not complete, but nearly all of them shoud be here.
 #
 ###################################################################
-WorldInfo{title "BS Contact 7.218 EXTERNPROTO definitions for VrmlPad"}
+
+WorldInfo{title "BS Contact 8.0 EXTERNPROTO definitions for VrmlPad"}
 
 
 
@@ -1151,26 +1152,38 @@ EXTERNPROTO Material2D [ #!%material{Appearance.material}
 	exposedField	SFFloat		transparency		#!(0)
 ] ["urn:inet:bitmanagement.de:node:Material2D"]
 
+
 # (Only for OpenGL) Allows you to pick the style of the lines of IndexedLineSet{}.
-# Line style: 0=solid, 1=dash, 2=dot, 3=dash-dot, 4=dash-dash-dot, 5=dash-dot-dot
 EXTERNPROTO LineProperties [ #!{Material2D.lineProps}
-	exposedField	SFColor		lineColor			#!(0 0 0)
-	exposedField	SFInt32		lineStyle			#!(0)
-	exposedField	SFFloat		width
+	# Not supported after BS Contact 7.1
+	# lineStyle values: 0=solid, 1=dash, 2=dot, 3=dash-dot, 4=dash-dash-dot, 5=dash-dot-dot
+#	exposedField	SFColor		lineColor			#!(0 0 0)
+#	exposedField	SFInt32		lineStyle			#!(0)
+#	exposedField	SFFloat		width
+
+	# BS Contact 7.2+
+	# linetype values: 1=solid, 2=dash, 3=dot, 4=dash-dot, 5=dash-dash-dot, 6=dash-dot-dot
+	exposedField	SFBool		applied					#!(TRUE)
+	exposedField	SFInt32		linetype				#!(1)
+	exposedField	SFFloat		linewidthScaleFactor	#!(0)
 ] ["urn:inet:bitmanagement.de:node:LineProperties"]
+
 
 EXTERNPROTO Bitmap [ #!%geometry{Shape.geometry}
 	exposedField SFVec2f scale						#!(-1 -1)
 	exposedField SFBool pixelMetric					#!(FALSE)
 ] ["urn:inet:bitmanagement.de:node:Bitmap"]
 
+
 EXTERNPROTO Circle [ #!%geometry{Shape.geometry}
 	exposedField SFFloat radius
 ] ["urn:inet:blaxxun.com:node:Circle"]
 
+
 EXTERNPROTO Rectangle [ #!%geometry{Shape.geometry}
     exposedField SFVec2f size						#!(2 2)
 ] ["urn:inet:bitmanagement.de:node:Rectangle"]
+
 
 EXTERNPROTO Background2D [ #!%background
 	eventIn		    SFBool	set_bind
@@ -1178,6 +1191,7 @@ EXTERNPROTO Background2D [ #!%background
 	exposedField	MFString	url					#!([])
 	eventOut	    SFBool	isBound
 ] ["urn:inet:bitmanagement.de:node:Background2D"]
+
 
 EXTERNPROTO Transform2D [ #!%group
 	eventIn		    MFNode	addChildren
@@ -1190,6 +1204,7 @@ EXTERNPROTO Transform2D [ #!%group
 	exposedField	SFVec2f		translation			#!(0 0)
 ] ["urn:inet:bitmanagement.de:node:Transform2D"]
 
+
 EXTERNPROTO PlaneSensor2D [ #!%sensor{*}
 	exposedField SFBool  autoOffset					#!(TRUE)
 	exposedField SFBool  enabled					#!(TRUE)
@@ -1200,6 +1215,7 @@ EXTERNPROTO PlaneSensor2D [ #!%sensor{*}
 	eventOut     SFVec2f trackPoint_changed
 	eventOut     SFVec2f translation_changed
 ] ["urn:inet:bitmanagement.de:node:PlaneSensor2D"]
+
 
 EXTERNPROTO Polygon [ #!%geometry{Shape.geometry}
 	exposedField SFNode color						#!{Color}
