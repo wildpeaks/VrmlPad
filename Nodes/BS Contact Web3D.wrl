@@ -2003,3 +2003,15 @@ EXTERNPROTO IndexedTriangleStripSet [
     field SFBool          solid           #!TRUE
     field MFInt32         index           #![]   [0,) or 611
 ]["urn:inet:bitmanagement.de:node:IndexedTriangleStripSet"]
+
+
+EXTERNPROTO TextToSpeech [
+	exposedField	SFString	description		
+	exposedField	SFFloat		pitch			#!(1)
+	exposedField	SFFloat		volume
+	exposedField	SFFloat		speed
+	exposedField	SFBool		enabled
+	eventIn			SFString	text
+	eventOut		SFBool		isActive
+]["urn:inet:bitmanagement.de:node:TextToSpeech"]
+
