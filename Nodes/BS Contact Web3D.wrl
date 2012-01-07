@@ -146,7 +146,7 @@ EXTERNPROTO Layer2D[ #!%common{*}
 EXTERNPROTO ShaderAppearance [ #!%appearance{Shape.appearance}
 	exposedField SFNode fragmentShader		#!{FragmentShader}
 	exposedField SFNode material			#!%material{Material}
-	exposedField SFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture}
+	exposedField SFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
 	exposedField SFNode textureTransform	#!{TextureTransform,TextureMatrixTransform}
 	exposedField SFNode vertexShader		#!{VertexShader}
 	exposedField SFBool transparent			#!(FALSE)
@@ -179,14 +179,14 @@ EXTERNPROTO FragmentShader [ #!%shader{ShaderAppearance.fragmentShader}
 ###################################################################
 
 # Combines several textures into one
-EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture}
+EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
 	exposedField SFBool materialColor		#!(FALSE)
 	exposedField SFBool materialAlpha		#!(FALSE)
 	exposedField SFBool transparent			#!(FALSE)
 	exposedField SFBool nomipmap			#!(FALSE)
 	exposedField MFString mode
 	exposedField MFString type
-	exposedField MFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture}
+	exposedField MFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
 	exposedField MFNode textureTransform	#!{TextureTransform,TextureMatrixTransform}
 	exposedField MFInt32 textureOp
 	exposedField SFColor color				#!(1 1 1)
@@ -209,7 +209,7 @@ EXTERNPROTO TextureMatrixTransform [ #!{*}
 ] ["urn:inet:bitmanagement.de:node:TextureMatrixTransform"]
 
 # SWF/Flash movie as texture
-EXTERNPROTO FlashMovieTexture[ #!%texture{Appearance.texture,MultiTexture.texture}
+EXTERNPROTO FlashMovieTexture[ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
 	exposedField SFBool loop
 	exposedField SFFloat speed
 	exposedField MFString url
@@ -246,7 +246,7 @@ EXTERNPROTO FlashMovieTexture[ #!%texture{Appearance.texture,MultiTexture.textur
 	eventIn MFString set_function
 	eventIn SFBool set_mouseActive
 	eventIn SFVec2f set_mousePosition
-	exposedField SFNode metadata
+	exposedField SFNode metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 ] ["urn:inet:bitmanagement.de:node:FlashMovieTexture"]
 
 
@@ -475,7 +475,7 @@ EXTERNPROTO TrimmedSurface [
 
 # (BS Contact 6.3/7.001+) Enables the use of texture which are
 # larger than the maximum texture size. Use it like a normal ImageTexture{}.
-EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture, MultiTexture.texture} 
+EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture} 
 	exposedField	MFString	url					#!([])
 	exposedField	MFString	parameter			#!([])
 	eventIn			SFBool		set_unload
@@ -490,10 +490,10 @@ EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture, MultiTexture.text
 
 # (BS Contact 6.3/7.001+) For displaying stereo images such as red/blue
 # or right-left types of display.
-EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture}
+EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
 	exposedField	SFString	type		#!("")
-	exposedField	MFNode		texture		#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture}
-	exposedField    SFNode      metadata
+	exposedField	MFNode		texture		#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField    SFNode      metadata	#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	#Contact 7.1
 	eventOut        SFBool      isFlipped
 ] ["urn:inet:bitmanagement.de:node:StereoTexture"]
@@ -501,7 +501,7 @@ EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture}
 
 # (BS Contact 6.3/7.001+) For displaying stereo images such as red/blue
 # or right-left types of display.
-EXTERNPROTO OffscreenDCTexture [ #!%texture{Appearance.texture,MultiTexture.texture}
+EXTERNPROTO OffscreenDCTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
 	exposedField	SFBool		repeatS			#!(FALSE)
 	exposedField	SFBool		repeatT			#!(FALSE)
 	exposedField	SFInt32		pixelWidth		#!(-1)
@@ -583,7 +583,7 @@ EXTERNPROTO Particles [ #!%geometry{Shape.geometry}
 
 # This allows you use a 3D scene (external or part of the current scene)
 # as a texture (nothing prevents you from using it in a MultiTexture{} also ;-)
-EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture, MultiTexture.texture} 
+EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture} 
 	exposedField SFInt32 pixelWidth					#!(-1)
 	exposedField SFInt32 pixelHeight				#!(-1)
 	exposedField SFNode background					#!{Background}
@@ -783,7 +783,7 @@ EXTERNPROTO ShadowGroup [ #!%group{*}
 	eventIn MFNode addChildren
 	eventIn MFNode removeChildren
 
-	exposedField SFNode metadata
+	exposedField SFNode metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 
 	# 7.201+
 	exposedField SFNode shadowMap
@@ -803,7 +803,7 @@ EXTERNPROTO BumpTransform [ #!%common{MultiTexture.bumpTransform}
 
 
 # For creating texture using mathematics
-EXTERNPROTO ProceduralTexture [ #!%texture{Appearance.texture, MultiTexture.texture}
+EXTERNPROTO ProceduralTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
 	exposedField SFString format
 	exposedField SFInt32 pixelWidth		#!(64)
 	exposedField SFInt32 pixelHeight	#!(64)
@@ -845,7 +845,7 @@ EXTERNPROTO HUD [ #!%group{*}
 
 # Like ImageTexture{} except that it tells you when it finished
 # loading the file (hell useful).
-EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture, MultiTexture.texture} 
+EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture} 
 	exposedField	MFString	url
 	field			SFBool		repeatS 			#!(TRUE)
 	field			SFBool		repeatT 			#!(TRUE) 
@@ -1694,7 +1694,7 @@ EXTERNPROTO GeoSphere [ #!%geometry
 ] "urn:inet:bitmanagement.de:node:GeoSphere"
 
 EXTERNPROTO GeoLocation[
-	exposedField SFNode metadata					#(NULL)
+	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	field SFVec3f bboxCenter						#(0 0 0)
 	field SFVec3f bboxSize							#(-1 -1 -1)
 	exposedField SFVec3d geoCoords
@@ -1704,14 +1704,14 @@ EXTERNPROTO GeoLocation[
 ] "urn:inet:bitmanagement.de:node:GeoLocation"
 
 EXTERNPROTO GeoCoordinate[
-	exposedField SFNode metadata					#(NULL)
+	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	exposedField MFVec3d point
 	field SFNode geoOrigin
 	field MFString geoSystem
 ] "urn:inet:bitmanagement.de:node:GeoCoordinate"
 
 EXTERNPROTO GeoViewpoint[
-	exposedField SFNode metadata					#(NULL)
+	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	field SFNode geoOrigin
 	field MFString geoSystem
 	field SFVec3d position
@@ -1742,11 +1742,11 @@ EXTERNPROTO GeoProximitySensor [
 	exposedField SFVec3d geoCoord
 	exposedField SFNode geoOrigin
 	eventOut MFString geoSystem
-	exposedField SFNode metadata
+	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 ] "urn:inet:bitmanagement.de:node:GeoProximitySensor"
 
 EXTERNPROTO	GeoLOD [
-	exposedField	SFNode	metadata				#(NULL)
+	exposedField	SFNode	metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	field			SFVec3f	bboxCenter
 	field			SFVec3f	bboxSize	
 	field			MFString	rootUrl
@@ -1778,7 +1778,7 @@ EXTERNPROTO	GeoMap [
 ] "urn:inet:bitmanagement.de:node:GeoMap"
 
 EXTERNPROTO GeoTouchSensor [
-	exposedField SFNode metadata
+	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	field SFNode geoOrigin
 	field MFString geoSystem
 	exposedField SFBool enabled
@@ -1793,11 +1793,16 @@ EXTERNPROTO GeoTouchSensor [
 ] "urn:inet:bitmanagement.de:node:GeoTouchSensor"
 
 
-#The GroupAntiAlias node is rendering the content of the Group to a texture buffer of a different resolution and then renders the buffer with antialising applied
+
+###################################################################
+# Physics nodes
+###################################################################
+
+# The GroupAntiAlias node is rendering the content of the Group to a texture buffer of a different resolution and then renders the buffer with antialising applied
 EXTERNPROTO GroupAntiAlias[
 	exposedField SFVec3f bboxSize
 	exposedField SFVec3f bboxCenter
-	exposedField SFNode metadata
+	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	exposedField SFBool enabled
 	exposedField SFVec2f resolution
 	exposedField MFString parameter
@@ -1808,44 +1813,47 @@ EXTERNPROTO GroupAntiAlias[
 "urn:inet:bitmanagement.de:node:GroupAntiAlias"
 
 
-## Some more undocumented nodes for post processing shaders
+# A composite texture that also outputs the depth map (which is very handy for fancy post-processing shaders)
 EXTERNPROTO GroupRenderToTexture [ #!%group
-	exposedField SFVec3f bboxSize
-	exposedField SFVec3f bboxCenter
-	exposedField SFNode metadata
-	exposedField SFBool enabled
-	exposedField SFString path
-	exposedField MFNode outputTexture
-	exposedField SFNode outputDepthTexture
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	exposedField MFNode children
-	exposedField MFNode outputChildren
-	exposedField SFNode background
+	exposedField	SFVec3f		bboxSize
+	exposedField	SFVec3f		bboxCenter
+	exposedField	SFNode		metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField	SFBool		enabled
+	exposedField	SFString	path
+	exposedField	SFNode		background
+	exposedField	MFNode		children
+	exposedField	MFNode		outputChildren
+	exposedField	MFNode		outputTexture
+	exposedField	SFNode		outputDepthTexture
+	eventIn			MFNode		addChildren
+	eventIn			MFNode		removeChildren
 ] "urn:inet:bitmanagement.de:node:GroupRenderToTexture"
 
 
 EXTERNPROTO PostProcessing [ #!%group
-	exposedField SFVec3f bboxSize
-	exposedField SFVec3f bboxCenter
-	exposedField SFNode metadata
-	exposedField SFBool enabled
-	exposedField MFNode inputTexture
-	exposedField MFNode outputTexture
-	exposedField SFNode outputDepthTexture
-	exposedField MFNode shaders
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	exposedField MFNode children
-	exposedField MFNode outputChildren
-	exposedField SFNode background
+	exposedField	SFVec3f		bboxSize
+	exposedField	SFVec3f		bboxCenter
+	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField	SFBool		enabled
+	exposedField	MFNode		inputTexture
+	exposedField	MFNode		outputTexture
+	exposedField	SFNode		outputDepthTexture
+	exposedField	MFNode		shaders
+	eventIn			MFNode		addChildren
+	eventIn			MFNode		removeChildren
+	exposedField	MFNode		children
+	exposedField	MFNode		outputChildren
+	exposedField	SFNode		background
 ] "urn:inet:bitmanagement.de:node:PostProcessing"
+
 
 # A .fx shader shipped with BS Contact 
 EXTERNPROTO PackagedShader [ #!%script
-	field	SFString	language
-	field	SFString	url
-	# and more user-defined fields, like Script nodes
+	field			SFString	language
+	field			SFString	url
+	#
+	# (and user-defined fields, like Script nodes)
+	#
 ] "urn:inet:bitmanagement.de:node:PackagedShader"
 
 
@@ -1869,15 +1877,16 @@ EXTERNPROTO	PhysicsTransform[
     field          SFVec3f    bboxSize
 
     # Physics fields
-    field          SFBool     fixed          #!(FALSE)    #Field for static or non static objects
-    exposedField   SFString   mode           #!("auto")   #Keywords for physic initialization
-    exposedField   SFFloat    mass           #!(1)        #Mass of the object
-    exposedField   SFVec3f    forceDir       #!(0 0 0)    #Force direction to manipulate the object
-    exposedField   SFVec3f    forceAt        #!(0 0 0)    #Force at wich point
-    exposedField   SFBool     forceDirLocal  #!(FALSE)    #In local or global coordinates 
-    exposedField   SFBool     forceAtLocal   #!(TRUE)     #In local or global coordinates 
+    field          SFBool     fixed					#!(FALSE)			# Field for static or non static objects
+    exposedField   SFString   mode					#!("auto")			# Keywords for physic initialization
+    exposedField   SFFloat    mass					#!(1)				# Mass of the object
+    exposedField   SFVec3f    forceDir				#!(0 0 0)			# Force direction to manipulate the object
+    exposedField   SFVec3f    forceAt				#!(0 0 0)			# Force at wich point
+    exposedField   SFBool     forceDirLocal			#!(FALSE)			# In local or global coordinates 
+    exposedField   SFBool     forceAtLocal			#!(TRUE)			# In local or global coordinates 
     
 ]["urn:inet:bitmanagement.de:node:PhysicsTransform"]
+
 
 # Contact 7.1+
 # To define special physicalized shapes with a high poly model and a simpler physic shape, BS Contact 7.1 provide the node PhysicShape.
@@ -1886,132 +1895,52 @@ EXTERNPROTO	PhysicsShape[
      exposedField   SFNode     geometry            #!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
 
      # Physics fields
-     exposedField   SFFloat    mass                #!(0)      #Mass of the shape
-     exposedField   SFString   mode                #!("auto") #Keywords for physic initialization
-     exposedField   SFNode     collision_geometry  #!(NULL){box,sphere,cone,cylinder,indexedFaceSet}   #Proxy collision geomtry
+     exposedField   SFFloat    mass                #!(0)													# Mass of the shape
+     exposedField   SFString   mode                #!("auto")												# Keywords for physic initialization
+     exposedField   SFNode     collision_geometry  #!(NULL){box,sphere,cone,cylinder,indexedFaceSet}		# Proxy collision geomtry
 ]["urn:inet:bitmanagement.de:node:PhysicsShape"]
+
 
 # Contact 7.1+
 # You can customize the physics engine and set some global threshholds with the physics node PhysicsInfo
-EXTERNPROTO	PhysicsInfo[
-	exposedField  SFFloat skinWidth        #!(0.01)      #Defining how thik the skin is
-    exposedField  SFVec3f gravity          #!(0 -9.81 0) #The global gravity
-    exposedField  SFFloat bounceThreshold  #!(-2.0)      #At which threshold objects stops with bouncing
-    field         SFBool  collision        #!(TRUE)      #Objects can collide
-    exposedField  SFFloat sleepLinVel      #!(0.1)       #At which linear velocity objects stops with moving
-    exposedField  SFFloat sleepAngVel      #!(0.1)       #At which angle velocity objects stops wich rotating
-    exposedField  SFInt32 iterations       #!(8)         #Maximum of iterations to divide a timestep into
-    exposedField  SFFloat timeStep         #!(0.016)     #Maximum size to take for a timestep
-    exposedField  SFFloat angularDamping   #!(0.05)      #Default angular Damping
-    exposedField  SFFloat linearDamping    #!(0.0)       #Default linear Damping
+EXTERNPROTO	PhysicsInfo [
+	exposedField	SFFloat		skinWidth			#!(0.01)			# Defining how thik the skin is
+	exposedField	SFVec3f		gravity				#!(0 -9.81 0)		# The global gravity
+	exposedField	SFFloat		bounceThreshold		#!(-2.0)			# At which threshold objects stops with bouncing
+	field			SFBool		collision			#!(TRUE)			# Objects can collide
+	exposedField	SFFloat		sleepLinVel			#!(0.1)				# At which linear velocity objects stops with moving
+	exposedField	SFFloat		sleepAngVel			#!(0.1)				# At which angle velocity objects stops wich rotating
+	exposedField	SFInt32		iterations			#!(8)				# Maximum of iterations to divide a timestep into
+	exposedField	SFFloat		timeStep			#!(0.016)			# Maximum size to take for a timestep
+	exposedField	SFFloat		angularDamping		#!(0.05)			# Default angular Damping
+	exposedField	SFFloat		linearDamping		#!(0.0)				# Default linear Damping
 ]["urn:inet:bitmanagement.de:node:PhysicsInfo"]
 
 
-
-###################################################################
-# Triangles-related nodes
-###################################################################
-
-EXTERNPROTO TriangleFanSet[
-    exposedField MFNode   attrib          #![]   [X3DVertexAttributeNode]
-    exposedField SFNode   color           #!NULL [X3DColorNode]
-    exposedField SFNode   coord           #!NULL [X3DCoordinateNode]
-    exposedField MFInt32  fanCount        #![]   [3,)
-    exposedField SFNode   fogCoord        #![]   [FogCoordinate]
-    exposedField SFNode   metadata        #!NULL [X3DMetadataObject]
-    exposedField SFNode   normal          #!NULL [X3DNormalNode]
-    exposedField SFNode   texCoord        #!NULL [X3DTextureCoordinateNode]
-    field SFBool          ccw             #!TRUE
-    field SFBool          colorPerVertex  #!TRUE
-    field SFBool          normalPerVertex #!TRUE
-    field SFBool          solid           #!TRUE
-]["urn:inet:bitmanagement.de:node:TriangleFanSet"]
-
-EXTERNPROTO TriangleSet [
-    exposedField MFNode   attrib          #![]   [X3DVertexAttributeNode]
-    exposedField SFNode   color           #!NULL [X3DColorNode]
-    exposedField SFNode   coord           #!NULL [X3DCoordinateNode]
-    exposedField SFNode   fogCoord        #![]   [FogCoordinate]
-    exposedField SFNode   metadata        #!NULL [X3DMetadataObject]
-    exposedField SFNode   normal          #!NULL [X3DNormalNode]
-    exposedField SFNode   texCoord        #!NULL [X3DTextureCoordinateNode]
-    field SFBool          ccw             #!TRUE
-    field SFBool          colorPerVertex  #!TRUE
-    field SFBool          normalPerVertex #!TRUE
-    field SFBool          solid           #!TRUE
-]["urn:inet:bitmanagement.de:node:TriangleSet"]
-
-EXTERNPROTO TriangleStripSet [
-    exposedField  MFNode   attrib          #![]   [X3DVertexAttributeNode]
-    exposedField  SFNode   color           #!NULL [X3DColorNode]
-    exposedField  SFNode   coord           #!NULL [X3DCoordinateNode]
-    exposedField  SFNode   fogCoord        #![]   [FogCoordinate]
-    exposedField  SFNode   metadata        #!NULL [X3DMetadataObject]
-    exposedField  SFNode   normal          #!NULL [X3DNormalNode]
-    exposedField  MFInt32  stripCount      #![]   [3,)
-    exposedField  SFNode   texCoord        #!NULL [X3DTextureCoordinateNode]
-    field  SFBool          ccw             #!TRUE
-    field  SFBool          colorPerVertex  #!TRUE
-    field  SFBool          normalPerVertex #!TRUE
-    field  SFBool          solid           #!TRUE
-]["urn:inet:bitmanagement.de:node:TriangleStripSet"]
-
-EXTERNPROTO IndexedTriangleFanSet  [
-    exposedField  MFInt32  set_index       #![]   [0,) or -1
-    exposedField  MFNode   attrib          #![]   [X3DVertexAttributeNode]
-    exposedField  SFNode   color           #!NULL [X3DColorNode]
-    exposedField  SFNode   coord           #!NULL [X3DCoordinateNode]
-    exposedField  SFNode   fogCoord        #![]   [FogCoordinate]
-    exposedField  SFNode   metadata        #!NULL [X3DMetadataObject]
-    exposedField  SFNode   normal          #!NULL [X3DNormalNode]
-    exposedField  SFNode   texCoord        #!NULL [X3DTextureCoordinateNode]
-    field  SFBool          ccw             #!TRUE
-    field  SFBool          colorPerVertex  #!TRUE
-    field  SFBool          normalPerVertex #!TRUE
-    field  SFBool          solid           #!TRUE
-    field  MFInt32         index           #![]   [0,) or -1
-]["urn:inet:bitmanagement.de:node:IndexedTriangleFanSet"]
-
-EXTERNPROTO IndexedTriangleSet [
-    exposedField MFInt32  set_index       #![]   [0,)
-    exposedField MFNode   attrib          #![]   [X3DVertexAttributeNode]
-    exposedField SFNode   color           #!NULL [X3DColorNode]
-    exposedField SFNode   coord           #!NULL [X3DCoordinateNode]
-    exposedField SFNode   fogCoord        #![]   [FogCoordinate]
-    exposedField SFNode   metadata        #!NULL [X3DMetadataObject]
-    exposedField SFNode   normal          #!NULL [X3DNormalNode]
-    exposedField SFNode   texCoord        #!NULL [X3DTextureCoordinateNode]
-    field SFBool          ccw             #!TRUE
-    field SFBool          colorPerVertex  #!TRUE
-    field SFBool          normalPerVertex #!TRUE
-    field SFBool          solid           #!TRUE
-    field MFInt32         index           #![]   [0,)
-]["urn:inet:bitmanagement.de:node:IndexedTriangleSet"]
-
-EXTERNPROTO IndexedTriangleStripSet [
-    exposedField MFInt32  set_index       #![]   [0,) or 611
-    exposedField MFNode   attrib          #![]   [X3DVertexAttributeNode]
-    exposedField SFNode   color           #!NULL [X3DColorNode]
-    exposedField SFNode   coord           #!NULL [X3DCoordinateNode]
-    exposedField SFNode   fogCoord        #![]   [FogCoordinate]
-    exposedField SFNode   metadata        #!NULL [X3DMetadataObject]
-    exposedField SFNode   normal          #!NULL [X3DNormalNode]
-    exposedField SFNode   texCoord        #!NULL [X3DTextureCoordinateNode]
-    field SFBool          ccw             #!TRUE
-    field SFBool          colorPerVertex  #!TRUE<
-    field SFBool          normalPerVertex #!TRUE
-    field SFBool          solid           #!TRUE
-    field MFInt32         index           #![]   [0,) or 611
-]["urn:inet:bitmanagement.de:node:IndexedTriangleStripSet"]
-
-
+# Wrapper for Windows' text-to-speech.
 EXTERNPROTO TextToSpeech [
-	exposedField	SFString	description		
-	exposedField	SFFloat		pitch			#!(1)
-	exposedField	SFFloat		volume
-	exposedField	SFFloat		speed
-	exposedField	SFBool		enabled
-	eventIn			SFString	text
+	exposedField	SFString	description			#!("")
+	exposedField	SFFloat		pitch				#!(0)
+	exposedField	SFFloat		volume				#!(0)
+	exposedField	SFFloat		speed				#!(0)
+	exposedField	SFBool		enabled				#!(TRUE)
+	eventIn			SFString	text									# Send a value to this eventIn to trigger the voice.
 	eventOut		SFBool		isActive
-]["urn:inet:bitmanagement.de:node:TextToSpeech"]
+] "urn:inet:bitmanagement.de:node:TextToSpeech"
 
+
+# Contact 7.2+
+EXTERNPROTO BufferTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+	exposedField	SFBool		repeatS				#!(FALSE)
+	exposedField	SFBool		repeatT				#!(FALSE)
+	exposedField	SFString	format				#!("X8R8G8B8")
+	exposedField	SFInt32		pixelWidth			#!(128)
+	exposedField	SFInt32		pixelHeight			#!(128)
+	exposedField	SFInt32		levels				#!(1)
+	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField	MFString	parameter			#!([])
+	eventIn			SFBool		set_unload
+	eventIn			SFInt32		set_lod
+	eventOut		SFBool		isLoaded
+	eventOut		SFBool		isFlipped
+] "urn:inet:bitmanagement.de:node:BufferTexture"
