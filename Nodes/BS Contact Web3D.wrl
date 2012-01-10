@@ -1938,9 +1938,17 @@ EXTERNPROTO BufferTexture [ #!%texture{Appearance.texture,MultiTexture.texture,S
 	exposedField	SFInt32		pixelHeight			#!(128)
 	exposedField	SFInt32		levels				#!(1)
 	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField	MFString	parameter			#!([])
+	exposedField	MFString	parameter			#!([])				# For example: ["nomipmap" "animated"]
 	eventIn			SFBool		set_unload
 	eventIn			SFInt32		set_lod
 	eventOut		SFBool		isLoaded
 	eventOut		SFBool		isFlipped
 ] "urn:inet:bitmanagement.de:node:BufferTexture"
+
+
+# Contact 7.2 (IVN build only)
+EXTERNPROTO KinectSensor [
+	exposedField	SFVec2f		depthRangeClamp		#(1 1200)
+	exposedField	SFNode		colorTexture		#{BufferTexture}
+	exposedField	MFString	parameter			#([])				# Example: ["faceDetection=false", "faceDetectionSimple=true", "faceDetection2=true", "faceDetectionDepth=false", "averageDepth=1"]
+] "urn:inet:bitmanagement.de:node:KinectSensor"
