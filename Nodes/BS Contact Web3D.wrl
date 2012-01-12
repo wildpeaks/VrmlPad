@@ -179,7 +179,7 @@ EXTERNPROTO FragmentShader [ #!%shader{ShaderAppearance.fragmentShader}
 ###################################################################
 
 # Combines several textures into one
-EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField SFBool materialColor		#!(FALSE)
 	exposedField SFBool materialAlpha		#!(FALSE)
 	exposedField SFBool transparent			#!(FALSE)
@@ -209,44 +209,44 @@ EXTERNPROTO TextureMatrixTransform [ #!{*}
 ] ["urn:inet:bitmanagement.de:node:TextureMatrixTransform"]
 
 # SWF/Flash movie as texture
-EXTERNPROTO FlashMovieTexture[ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
-	exposedField SFBool loop
-	exposedField SFFloat speed
-	exposedField MFString url
-	exposedField SFTime startTime
-	exposedField SFTime stopTime
-	exposedField SFBool repeatS
-	exposedField SFBool repeatT
-	eventIn SFBool set_unload
-	eventOut SFTime duration
-	eventOut SFBool isActive
-	eventOut SFBool isLoaded
-	eventOut SFBool isFlipped
-	eventOut SFTime mediaTime
-	eventOut SFVec2f imageSize
-	eventOut SFFloat imageAspect
-	exposedField SFBool scaleImage
-	exposedField MFString parameter
-	exposedField SFInt32 currentFrame
-	exposedField SFInt32 totalFrames
-	exposedField SFString flashVars
-	exposedField SFBool thumbEnabled
-	exposedField SFVec2f thumbSize
-	exposedField SFNode thumbTexture
-	exposedField SFBool showThumb
-	exposedField SFBool stream
-	eventIn SFTime set_pause
-	eventIn SFTime set_play
-	eventIn SFTime set_stop
-	eventIn SFTime set_rewind
-	eventIn SFTime set_back
-	eventIn SFTime set_forward
-	eventIn SFInt32 set_frame
-	eventIn MFString set_variable
-	eventIn MFString set_function
-	eventIn SFBool set_mouseActive
-	eventIn SFVec2f set_mousePosition
-	exposedField SFNode metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+EXTERNPROTO FlashMovieTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
+	exposedField	SFBool		loop				#!(FALSE)
+	exposedField	SFFloat		speed				#!(1)
+	exposedField	MFString	url					#!([])
+	exposedField	SFTime		startTime			#!(-1)
+	exposedField	SFTime		stopTime			#!(-1)
+	exposedField	SFBool		repeatS				#!(TRUE)
+	exposedField	SFBool		repeatT				#!(TRUE)
+	exposedField	SFBool		scaleImage			#!(TRUE)
+	exposedField	MFString	parameter			#!([])
+	exposedField	SFInt32		currentFrame		#!(-1)
+	exposedField	SFInt32		totalFrames			#!(-1)
+	exposedField	SFString	flashVars			#!("")
+	exposedField	SFBool		thumbEnabled		#!(FALSE)
+	exposedField	SFVec2f		thumbSize			#!(0 0)
+	exposedField	SFNode		thumbTexture		#!(NULL)
+	exposedField	SFBool		showThumb			#!(FALSE)
+	exposedField	SFBool		stream				#!(FALSE)
+	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	eventIn			SFBool		set_unload
+	eventIn			SFTime		set_pause
+	eventIn			SFTime		set_play
+	eventIn			SFTime		set_stop
+	eventIn			SFTime		set_rewind
+	eventIn			SFTime		set_back
+	eventIn			SFTime		set_forward
+	eventIn			SFInt32		set_frame
+	eventIn			MFString	set_variable
+	eventIn			MFString	set_function
+	eventIn			SFBool		set_mouseActive
+	eventIn			SFVec2f		set_mousePosition
+	eventOut		SFTime		duration
+	eventOut		SFBool		isActive
+	eventOut		SFBool		isLoaded
+	eventOut		SFBool		isFlipped
+	eventOut		SFTime		mediaTime
+	eventOut		SFVec2f		imageSize
+	eventOut		SFFloat		imageAspect
 ] ["urn:inet:bitmanagement.de:node:FlashMovieTexture"]
 
 
@@ -475,7 +475,7 @@ EXTERNPROTO TrimmedSurface [
 
 # (BS Contact 6.3/7.001+) Enables the use of texture which are
 # larger than the maximum texture size. Use it like a normal ImageTexture{}.
-EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture} 
+EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
 	exposedField	MFString	url					#!([])
 	exposedField	MFString	parameter			#!([])
 	eventIn			SFBool		set_unload
@@ -490,7 +490,7 @@ EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.textu
 
 # (BS Contact 6.3/7.001+) For displaying stereo images such as red/blue
 # or right-left types of display.
-EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	SFString	type		#!("")
 	exposedField	MFNode		texture		#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
 	exposedField    SFNode      metadata	#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
@@ -501,7 +501,7 @@ EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture,S
 
 # (BS Contact 6.3/7.001+) For displaying stereo images such as red/blue
 # or right-left types of display.
-EXTERNPROTO OffscreenDCTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+EXTERNPROTO OffscreenDCTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	SFBool		repeatS			#!(FALSE)
 	exposedField	SFBool		repeatT			#!(FALSE)
 	exposedField	SFInt32		pixelWidth		#!(-1)
@@ -583,7 +583,7 @@ EXTERNPROTO Particles [ #!%geometry{Shape.geometry}
 
 # This allows you use a 3D scene (external or part of the current scene)
 # as a texture (nothing prevents you from using it in a MultiTexture{} also ;-)
-EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture} 
+EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
 	exposedField SFInt32 pixelWidth					#!(-1)
 	exposedField SFInt32 pixelHeight				#!(-1)
 	exposedField SFNode background					#!{Background}
@@ -803,7 +803,7 @@ EXTERNPROTO BumpTransform [ #!%common{MultiTexture.bumpTransform}
 
 
 # For creating texture using mathematics
-EXTERNPROTO ProceduralTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+EXTERNPROTO ProceduralTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField SFString format
 	exposedField SFInt32 pixelWidth		#!(64)
 	exposedField SFInt32 pixelHeight	#!(64)
@@ -845,7 +845,7 @@ EXTERNPROTO HUD [ #!%group{*}
 
 # Like ImageTexture{} except that it tells you when it finished
 # loading the file (hell useful).
-EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture} 
+EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
 	exposedField	MFString	url
 	field			SFBool		repeatS 			#!(TRUE)
 	field			SFBool		repeatT 			#!(TRUE) 
@@ -1930,7 +1930,7 @@ EXTERNPROTO TextToSpeech [
 
 
 # Contact 7.2+
-EXTERNPROTO BufferTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+EXTERNPROTO BufferTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	SFBool		repeatS				#!(FALSE)
 	exposedField	SFBool		repeatT				#!(FALSE)
 	exposedField	SFString	format				#!("X8R8G8B8")
