@@ -1,20 +1,12 @@
 #VRML V2.0 utf8
 
-###################################################################
-#
-# Updated by Cecile Muller (contact@wildpeaks.fr)
-# This list is maybe not complete, but nearly all of them shoud be here.
-#
-###################################################################
+#!Author: Cecile Muller (contact@wildpeaks.fr)
+#!Description: BS Contact Web3D extension nodes
+#!Version: 8.205
+#!Help path: https://github.com/wildpeaks/VrmlPad
+#!Download path: https://github.com/wildpeaks/VrmlPad/raw/master/Nodes/BS%20Contact%20Web3D.wrl
 
-WorldInfo{title "BS Contact 8.0 EXTERNPROTO definitions for VrmlPad"}
-
-
-
-#!Description: BS Contact VRML/X3D extension nodes
-#!Version: 7.218
-#!Help path: http://github.com/wildpeaks/VrmlPad
-#!Priority: 6
+WorldInfo{title "BS Contact 8.205 EXTERNPROTO definitions for VrmlPad"}
 
 
 ###################################################################
@@ -576,8 +568,12 @@ EXTERNPROTO Particles [ #!%geometry{Shape.geometry}
 	exposedField SFFloat fadeStartFraction			#!(0)
 	exposedField SFBool sort						#!(FALSE)
 	exposedField SFBool billboard					#!(TRUE)
+
 	#Contact 7.1
 	exposedField SFBool emitLocal	                #!(TRUE)
+
+	#Contact 7.2
+	exposedField	SFBool		alignDirection		#!(TRUE)
 ] ["urn:inet:bitmanagement.de:node:Particles"]
 
 
@@ -686,27 +682,27 @@ EXTERNPROTO	Camera [ #!%viewpoint{*}
 
 
 # (BS Contact 6.103+)
-EXTERNPROTO ViewVolume [ #!%viewpoint{*}
-	eventIn SFBool set_bind
-	exposedField SFFloat fieldOfView			#!(0.785398)
-	exposedField SFBool jump					#!(TRUE)
-	exposedField SFRotation orientation			#!(0 0 1 0)
-	exposedField SFVec3f position				#!(0 0 10)
-	exposedField SFString description			#!("")
-	exposedField SFBool perspective				#!(TRUE)
-    exposedField SFVec2f center					#!(0 0)
-	exposedField SFVec2f size					#!(2 2)
-	exposedField MFInt32 viewport				#!([])
-	exposedField SFFloat nearDistance			#!(0.1)
-	exposedField SFFloat farDistance			#!(100)
-	exposedField SFFloat focalDistance			#!(10)
-	exposedField SFFloat eyeDistance			#!(0.6)
-	exposedField SFString aspectMode			#!("FIT")
-	eventOut      SFTime bindTime
-	eventOut      SFBool isBound
-	exposedField SFMatrix projectionMatrix
-	exposedField SFBool projectionMatrixEnabled #!(FALSE)
-] ["urn:inet:bitmanagement.de:node:ViewVolume"]
+#EXTERNPROTO ViewVolume [ #!%viewpoint{*}
+#	eventIn SFBool set_bind
+#	exposedField SFFloat fieldOfView			#!(0.785398)
+#	exposedField SFBool jump					#!(TRUE)
+#	exposedField SFRotation orientation			#!(0 0 1 0)
+#	exposedField SFVec3f position				#!(0 0 10)
+#	exposedField SFString description			#!("")
+#	exposedField SFBool perspective				#!(TRUE)
+#    exposedField SFVec2f center					#!(0 0)
+#	exposedField SFVec2f size					#!(2 2)
+#	exposedField MFInt32 viewport				#!([])
+#	exposedField SFFloat nearDistance			#!(0.1)
+#	exposedField SFFloat farDistance			#!(100)
+#	exposedField SFFloat focalDistance			#!(10)
+#	exposedField SFFloat eyeDistance			#!(0.6)
+#	exposedField SFString aspectMode			#!("FIT")	# Possible values: EQUAL, FIXED, FIT, STRETCH
+#	eventOut      SFTime bindTime
+#	eventOut      SFBool isBound
+#	exposedField SFMatrix projectionMatrix
+#	exposedField SFBool projectionMatrixEnabled #!(FALSE)
+#] ["urn:inet:bitmanagement.de:node:ViewVolume"]
 
 
 # The MouseSensor is a node to receive events from the mouse.
@@ -785,8 +781,10 @@ EXTERNPROTO ShadowGroup [ #!%group{*}
 
 	exposedField SFNode metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 
+	exposedField MFNode shadowMap
+
 	# 7.201+
-	exposedField SFNode shadowMap
+	#exposedField SFNode shadowMap
 	exposedField SFNode shadowMapGenAppearance
 	exposedField SFNode shadowMapUseAppearance
 	exposedField SFBool shadowMapBlurr
@@ -968,16 +966,16 @@ EXTERNPROTO Part [ #!{Assembly.children}
 
 
 # (BS Contact 6.3/7.001+)
-EXTERNPROTO CADLayer [
-	exposedField SFVec3f bboxSize				#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter				#!(0 0 0)
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name					#!("")
-	exposedField MFBool visible
-	exposedField MFNode children				#!([]){CADAssembly}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-] ["urn:inet:bitmanagement.de:node:CADLayer"]
+#EXTERNPROTO CADLayer [
+#	exposedField SFVec3f bboxSize				#!(-1 -1 -1)
+#	exposedField SFVec3f bboxCenter				#!(0 0 0)
+#	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	exposedField SFString name					#!("")
+#	exposedField MFBool visible
+#	exposedField MFNode children				#!([]){CADAssembly}
+#	eventIn MFNode addChildren
+#	eventIn MFNode removeChildren
+#] ["urn:inet:bitmanagement.de:node:CADLayer"]
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO CADAssembly [
@@ -1047,12 +1045,12 @@ EXTERNPROTO MetadataFloat [
 ] ["urn:inet:bitmanagement.de:node:MetadataFloat"]
 
 # (BS Contact 6.3/7.001+)
-EXTERNPROTO MetadataDouble [
-	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name				#!("")
-	exposedField SFString reference			#!("")
-	exposedField MFDouble value				#!(0)
-] ["urn:inet:bitmanagement.de:node:MetadataDouble"]
+#EXTERNPROTO MetadataDouble [
+#	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	exposedField SFString name				#!("")
+#	exposedField SFString reference			#!("")
+#	exposedField MFDouble value				#!(0)
+#] ["urn:inet:bitmanagement.de:node:MetadataDouble"]
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO MetadataInteger [
@@ -1334,16 +1332,16 @@ EXTERNPROTO Humanoid [ #!%geometry{*}
 ###################################################################
 
 # Used by Browser.computeRayHit()
-EXTERNPROTO RayHitInfo [ #!%common
-  eventOut MFNode hitPath
-  eventOut SFVec3f hitNormal
-  eventOut SFVec3f hitPoint
-  eventOut SFVec2f hitTexCoord
-  eventOut SFMatrix hitMatrix
-  eventOut SFVec3f hitNormalLocal
-  eventOut SFVec3f hitPointLocal
-  eventOut MFInt32 hitInfo
-] ["urn:inet:bitmanagement.de:node:RayHitInfo"]
+#EXTERNPROTO RayHitInfo [ #!%common
+#  eventOut MFNode hitPath
+#  eventOut SFVec3f hitNormal
+#  eventOut SFVec3f hitPoint
+#  eventOut SFVec2f hitTexCoord
+#  eventOut SFMatrix hitMatrix
+#  eventOut SFVec3f hitNormalLocal
+#  eventOut SFVec3f hitPointLocal
+#  eventOut MFInt32 hitInfo
+#] ["urn:inet:bitmanagement.de:node:RayHitInfo"]
 
 
 # Used by Browser.event_changed
@@ -1605,7 +1603,7 @@ EXTERNPROTO	NetConnection [ #!%common{BSCollaborate.connection,EventStreamSensor
    exposedField   SFBool     enabled   #!(TRUE)           # Enable or disable the connection
    exposedField   MFString	 address   #!("localhost")    # Address of the server to connect
    exposedField   SFInt32	 port      #!(0)              # Port number from the server
-   eventIn        SFInt32	 protocol  #!(3)              # Protocol number to use
+   exposedField   SFInt32	 protocol  #!(3)              # Protocol number to use
    eventOut       SFBool     isActive  #!(FALSE)		  # Event for established connection to server
 ] ["urn:inet:bitmanagement.de:node:NetConnection"]
 
@@ -1613,10 +1611,10 @@ EXTERNPROTO	NetConnection [ #!%common{BSCollaborate.connection,EventStreamSensor
 # Contact 7.1+
 # The node EventStreamSensor is like a proto or script interface. It can handle many variables for sending and reciving events.
 EXTERNPROTO	EventStreamSensor [ #!%common
-	field			SFNode		connection		#!(NULL){NetConnection}		# Node with connection to server
+	exposedField	SFNode		connection		#!(NULL){NetConnection}		# Node with connection to server
 	field			SFString	streamName		#("")						# Real name of the EventStream
 	field			SFString	lockMode		#("weak")
-	eventOut		SFBool		requestLock
+	eventIn			SFBool		requestLock
 	eventOut		SFBool		initialized									# TRUE when the initial values transmitted from server
 	eventOut		SFBool		hasLock
 	eventOut		SFNode		lockOwner		#!{User}
@@ -1651,146 +1649,146 @@ EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Geo
 	field	SFString	style
 ] "urn:inet:bitmanagement.de:node:FontTexture"
 
-EXTERNPROTO GeoSphere [ #!%geometry
-	exposedField SFVec3f bboxSize
-	exposedField SFVec3f bboxCenter
-	field SFNode geoOrigin
-	field MFString geoSystem
-	exposedField SFBool enabled
-	exposedField SFBool solid
-	exposedField SFVec3d rangeMin
-	exposedField SFVec3d rangeMax	
-	exposedField SFBool zbuffer
-	exposedField SFBool zwrite
-	exposedField SFVec2f depthBias
-	exposedField SFBool gridEnabled
-	exposedField SFColor gridColor
-	exposedField SFVec2f gridSpacing
-	exposedField SFString imageMap
-	exposedField SFInt32 imageLevelMax
-	exposedField SFInt32 imageLevelBias
-	exposedField SFBool imageBorder
-	exposedField SFBool elevationEnabled
-	exposedField SFString elevationMap
-	exposedField SFInt32 elevationLevelMax
-	exposedField SFInt32 elevationLevelBias
-	exposedField SFDouble elevationScale
-	exposedField SFDouble elevationClamp
-	exposedField SFDouble elevationOffset
-	exposedField SFVec2f elevationSubdivision
-	exposedField SFBool shaded
-	exposedField SFDouble  TER_MAP_W
-	exposedField SFDouble  TER_MAP_H
-	exposedField SFDouble  TER_MAP_X
-	exposedField SFDouble  TER_MAP_Y
-	exposedField MFNode layer
-	eventOut SFBool isLoaded
-	eventOut SFString currentImageMap
-	eventOut SFString currentElevationMap
-	eventOut SFInt32 renderedLevel
-	eventOut SFInt32 waitingResources
-	eventOut SFInt32 pendingResources
-	eventOut SFInt32 loadedResources
-] "urn:inet:bitmanagement.de:node:GeoSphere"
+#EXTERNPROTO GeoSphere [ #!%geometry
+#	exposedField SFVec3f bboxSize
+#	exposedField SFVec3f bboxCenter
+#	field SFNode geoOrigin
+#	field MFString geoSystem
+#	exposedField SFBool enabled
+#	exposedField SFBool solid
+#	exposedField SFVec3d rangeMin
+#	exposedField SFVec3d rangeMax	
+#	exposedField SFBool zbuffer
+#	exposedField SFBool zwrite
+#	exposedField SFVec2f depthBias
+#	exposedField SFBool gridEnabled
+#	exposedField SFColor gridColor
+#	exposedField SFVec2f gridSpacing
+#	exposedField SFString imageMap
+#	exposedField SFInt32 imageLevelMax
+#	exposedField SFInt32 imageLevelBias
+#	exposedField SFBool imageBorder
+#	exposedField SFBool elevationEnabled
+#	exposedField SFString elevationMap
+#	exposedField SFInt32 elevationLevelMax
+#	exposedField SFInt32 elevationLevelBias
+#	exposedField SFDouble elevationScale
+#	exposedField SFDouble elevationClamp
+#	exposedField SFDouble elevationOffset
+#	exposedField SFVec2f elevationSubdivision
+#	exposedField SFBool shaded
+#	exposedField SFDouble  TER_MAP_W
+#	exposedField SFDouble  TER_MAP_H
+#	exposedField SFDouble  TER_MAP_X
+#	exposedField SFDouble  TER_MAP_Y
+#	exposedField MFNode layer
+#	eventOut SFBool isLoaded
+#	eventOut SFString currentImageMap
+#	eventOut SFString currentElevationMap
+#	eventOut SFInt32 renderedLevel
+#	eventOut SFInt32 waitingResources
+#	eventOut SFInt32 pendingResources
+#	eventOut SFInt32 loadedResources
+#] "urn:inet:bitmanagement.de:node:GeoSphere"
 
-EXTERNPROTO GeoLocation[
-	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	field SFVec3f bboxCenter						#(0 0 0)
-	field SFVec3f bboxSize							#(-1 -1 -1)
-	exposedField SFVec3d geoCoords
-	field SFNode geoOrigin
-	field MFString geoSystem
-	exposedField MFNode children
-] "urn:inet:bitmanagement.de:node:GeoLocation"
+#EXTERNPROTO GeoLocation [
+#	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	field SFVec3f bboxCenter						#(0 0 0)
+#	field SFVec3f bboxSize							#(-1 -1 -1)
+#	exposedField SFVec3d geoCoords
+#	field SFNode geoOrigin
+#	field MFString geoSystem
+#	exposedField MFNode children
+#] "urn:inet:bitmanagement.de:node:GeoLocation"
 
-EXTERNPROTO GeoCoordinate[
-	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField MFVec3d point
-	field SFNode geoOrigin
-	field MFString geoSystem
-] "urn:inet:bitmanagement.de:node:GeoCoordinate"
+#EXTERNPROTO GeoCoordinate[
+#	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	exposedField MFVec3d point
+#	field SFNode geoOrigin
+#	field MFString geoSystem
+#] "urn:inet:bitmanagement.de:node:GeoCoordinate"
 
-EXTERNPROTO GeoViewpoint[
-	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	field SFNode geoOrigin
-	field MFString geoSystem
-	field SFVec3d position
-	field SFRotation orientation
-	exposedField SFFloat fieldOfView
-	exposedField SFBool jump
-	exposedField MFString navType
-	exposedField SFBool headlight
-	field SFString description
-	field SFFloat speedFactor
-	eventIn SFVec3d set_position
-	eventIn SFRotation set_orientation
-	eventIn SFBool set_bind
-	eventOut SFTime bindTime
-	eventOut SFBool isBound
-] "urn:inet:bitmanagement.de:node:GeoViewpoint"
+#EXTERNPROTO GeoViewpoint[
+#	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	field SFNode geoOrigin
+#	field MFString geoSystem
+#	field SFVec3d position
+#	field SFRotation orientation
+#	exposedField SFFloat fieldOfView
+#	exposedField SFBool jump
+#	exposedField MFString navType
+#	exposedField SFBool headlight
+#	field SFString description
+#	field SFFloat speedFactor
+#	eventIn SFVec3d set_position
+#	eventIn SFRotation set_orientation
+#	eventIn SFBool set_bind
+#	eventOut SFTime bindTime
+#	eventOut SFBool isBound
+#] "urn:inet:bitmanagement.de:node:GeoViewpoint"
 
-EXTERNPROTO GeoProximitySensor [
-	exposedField SFVec3d geoCenter
-	exposedField SFVec3d size
-	exposedField SFBool enabled
-	eventOut SFBool isActive
-	eventOut SFVec3f position
-	eventOut SFRotation orientation
-	eventOut SFTime enterTime
-	eventOut SFTime exitTime
-	eventOut SFVec3d centerOfRotation
-	exposedField SFVec3d geoCoord
-	exposedField SFNode geoOrigin
-	eventOut MFString geoSystem
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-] "urn:inet:bitmanagement.de:node:GeoProximitySensor"
+#EXTERNPROTO GeoProximitySensor [
+#	exposedField SFVec3d geoCenter
+#	exposedField SFVec3d size
+#	exposedField SFBool enabled
+#	eventOut SFBool isActive
+#	eventOut SFVec3f position
+#	eventOut SFRotation orientation
+#	eventOut SFTime enterTime
+#	eventOut SFTime exitTime
+#	eventOut SFVec3d centerOfRotation
+#	exposedField SFVec3d geoCoord
+#	exposedField SFNode geoOrigin
+#	eventOut MFString geoSystem
+#	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#] "urn:inet:bitmanagement.de:node:GeoProximitySensor"
 
-EXTERNPROTO	GeoLOD [
-	exposedField	SFNode	metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	field			SFVec3f	bboxCenter
-	field			SFVec3f	bboxSize	
-	field			MFString	rootUrl
-	field			MFNode	rootNode
-	field			MFString	child1Url
-	field			MFString	child2Url
-	field			MFString	child3Url
-	field			MFString	child4Url
-	field			SFFloat	range
-	field			SFNode	geoOrigin
-	field			MFString	geoSystem
-	field			SFVec3d	center
-] "urn:inet:bitmanagement.de:node:GeoLOD"
+#EXTERNPROTO	GeoLOD [
+#	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	field			SFVec3f		bboxCenter
+#	field			SFVec3f		bboxSize	
+#	field			MFString	rootUrl
+#	field			MFNode		rootNode
+#	field			MFString	child1Url
+#	field			MFString	child2Url
+#	field			MFString	child3Url
+#	field			MFString	child4Url
+#	field			SFFloat		range
+#	field			SFNode		geoOrigin
+#	field			MFString	geoSystem
+#	field			SFVec3d		center
+#] "urn:inet:bitmanagement.de:node:GeoLOD"
 
-EXTERNPROTO	GeoMap [
-	exposedField	SFBool	enabled	
-	field			SFString	url
-	field			MFString	layerAttributes	
-	eventIn SFString set_layerAttribute	
-	exposedField	MFNode	fontTexture				#!{FontTexture}
-	exposedField	SFNode	symbolTexture
-	field			SFString		labelField
-	field			SFString		labelChars
-	exposedField	SFBool		zbuffer		
-	exposedField	SFBool		zwrite
-	exposedField	SFDouble		scaleMin
-	exposedField	SFDouble		scaleMax
-	exposedField	SFDouble		scaleLevel
-] "urn:inet:bitmanagement.de:node:GeoMap"
+#EXTERNPROTO	GeoMap [
+#	exposedField	SFBool		enabled	
+#	field			SFString	url
+#	field			MFString	layerAttributes	
+#	eventIn			SFString	set_layerAttribute	
+#	exposedField	MFNode		fontTexture				#!{FontTexture}
+#	exposedField	SFNode		symbolTexture
+#	field			SFString	labelField
+#	field			SFString	labelChars
+#	exposedField	SFBool		zbuffer		
+#	exposedField	SFBool		zwrite
+#	exposedField	SFDouble	scaleMin
+#	exposedField	SFDouble	scaleMax
+#	exposedField	SFDouble	scaleLevel
+#] "urn:inet:bitmanagement.de:node:GeoMap"
 
-EXTERNPROTO GeoTouchSensor [
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	field SFNode geoOrigin
-	field MFString geoSystem
-	exposedField SFBool enabled
-	eventOut SFVec3f hitNormal
-	eventOut SFVec3f hitPoint
-	eventOut SFVec2f hitTexCoord
-	eventOut SFVec3d hitGeoCoord
-	eventOut SFBool isActive
-	eventOut SFBool isOver
-	eventOut SFTime touchTime
-	exposedField SFString description
-] "urn:inet:bitmanagement.de:node:GeoTouchSensor"
+#EXTERNPROTO GeoTouchSensor [
+#	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	field SFNode geoOrigin
+#	field MFString geoSystem
+#	exposedField SFBool enabled
+#	eventOut SFVec3f hitNormal
+#	eventOut SFVec3f hitPoint
+#	eventOut SFVec2f hitTexCoord
+#	eventOut SFVec3d hitGeoCoord
+#	eventOut SFBool isActive
+#	eventOut SFBool isOver
+#	eventOut SFTime touchTime
+#	exposedField SFString description
+#] "urn:inet:bitmanagement.de:node:GeoTouchSensor"
 
 
 
@@ -1946,9 +1944,49 @@ EXTERNPROTO BufferTexture [ #!%texture{Appearance.texture,MultiTexture.texture,S
 ] "urn:inet:bitmanagement.de:node:BufferTexture"
 
 
-# Contact 7.2 (IVN build only)
+# Contact 7.2+ (IVN build only)
 EXTERNPROTO KinectSensor [
 	exposedField	SFVec2f		depthRangeClamp		#(1 1200)
 	exposedField	SFNode		colorTexture		#{BufferTexture}
 	exposedField	MFString	parameter			#([])				# Example: ["faceDetection=false", "faceDetectionSimple=true", "faceDetection2=true", "faceDetectionDepth=false", "averageDepth=1"]
 ] "urn:inet:bitmanagement.de:node:KinectSensor"
+
+
+
+# Contact 7.2+
+EXTERNPROTO GeometryInstance [
+] "urn:inet:bitmanagement.de:node:GeometryInstance"
+
+
+
+###################################################################
+# Dampers
+###################################################################
+
+EXTERNPROTO ScalarDamper [
+	exposedField	SFFloat		tau					#(1)
+	field			SFFloat		initialValue		#(0)
+	field			SFFloat		initialDestination	#(0)
+	eventIn			SFFloat		set_destination
+	eventIn			SFFloat		set_value
+	eventOut		SFFloat		value_changed
+] "urn:inet:bitmanagement.de:node:ScalarDamper"
+
+
+EXTERNPROTO PositionDamper [
+	exposedField	SFFloat		tau					#(1)
+	field			SFVec3f		initialValue		#(0 0 0)
+	field			SFVec3f		initialDestination	#(0 0 0)
+	eventIn			SFVec3f		set_destination
+	eventIn			SFVec3f		set_value
+	eventOut		SFVec3f		value_changed
+] "urn:inet:bitmanagement.de:node:PositionDamper"
+
+EXTERNPROTO OrientationDamper [
+	exposedField	SFFloat		tau					#(1)
+	field			SFRotation	initialValue		#(0 1 0 0)
+	field			SFRotation	initialDestination	#(0 1 0 0)
+	eventIn			SFRotation	set_destination
+	eventIn			SFRotation	set_value
+	eventOut		SFRotation	value_changed
+] "urn:inet:bitmanagement.de:node:OrientationDamper"
