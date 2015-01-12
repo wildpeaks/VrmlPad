@@ -138,7 +138,7 @@ EXTERNPROTO Layer2D[ #!%common{*}
 EXTERNPROTO ShaderAppearance [ #!%appearance{Shape.appearance}
 	exposedField SFNode fragmentShader		#!{FragmentShader}
 	exposedField SFNode material			#!%material{Material}
-	exposedField SFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField SFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
 	exposedField SFNode textureTransform	#!{TextureTransform,TextureMatrixTransform}
 	exposedField SFNode vertexShader		#!{VertexShader}
 	exposedField SFBool transparent			#!(FALSE)
@@ -178,7 +178,7 @@ EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Sh
 	exposedField SFBool nomipmap			#!(FALSE)
 	exposedField MFString mode
 	exposedField MFString type
-	exposedField MFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField MFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
 	exposedField MFNode textureTransform	#!{TextureTransform,TextureMatrixTransform}
 	exposedField MFInt32 textureOp
 	exposedField SFColor color				#!(1 1 1)
@@ -240,6 +240,44 @@ EXTERNPROTO FlashMovieTexture [ #!%texture{Appearance.texture,MultiTexture.textu
 	eventOut		SFVec2f		imageSize
 	eventOut		SFFloat		imageAspect
 ] ["urn:inet:bitmanagement.de:node:FlashMovieTexture"]
+
+# Basically, always use this isntead of MovieTexture even for non-stereo
+# textures, because MovieTexture is totally buggy in Contact.
+EXTERNPROTO StereoMovieTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
+	eventOut		SFTime		duration
+	eventOut		SFFloat		imageAspect
+	eventOut		SFVec2f		imageSize
+	eventOut		SFBool		isActive
+	eventOut		SFBool		isEos
+	eventOut		SFBool		isFlipped
+	eventOut		SFBool		isLoaded
+	exposedField	SFBool		load				#!(TRUE)
+	exposedField	SFBool		loop				#!(FALSE)
+	eventOut		SFTime		mediaTime
+	exposedField	SFNode		metadata			#!(NULL)
+	exposedField	MFString	parameter
+	field			SFBool		repeatS				#!(TRUE)
+	field			SFBool		repeatT				#!(TRUE)
+	exposedField	MFString	rightUrl			#!([])
+	exposedField	SFBool		scaleImage			#!(TRUE)
+	eventIn			SFBool		set_pause
+	eventIn			SFTime		set_seekTime
+	eventIn			SFTime		set_startTime
+	eventIn			SFTime		set_stopTime
+	eventIn			SFBool		set_unload
+	eventIn			SFBool		set_volume
+	exposedField	SFBool		showThumb			#!(FALSE)
+	exposedField	SFFloat		speed				#!(1.0)
+	exposedField	SFTime		startTime			#!(-1)
+	exposedField	SFTime		stopTime			#!(-1)
+	exposedField	SFBool		stream				#!(FALSE)
+	exposedField	MFNode		textureTransform	#!([])
+	exposedField	SFBool		thumbEnabled		#!(FALSE)
+	exposedField	SFVec2f		thumbSize			#!(0 0)
+	exposedField	SFNode		thumbTexture		#!(NULL)
+	exposedField	SFString	type				#!("MONO")		# Possible values: "MONO" / "SPLIT-HORIZONTAL" / "SPLIT-VERTICAL"
+	exposedField	MFString	url					#!([])
+] ["urn:inet:bitmanagement.de:node:StereoMovieTexture"]
 
 
 ###################################################################
@@ -484,7 +522,7 @@ EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.textu
 # or right-left types of display.
 EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	SFString	type		#!("")
-	exposedField	MFNode		texture		#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField	MFNode		texture		#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
 	exposedField    SFNode      metadata	#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	#Contact 7.1
 	eventOut        SFBool      isFlipped
@@ -856,7 +894,7 @@ EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,S
 
 # Like MovieTexture{} except that it tells you when it finished loading the file,
 # and can be paused too.
-EXTERNPROTO MovieTexture2[ 
+EXTERNPROTO MovieTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
 	exposedField SFBool   loop				#!(FALSE)
 	exposedField SFFloat  speed 			#!(0)
 	exposedField SFTime   startTime 		#!(-1)
@@ -874,6 +912,27 @@ EXTERNPROTO MovieTexture2[
 	#Contact 7.1
 	eventOut        SFBool      isFlipped
 ] ["urn:inet:bitmanagement.de:node:MovieTexture"]
+
+EXTERNPROTO ImageTextureLOD [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
+	exposedField	SFBool		repeatS
+	exposedField	SFBool		repeatT
+	exposedField	MFString	url
+	exposedField	SFVec2f		maxSize
+	exposedField	SFNode		loadingTexture
+	eventIn			SFInt32		set_lod
+	eventIn			SFFloat		set_priority
+	eventIn			SFBool		set_unload
+	exposedField	MFString	parameter
+	exposedField	SFBool		thumbEnabled
+	exposedField	SFVec2f		thumbSize
+	exposedField	SFNode		thumbTexture
+	exposedField	SFBool		showThumb
+	eventOut		SFBool		isLoaded
+	eventOut		SFBool		isFlipped
+	eventOut		SFVec2f		size
+	eventOut		SFFloat		aspect
+	exposedField	SFNode		metadata
+] ["urn:inet:bitmanagement.de:node:ImageTextureLOD"]
 
 
 # Like Inline except that you can also access its inner nodes and load/unload it at will,
@@ -1848,7 +1907,7 @@ EXTERNPROTO PostProcessing [ #!%group
 # A .fx shader shipped with BS Contact 
 EXTERNPROTO PackagedShader [ #!%script
 	field			SFString	language
-	field			SFString	url
+	field			MFString	url
 	#
 	# (and user-defined fields, like Script nodes)
 	#
