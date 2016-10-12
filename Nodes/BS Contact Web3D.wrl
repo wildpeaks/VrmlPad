@@ -2013,7 +2013,16 @@ EXTERNPROTO KinectSensor [
 
 
 # Contact 7.2+
-EXTERNPROTO GeometryInstance [
+EXTERNPROTO GeometryInstance [ #!%group
+	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField	SFVec3f		bboxSize			#!(-1 -1 -1)
+	exposedField	SFVec3f		bboxCenter			#!(0 0 0)
+	exposedField	SFVec2f		range				#!(0 100)
+	exposedField	SFNode		shader				#!(NULL){PackagedShader}
+	exposedField	MFVec3f		translation			#!(0 0 0)
+	exposedField	MFRotation	rotation			#!(0 0 1 0)
+	exposedField	MFVec3f		scale				#!(1 1 1)
+	exposedField	SFNode		shape				#!(NULL){Shape}
 ] "urn:inet:bitmanagement.de:node:GeometryInstance"
 
 
