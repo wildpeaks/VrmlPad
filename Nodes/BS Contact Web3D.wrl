@@ -2058,3 +2058,57 @@ EXTERNPROTO OrientationDamper [
 	eventIn			SFRotation	set_value
 	eventOut		SFRotation	value_changed
 ] "urn:inet:bitmanagement.de:node:OrientationDamper"
+
+
+###################################################################
+# Oculus nodes
+###################################################################
+
+EXTERNPROTO VrController [
+	exposedField	SFNode		metadata
+	exposedField	SFBool		enabled
+	eventOut		SFBool		isActive
+	eventOut		SFVec3f		position_left
+	eventOut		SFVec3f		position_right
+	eventOut		SFRotation	orientation_left
+	eventOut		SFRotation	orientation_right
+	eventOut		SFBool		trigger_left
+	eventOut		SFBool		trigger_right
+	eventOut		MFBool		eventsAvailable
+	exposedField	MFNode		extensions
+] "urn:inet:bitmanagement.de:node:VrController"
+
+EXTERNPROTO OculusTouch [
+	exposedField	SFNode		metadata
+	exposedField	SFBool		enabled
+	eventOut		SFBool		isActive
+	eventOut		SFBool		buttonA
+	eventOut		SFBool		buttonB
+	eventOut		SFBool		buttonX
+	eventOut		SFBool		buttonY
+	eventOut		SFBool		buttonThumb_left
+	eventOut		SFBool		buttonThumb_right
+	eventOut		SFBool		buttonShoulder_left
+	eventOut		SFBool		buttonShoulder_right
+	eventOut		SFFloat		indexTrigger_left
+	eventOut		SFFloat		indexTrigger_right
+	eventOut		SFFloat		handTrigger_left
+	eventOut		SFFloat		handTrigger_right
+	eventOut		SFVec2f		thumbstick_left
+	eventOut		SFVec2f		thumbstick_right
+	eventOut		SFTime		updateTime
+] "urn:inet:bitmanagement.de:node:OculusTouch"
+
+EXTERNPROTO OculusRemote [
+	exposedField	SFNode		metadata
+	exposedField	SFBool		enabled
+	eventOut		SFBool		isActive
+	eventOut		SFVec2f		direction
+	eventOut		SFBool		enter
+	eventOut		SFBool		back
+	eventOut		SFBool		volumeUp
+	eventOut		SFBool		volumeDown
+	eventOut		SFBool		home
+	eventOut		SFTime		updateTime
+] "urn:inet:bitmanagement.de:node:OculusRemote"
+
