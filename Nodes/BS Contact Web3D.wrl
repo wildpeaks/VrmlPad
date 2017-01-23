@@ -693,29 +693,32 @@ EXTERNPROTO CoordinateDeformer [ #!%sensor{*}
 	eventIn MFNode removeChildren
 ] ["urn:inet:bitmanagement.de:node:CoordinateDeformer"]
 
+
 # (Contact 5.0+)
 # Used to make a Viewpoint{} that acts any way you want
 # (often used with DeviceSensor{} inputs).
 EXTERNPROTO	Camera [ #!%viewpoint{*}
-  eventIn        SFBool     set_bind
-  eventIn        SFVec3f    xyz
-  eventIn        SFVec3f    ypr
-  eventIn        SFVec2f    yp
-  eventIn        SFVec3f    moveTo
-  eventIn        SFVec3f    orientTo
-  eventIn        SFVec3f    examineCenter
-  eventIn        SFBool     straighten
-  exposedField   SFTime     duration				#!(0)
-  exposedField   SFInt32    examineRadius			#!(0)
-  exposedField   SFVec3f    offset       			#!(0 0 0)	
-  exposedField   SFBool     collide					#!(TRUE)
-  exposedField   SFBool     gravity					#!(TRUE)
-  field          SFString   description				#!("")
-  field          SFVec3f    upVector				#!(0 1 0)
-  eventOut       SFRotation orientation   
-  eventOut       SFVec3f    position
-  eventOut       SFTime     bindTime
-  eventOut       SFBool     isBound
+	exposedField	SFVec3f		position
+	exposedField	SFRotation	orientation
+	exposedField	SFString	description			#!("")
+	exposedField	SFVec3f		xyz
+	exposedField	SFVec3f		ypr
+	exposedField	SFVec3f		yp
+	exposedField	SFVec3f		examineCenter
+	exposedField	SFFloat		examineRadius		#!(0)
+	exposedField	SFBool		gravity				#!(TRUE)
+	exposedField	SFBool		groundDetect
+	exposedField	SFBool		collide				#!(TRUE)
+	exposedField	SFVec3f		moveTo
+	exposedField	SFVec3f		orientTo
+	exposedField	SFTime		duration			#!(0)
+	exposedField	SFVec3f		offset				#!(0 0 0)
+	exposedField	SFVec3f		upVector			#!(0 1 0)
+	exposedField	SFNode		metadata			#!(NULL)
+	eventIn			SFBool		set_bind
+	eventIn			SFBool		straighten
+	eventOut		SFTime		bindTime
+	eventOut		SFBool		isBound
 ] ["urn:inet:bitmanagement.de:node:Camera"]
 
 
