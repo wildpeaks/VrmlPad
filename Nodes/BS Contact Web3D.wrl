@@ -2078,6 +2078,19 @@ EXTERNPROTO VrController [
 	exposedField	MFNode		extensions
 ] "urn:inet:bitmanagement.de:node:VrController"
 
+EXTERNPROTO VrDevice [
+	exposedField	SFNode		metadata
+	exposedField	SFBool		enabled
+	eventOut		SFBool		isActive
+	eventOut		SFString	type
+	eventOut		SFBool		hasTouchController
+	eventOut		SFBool		hasRemoteController
+	eventOut		SFVec3f		headPosition
+	eventOut		SFRotation	headOrientation
+	exposedField	SFBool		gazeEnabled
+	exposedField	MFNode		controller
+] "urn:inet:bitmanagement.de:node:VrDevice"
+
 EXTERNPROTO OculusTouch [
 	exposedField	SFNode		metadata
 	exposedField	SFBool		enabled
