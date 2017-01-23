@@ -2061,7 +2061,7 @@ EXTERNPROTO OrientationDamper [
 
 
 ###################################################################
-# Oculus nodes
+# VR nodes
 ###################################################################
 
 EXTERNPROTO VrController [
@@ -2111,4 +2111,13 @@ EXTERNPROTO OculusRemote [
 	eventOut		SFBool		home
 	eventOut		SFTime		updateTime
 ] "urn:inet:bitmanagement.de:node:OculusRemote"
+
+EXTERNPROTO Panorama [
+	exposedField	SFString	type
+	exposedField	SFVec3f		center
+	exposedField	MFFloat		parameter
+	exposedField	SFBool		solid
+	exposedField	SFInt32		useTransparentQuality
+	exposedField	SFNode		metadata
+] "urn:inet:bitmanagement.de:node:Panorama"
 
