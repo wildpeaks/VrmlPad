@@ -34,7 +34,7 @@ EXTERNPROTO BooleanToggle [ #!%common{*}
 EXTERNPROTO BooleanTrigger [ #!%common{*}
 	eventIn			SFTime		set_triggerTime
 	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventOut		SFBool		triggerTrue 
+	eventOut		SFBool		triggerTrue
 ] ["urn:inet:bitmanagement.de:node:BooleanTrigger"]
 
 
@@ -42,7 +42,7 @@ EXTERNPROTO IntegerTrigger [ #!%common{*}
 	exposedField	SFInt32		integerKey			#!(-1)
 	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 	eventIn			SFBool		set_boolean
-	eventOut		SFInt32		triggerValue  
+	eventOut		SFInt32		triggerValue
 ] ["urn:inet:bitmanagement.de:node:IntegerTrigger"]
 
 
@@ -88,7 +88,7 @@ EXTERNPROTO NodeSequencer [ #!%common{*}
 
 
 ###################################################################
-# Nodes for layers (they come from the MPEG-4 standard but are supported 
+# Nodes for layers (they come from the MPEG-4 standard but are supported
 # even in the VRML-X3D version of Contact)
 ###################################################################
 
@@ -148,7 +148,7 @@ EXTERNPROTO ShaderAppearance [ #!%appearance{Shape.appearance}
 # It can also contain a javascript fallback for the people
 # who can't (for a reason or another) view that shader.
 EXTERNPROTO VertexShader [ #!%shader{ShaderAppearance.vertexShader}
-	exposedField  MFString  url				
+	exposedField  MFString  url
 	exposedField  SFBool    mustEvaluate	#!(FALSE)
 	exposedField  MFString  paramName
 	exposedField  MFString  paramType
@@ -183,7 +183,7 @@ EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Sh
 	exposedField MFInt32 textureOp
 	exposedField SFColor color				#!(1 1 1)
 	exposedField SFFloat alpha				#!(1)
-    exposedField MFNode bumpTransform		#!{BumpTransform}	
+    exposedField MFNode bumpTransform		#!{BumpTransform}
 ] ["urn:inet:bitmanagement.de:node:MultiTexture"]
 
 
@@ -430,15 +430,15 @@ EXTERNPROTO NurbsSurface [ #!%geometry{Shape.geometry}
 	exposedField SFInt32  vTessellation			#!(0)
 	exposedField SFNode   texCoord				#!{Coordinate,NurbsTextureSurface}
 	field        SFBool   ccw					#!(TRUE)
-	field        SFBool   solid					#!(TRUE)			
+	field        SFBool   solid					#!(TRUE)
 ] ["urn:inet:bitmanagement.de:node:NurbsSurface"]
 
 EXTERNPROTO NurbsTextureSurface [ #!{NurbsSurface.NurbsTextureSurface}
   field        SFInt32  uDimension				#!(0)
   field        SFInt32  vDimension				#!(0)
-  field        MFFloat  uKnot					#!([]) 
+  field        MFFloat  uKnot					#!([])
   field        MFFloat  vKnot					#!([])
-  field        SFInt32  uOrder					#!(3)  
+  field        SFInt32  uOrder					#!(3)
   field        SFInt32  vOrder					#!(3)
   exposedField MFVec2f  controlPoint			#!([])
   exposedField MFFloat  weight          		#!([])
@@ -466,7 +466,7 @@ EXTERNPROTO NurbsCurve2D [ #!{Contour2D.children}
 	exposedField SFInt32 tessellation			#!(0)
 ] ["urn:inet:bitmanagement.de:node:NurbsCurve2D"]
 
-EXTERNPROTO NurbsGroup [ #%group{*} 
+EXTERNPROTO NurbsGroup [ #%group{*}
 	exposedField MFNode children        		#!{NurbsSurface,NurbsCurve}([])
 	exposedField SFFloat tessellationScale		#!(1.0)
 	field SFVec3f bboxSize						#!(-1 -1 -1)
@@ -477,19 +477,19 @@ EXTERNPROTO NurbsGroup [ #%group{*}
 
 EXTERNPROTO NurbsPositionInterpolator [ #%interpolator
   eventIn      SFFloat  set_fraction
-  exposedField SFBool   fractionAbsolute		#!(TRUE) 
-  exposedField MFFloat  knot					#!([])     
+  exposedField SFBool   fractionAbsolute		#!(TRUE)
+  exposedField MFFloat  knot					#!([])
   exposedField SFInt32  order					#!(3)
   exposedField MFVec3f  keyValue				#!([])
   exposedField MFFloat  keyWeight				#!([])
-  eventOut     SFVec3f  value_changed 
+  eventOut     SFVec3f  value_changed
 ] ["urn:inet:bitmanagement.de:node:NurbsPositionInterpolator"]
 
 EXTERNPROTO Polyline2D [ #!{Contour2D.children}
 	exposedField MFVec2f  point					#!([])
 ] ["urn:inet:bitmanagement.de:node:Polyline2D"]
 
-EXTERNPROTO TrimmedSurface [ 
+EXTERNPROTO TrimmedSurface [
 	exposedField MFNode  trimmingContour		#!{Contour2D}
 	exposedField SFNode  surface				#!{NurbsSurface}
 	eventIn      MFNode  addTrimmingContour
@@ -505,7 +505,7 @@ EXTERNPROTO TrimmedSurface [
 
 # (BS Contact 6.3/7.001+) Enables the use of texture which are
 # larger than the maximum texture size. Use it like a normal ImageTexture{}.
-EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
+EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	MFString	url					#!([])
 	exposedField	MFString	parameter			#!([])
 	eventIn			SFBool		set_unload
@@ -617,7 +617,7 @@ EXTERNPROTO Particles [ #!%geometry{Shape.geometry}
 
 # This allows you use a 3D scene (external or part of the current scene)
 # as a texture (nothing prevents you from using it in a MultiTexture{} also ;-)
-EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
+EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField SFInt32 pixelWidth					#!(-1)
 	exposedField SFInt32 pixelHeight				#!(-1)
 	exposedField SFNode background					#!{Background}
@@ -626,7 +626,7 @@ EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.text
 	exposedField SFNode viewpoint					#!{Viewpoint, Camera, ViewVolume}
 	exposedField MFNode children					#!{*}
 	eventIn MFNode addChildren
-	eventIn MFNode removeChildren	
+	eventIn MFNode removeChildren
 
 	# from Contact 6.0
 	exposedField SFBool repeatS						#!(FALSE)
@@ -751,7 +751,7 @@ EXTERNPROTO MouseSensor [ #!%sensor{*}
     exposedField	SFBool	enabled				#!(TRUE)
     exposedField	SFBool	eventsProcessed		#!(FALSE)
     exposedField	SFBool	centerMousePos		#!(FALSE)
-    eventOut		SFBool	isActive  
+    eventOut		SFBool	isActive
     eventOut		SFBool	lButton
     eventOut		SFBool	mButton
     eventOut		SFBool	rButton
@@ -807,7 +807,7 @@ EXTERNPROTO DeviceSensor [ #!%sensor{*}
 ] ["urn:inet:bitmanagement.de:node:DeviceSensor"]
 
 
-# (BS Contact 5.1+) Used to create 3D shadows 
+# (BS Contact 5.1+) Used to create 3D shadows
 EXTERNPROTO ShadowGroup [ #!%group{*}
 	exposedField SFVec3f bboxSize		#!(-1 -1 -1)
 	exposedField SFVec3f bboxCenter		#!(0 0 0)
@@ -834,7 +834,7 @@ EXTERNPROTO ShadowGroup [ #!%group{*}
 
 
 # Used for making bump-looking textures
-EXTERNPROTO BumpTransform [ #!%common{MultiTexture.bumpTransform} 
+EXTERNPROTO BumpTransform [ #!%common{MultiTexture.bumpTransform}
 	exposedField SFVec2f s		#!(1 0)
 	exposedField SFVec2f t		#!(0 1)
 	exposedField SFVec2f l		#!(1 0)
@@ -866,7 +866,7 @@ EXTERNPROTO HUD [ #!%group{*}
 	eventIn MFNode addChildren
 	eventIn MFNode removeChildren
 	# This field is ignored
-	exposedField MFString align				
+	exposedField MFString align
 ] ["urn:inet:bitmanagement.de:node:HUD"]
 
 
@@ -884,10 +884,10 @@ EXTERNPROTO HUD [ #!%group{*}
 
 # Like ImageTexture{} except that it tells you when it finished
 # loading the file (hell useful).
-EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
+EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	MFString	url
 	field			SFBool		repeatS 			#!(TRUE)
-	field			SFBool		repeatT 			#!(TRUE) 
+	field			SFBool		repeatT 			#!(TRUE)
 	field			MFString	parameter
 	eventOut		SFBool		isLoaded
 	#Contact 7.1
@@ -897,7 +897,7 @@ EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,S
 
 # Like MovieTexture{} except that it tells you when it finished loading the file,
 # and can be paused too.
-EXTERNPROTO MovieTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
+EXTERNPROTO MovieTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField SFBool   loop				#!(FALSE)
 	exposedField SFFloat  speed 			#!(0)
 	exposedField SFTime   startTime 		#!(-1)
@@ -916,7 +916,7 @@ EXTERNPROTO MovieTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,S
 	eventOut        SFBool      isFlipped
 ] ["urn:inet:bitmanagement.de:node:MovieTexture"]
 
-EXTERNPROTO ImageTextureLOD [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture} 
+EXTERNPROTO ImageTextureLOD [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
 	exposedField	SFBool		repeatS
 	exposedField	SFBool		repeatT
 	exposedField	MFString	url
@@ -945,10 +945,10 @@ EXTERNPROTO Inline2 [ #!%common
    field SFVec3f bboxCenter					#!(0 0 0)
    exposedField MFString url
    exposedField MFNode children				#!{*}
-   eventIn MFNode addChildren 
-   eventIn MFNode removeChildren 
-   eventOut SFBool isLoaded 
-   eventIn SFBool set_unload 
+   eventIn MFNode addChildren
+   eventIn MFNode removeChildren
+   eventOut SFBool isLoaded
+   eventIn SFBool set_unload
 ] ["urn:inet:bitmanagement.de:node:Inline"]
 
 
@@ -1076,7 +1076,7 @@ EXTERNPROTO CADFace [
 
 
 
- 
+
 
 ###################################################################
 # X3D Metadata
@@ -1170,7 +1170,7 @@ EXTERNPROTO IndexedFaceSet2D [ #!%geometry{Shape.geometry}
 	field        MFInt32 texCoordIndex		#!([])
 	eventIn      MFInt32 set_colorIndex
 	eventIn      MFInt32 set_coordIndex
-	eventIn      MFInt32 set_texCoordIndex 
+	eventIn      MFInt32 set_texCoordIndex
 ] ["urn:inet:bitmanagement.de:node:IndexedFaceSet2D"]
 
 
@@ -1292,7 +1292,7 @@ EXTERNPROTO Polygon [ #!%geometry{Shape.geometry}
 EXTERNPROTO PositionInterpolator2D [ #!%interpolator{*}
 	eventIn SFFloat set_fraction
 	exposedField MFFloat key				#!%intkey
-	exposedField MFVec2f keyValue			#!%texcrd 
+	exposedField MFVec2f keyValue			#!%texcrd
 	eventOut SFVec2f value_changed
 ] ["urn:inet:bitmanagement.de:node:PositionInterpolator2D"]
 
@@ -1300,7 +1300,7 @@ EXTERNPROTO PositionInterpolator2D [ #!%interpolator{*}
 EXTERNPROTO CoordinateInterpolator2D [ #!%interpolator{*}
 	eventIn SFFloat set_fraction
 	exposedField MFFloat key				#!%intkey
-	exposedField MFVec2f keyValue			#!%texcrd 
+	exposedField MFVec2f keyValue			#!%texcrd
 	eventOut MFVec2f value_changed
 ] ["urn:inet:bitmanagement.de:node:CoordinateInterpolator2D"]
 
@@ -1411,17 +1411,17 @@ EXTERNPROTO Event [ #!%common
   eventIn  SFBool   cancelBubble
   eventOut SFString type
   eventIn  SFBool   returnValue
-  eventOut SFVec2f  screen 
-  eventOut SFVec2f  client 
-  eventOut SFVec2f  position 
-  eventOut SFVec3f  xyz  
-  eventOut SFVec3f  ypr  
-  eventOut SFBool   altKey  
-  eventOut SFBool   ctrlKey 
+  eventOut SFVec2f  screen
+  eventOut SFVec2f  client
+  eventOut SFVec2f  position
+  eventOut SFVec3f  xyz
+  eventOut SFVec3f  ypr
+  eventOut SFBool   altKey
+  eventOut SFBool   ctrlKey
   eventOut SFBool   shiftKey
   eventOut SFInt32  keyCode
   eventOut SFString dataType
-  eventOut SFString data 
+  eventOut SFString data
   eventOut SFInt32  button
 ] ["urn:inet:bitmanagement.de:node:Event"]
 
@@ -1470,48 +1470,48 @@ EXTERNPROTO Avatar [
 	exposedField SFTime     touchTime   		#!(0)
 	exposedField SFBool     isPilot     		#!(FALSE)
 	eventIn      SFInt32    set_state
-	eventIn      SFTime     set_gestureX 
+	eventIn      SFTime     set_gestureX
 	eventIn      SFInt32    set_gesture
 	eventIn      SFVec3f    set_position
 ] ["urn:inet:bitmanagement.de:node:Avatar"]
 
 
 EXTERNPROTO BlaxxunZone [ #!%group{*}
-	exposedField SFBool enabled 				#!(TRUE) 
-	eventIn MFNode addEvents  
-	eventIn MFNode removeEvents  
-	eventIn MFNode addAvatars  
-	eventIn MFNode removeAvatars  
+	exposedField SFBool enabled 				#!(TRUE)
+	eventIn MFNode addEvents
+	eventIn MFNode removeEvents
+	eventIn MFNode addAvatars
+	eventIn MFNode removeAvatars
 	exposedField    MFNode   events				#!{SharedEvent,SharedObjectEvent}
 	exposedField MFNode avatars					#!{*}
-	eventOut MFNode events_added  
-	eventOut MFNode events_removed  
-	eventOut MFNode avatars_added  
-	eventOut MFNode avatars_removed 
-	eventIn SFString set_myAvatarURL  
-	eventOut SFString myAvatarURL_changed  
-	eventIn SFInt32 set_myAvatarGesture  
-	eventIn SFInt32 myAvatarGestureFromServer  
+	eventOut MFNode events_added
+	eventOut MFNode events_removed
+	eventOut MFNode avatars_added
+	eventOut MFNode avatars_removed
+	eventIn SFString set_myAvatarURL
+	eventOut SFString myAvatarURL_changed
+	eventIn SFInt32 set_myAvatarGesture
+	eventIn SFInt32 myAvatarGestureFromServer
 	exposedField SFNode beamToViewpoint 		#!{Viewpoint,Camera}
-	eventOut SFInt32 myAvatarGesture_changed  
-	eventOut SFInt32 myAvatarGestureToServer  
-	exposedField MFNode avatarLOD				#!{*}		
+	eventOut SFInt32 myAvatarGesture_changed
+	eventOut SFInt32 myAvatarGestureToServer
+	exposedField MFNode avatarLOD				#!{*}
 	exposedField MFFloat avatarRange
 	exposedField MFString sendToChat
-	exposedField SFInt32 sendToChatInput		#!(-1) 
-	exposedField SFFloat beamToDistance			#!(3)  
+	exposedField SFInt32 sendToChatInput		#!(-1)
+	exposedField SFFloat beamToDistance			#!(3)
 	exposedField MFString groupChatName
 	exposedField MFString groupChat
 	exposedField SFString myAvatarName
-	eventIn MFNode addObjects  
-	eventIn MFNode removeObjects 
-	eventIn SFString set_action 
-	eventOut MFNode objects_added  
-	eventOut MFNode objects_removed 
-	eventIn SFString beamto 
-	eventIn SFBool calcDropPosition 
-	eventOut SFString dropPosition 
-	eventIn SFString loadScene 
+	eventIn MFNode addObjects
+	eventIn MFNode removeObjects
+	eventIn SFString set_action
+	eventOut MFNode objects_added
+	eventOut MFNode objects_removed
+	eventIn SFString beamto
+	eventIn SFBool calcDropPosition
+	eventOut SFString dropPosition
+	eventIn SFString loadScene
 ] ["urn:inet:blaxxun.com:node:BlaxxunZone"]
 
 EXTERNPROTO SharedEvent [#!%sensor{BlaxxunZone.events}
@@ -1519,48 +1519,48 @@ EXTERNPROTO SharedEvent [#!%sensor{BlaxxunZone.events}
 	exposedField SFString    type
 	exposedField SFString    toNickname
 	exposedField SFString    toGroup
-	eventIn   SFBool    boolFromServer 
-	eventIn   SFColor   colorFromServer 
-	eventIn   SFFloat   floatFromServer 
-	eventIn   SFInt32   int32FromServer 
-	eventIn   SFRotation     rotationFromServer 
-	eventIn   SFString  stringFromServer 
-	eventIn   SFTime    timeFromServer 
-	eventIn   SFVec2f   vec2fFromServer 
-	eventIn   SFVec3f   vec3fFromServer 
-	eventOut  SFBool    boolToServer 
-	eventOut  SFColor   colorToServer 
-	eventOut  SFFloat   floatToServer 
-	eventOut  SFInt32   int32ToServer 
-	eventOut  SFRotation     rotationToServer 
-	eventOut  SFString  stringToServer 
-	eventOut  SFTime    timeToServer 
-	eventOut  SFVec2f   vec2fToServer 
-	eventOut  SFVec3f   vec3fToServer 
-	eventIn   SFBool    set_bool 
-	eventIn   SFColor   set_color 
-	eventIn   SFFloat   set_float 
-	eventIn   SFInt32   set_int32 
-	eventIn   SFRotation     set_rotation 
-	eventIn   SFString  set_string 
-	eventIn   SFTime    set_time 
-	eventIn   SFVec2f   set_vec2f 
-	eventIn   SFVec3f   set_vec3f 
-	eventOut  SFBool    bool_changed 
-	eventOut  SFColor   color_changed 
-	eventOut  SFFloat   float_changed 
-	eventOut  SFInt32   int32_changed 
-	eventOut  SFRotation     rotation_changed 
-	eventOut  SFString  string_changed 
-	eventOut  SFTime    time_changed 
-	eventOut  SFVec2f   vec2f_changed 
-	eventOut  SFVec3f   vec3f_changed 
-	eventOut  SFBool    initialized 
+	eventIn   SFBool    boolFromServer
+	eventIn   SFColor   colorFromServer
+	eventIn   SFFloat   floatFromServer
+	eventIn   SFInt32   int32FromServer
+	eventIn   SFRotation     rotationFromServer
+	eventIn   SFString  stringFromServer
+	eventIn   SFTime    timeFromServer
+	eventIn   SFVec2f   vec2fFromServer
+	eventIn   SFVec3f   vec3fFromServer
+	eventOut  SFBool    boolToServer
+	eventOut  SFColor   colorToServer
+	eventOut  SFFloat   floatToServer
+	eventOut  SFInt32   int32ToServer
+	eventOut  SFRotation     rotationToServer
+	eventOut  SFString  stringToServer
+	eventOut  SFTime    timeToServer
+	eventOut  SFVec2f   vec2fToServer
+	eventOut  SFVec3f   vec3fToServer
+	eventIn   SFBool    set_bool
+	eventIn   SFColor   set_color
+	eventIn   SFFloat   set_float
+	eventIn   SFInt32   set_int32
+	eventIn   SFRotation     set_rotation
+	eventIn   SFString  set_string
+	eventIn   SFTime    set_time
+	eventIn   SFVec2f   set_vec2f
+	eventIn   SFVec3f   set_vec3f
+	eventOut  SFBool    bool_changed
+	eventOut  SFColor   color_changed
+	eventOut  SFFloat   float_changed
+	eventOut  SFInt32   int32_changed
+	eventOut  SFRotation     rotation_changed
+	eventOut  SFString  string_changed
+	eventOut  SFTime    time_changed
+	eventOut  SFVec2f   vec2f_changed
+	eventOut  SFVec3f   vec3f_changed
+	eventOut  SFBool    initialized
 ] ["urn:inet:blaxxun.com:node:SharedEvent"]
 
 EXTERNPROTO SharedObject [ #!%common
-	exposedField SFVec3f translation			#!(0 0 0) 
-	exposedField SFRotation rotation			#!(0 0 1 0) 
+	exposedField SFVec3f translation			#!(0 0 0)
+	exposedField SFRotation rotation			#!(0 0 1 0)
 	exposedField SFString name
 	exposedField SFString id
 	exposedField MFNode children				#!{*}
@@ -1574,54 +1574,54 @@ EXTERNPROTO SharedObject [ #!%common
 ] ["urn:inet:blaxxun.com:node:SharedObject"]
 
 EXTERNPROTO SharedObjectEvent [ #!%sensor{BlaxxunZone.events}
-	eventIn SFString  set_name    
-	eventOut SFString name_changed    
-	eventIn  SFString set_action 
+	eventIn SFString  set_name
+	eventOut SFString name_changed
+	eventIn  SFString set_action
 	eventOut SFString action_changed
-	eventIn  MFString set_attributes 
+	eventIn  MFString set_attributes
 	eventOut MFString attributes_changed
-	eventIn  MFString attributesFromServer 
+	eventIn  MFString attributesFromServer
 	eventOut MFString attributesToServer
-	eventIn  SFTime   set_touchTime 
-	eventOut SFTime   touchTime 
-	eventIn  SFBool   set_isOver 
-	eventOut SFBool   isOver 
-	eventIn   SFBool    boolFromServer 
-	eventIn   SFColor   colorFromServer 
-	eventIn   SFFloat   floatFromServer 
-	eventIn   SFInt32   int32FromServer 
-	eventIn   SFRotation     rotationFromServer 
-	eventIn   SFString  stringFromServer 
-	eventIn   SFTime    timeFromServer 
-	eventIn   SFVec2f   vec2fFromServer 
-	eventIn   SFVec3f   vec3fFromServer 
-	eventOut  SFBool    boolToServer 
-	eventOut  SFColor   colorToServer 
-	eventOut  SFFloat   floatToServer 
-	eventOut  SFInt32   int32ToServer 
-	eventOut  SFRotation     rotationToServer 
-	eventOut  SFString  stringToServer 
-	eventOut  SFTime    timeToServer 
-	eventOut  SFVec2f   vec2fToServer 
-	eventOut  SFVec3f   vec3fToServer 
-	eventIn   SFBool    set_bool 
-	eventIn   SFColor   set_color 
-	eventIn   SFFloat   set_float 
-	eventIn   SFInt32   set_int32 
-	eventIn   SFRotation     set_rotation 
-	eventIn   SFString  set_string 
-	eventIn   SFTime    set_time 
-	eventIn   SFVec2f   set_vec2f 
-	eventIn   SFVec3f   set_vec3f 
-	eventOut  SFBool    bool_changed 
-	eventOut  SFColor   color_changed 
-	eventOut  SFFloat   float_changed 
-	eventOut  SFInt32   int32_changed 
-	eventOut  SFRotation     rotation_changed 
-	eventOut  SFString  string_changed 
-	eventOut  SFTime    time_changed 
-	eventOut  SFVec2f   vec2f_changed 
-	eventOut  SFVec3f   vec3f_changed 
+	eventIn  SFTime   set_touchTime
+	eventOut SFTime   touchTime
+	eventIn  SFBool   set_isOver
+	eventOut SFBool   isOver
+	eventIn   SFBool    boolFromServer
+	eventIn   SFColor   colorFromServer
+	eventIn   SFFloat   floatFromServer
+	eventIn   SFInt32   int32FromServer
+	eventIn   SFRotation     rotationFromServer
+	eventIn   SFString  stringFromServer
+	eventIn   SFTime    timeFromServer
+	eventIn   SFVec2f   vec2fFromServer
+	eventIn   SFVec3f   vec3fFromServer
+	eventOut  SFBool    boolToServer
+	eventOut  SFColor   colorToServer
+	eventOut  SFFloat   floatToServer
+	eventOut  SFInt32   int32ToServer
+	eventOut  SFRotation     rotationToServer
+	eventOut  SFString  stringToServer
+	eventOut  SFTime    timeToServer
+	eventOut  SFVec2f   vec2fToServer
+	eventOut  SFVec3f   vec3fToServer
+	eventIn   SFBool    set_bool
+	eventIn   SFColor   set_color
+	eventIn   SFFloat   set_float
+	eventIn   SFInt32   set_int32
+	eventIn   SFRotation     set_rotation
+	eventIn   SFString  set_string
+	eventIn   SFTime    set_time
+	eventIn   SFVec2f   set_vec2f
+	eventIn   SFVec3f   set_vec3f
+	eventOut  SFBool    bool_changed
+	eventOut  SFColor   color_changed
+	eventOut  SFFloat   float_changed
+	eventOut  SFInt32   int32_changed
+	eventOut  SFRotation     rotation_changed
+	eventOut  SFString  string_changed
+	eventOut  SFTime    time_changed
+	eventOut  SFVec2f   vec2f_changed
+	eventOut  SFVec3f   vec3f_changed
 	eventOut  SFBool    initialized
 ] ["urn:inet:blaxxun.com:node:SharedObjectEvent"]
 
@@ -1719,7 +1719,7 @@ EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Geo
 #	exposedField SFBool enabled
 #	exposedField SFBool solid
 #	exposedField SFVec3d rangeMin
-#	exposedField SFVec3d rangeMax	
+#	exposedField SFVec3d rangeMax
 #	exposedField SFBool zbuffer
 #	exposedField SFBool zwrite
 #	exposedField SFVec2f depthBias
@@ -1808,7 +1808,7 @@ EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Geo
 #EXTERNPROTO	GeoLOD [
 #	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 #	field			SFVec3f		bboxCenter
-#	field			SFVec3f		bboxSize	
+#	field			SFVec3f		bboxSize
 #	field			MFString	rootUrl
 #	field			MFNode		rootNode
 #	field			MFString	child1Url
@@ -1822,15 +1822,15 @@ EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Geo
 #] "urn:inet:bitmanagement.de:node:GeoLOD"
 
 #EXTERNPROTO	GeoMap [
-#	exposedField	SFBool		enabled	
+#	exposedField	SFBool		enabled
 #	field			SFString	url
-#	field			MFString	layerAttributes	
-#	eventIn			SFString	set_layerAttribute	
+#	field			MFString	layerAttributes
+#	eventIn			SFString	set_layerAttribute
 #	exposedField	MFNode		fontTexture				#!{FontTexture}
 #	exposedField	SFNode		symbolTexture
 #	field			SFString	labelField
 #	field			SFString	labelChars
-#	exposedField	SFBool		zbuffer		
+#	exposedField	SFBool		zbuffer
 #	exposedField	SFBool		zwrite
 #	exposedField	SFDouble	scaleMin
 #	exposedField	SFDouble	scaleMax
@@ -1907,7 +1907,7 @@ EXTERNPROTO PostProcessing [ #!%group
 ] "urn:inet:bitmanagement.de:node:PostProcessing"
 
 
-# A .fx shader shipped with BS Contact 
+# A .fx shader shipped with BS Contact
 EXTERNPROTO PackagedShader [ #!%script
 	field			SFString	language
 	field			MFString	url
@@ -1942,9 +1942,9 @@ EXTERNPROTO	PhysicsTransform[
     exposedField   SFFloat    mass					#!(1)				# Mass of the object
     exposedField   SFVec3f    forceDir				#!(0 0 0)			# Force direction to manipulate the object
     exposedField   SFVec3f    forceAt				#!(0 0 0)			# Force at wich point
-    exposedField   SFBool     forceDirLocal			#!(FALSE)			# In local or global coordinates 
-    exposedField   SFBool     forceAtLocal			#!(TRUE)			# In local or global coordinates 
-    
+    exposedField   SFBool     forceDirLocal			#!(FALSE)			# In local or global coordinates
+    exposedField   SFBool     forceAtLocal			#!(TRUE)			# In local or global coordinates
+
 ]["urn:inet:bitmanagement.de:node:PhysicsTransform"]
 
 
@@ -2071,12 +2071,10 @@ EXTERNPROTO VrController [
 	exposedField	SFNode		metadata
 	exposedField	SFBool		enabled
 	eventOut		SFBool		isActive
-	eventOut		SFVec3f		position_left
-	eventOut		SFVec3f		position_right
-	eventOut		SFRotation	orientation_left
-	eventOut		SFRotation	orientation_right
-	eventOut		SFBool		trigger_left
-	eventOut		SFBool		trigger_right
+	eventOut		SFVec3f		positionLeft
+	eventOut		SFVec3f		positionRight
+	eventOut		SFRotation	orientationLeft
+	eventOut		SFRotation	orientationRight
 	eventOut		MFBool		eventsAvailable
 	exposedField	MFNode		extensions
 ] "urn:inet:bitmanagement.de:node:VrController"
@@ -2086,8 +2084,11 @@ EXTERNPROTO VrDevice [
 	exposedField	SFBool		enabled
 	eventOut		SFBool		isActive
 	eventOut		SFString	type
+	eventOut		SFVec3f		eyeOffsetLeft
+	eventOut		SFVec3f		eyeOffsetRight
 	eventOut		SFBool		hasTouchController
 	eventOut		SFBool		hasRemoteController
+	eventOut		SFBool		hasXBoxController
 	eventOut		SFVec3f		headPosition
 	eventOut		SFRotation	headOrientation
 	exposedField	SFBool		gazeEnabled
@@ -2102,16 +2103,32 @@ EXTERNPROTO OculusTouch [
 	eventOut		SFBool		buttonB
 	eventOut		SFBool		buttonX
 	eventOut		SFBool		buttonY
-	eventOut		SFBool		buttonThumb_left
-	eventOut		SFBool		buttonThumb_right
-	eventOut		SFBool		buttonShoulder_left
-	eventOut		SFBool		buttonShoulder_right
-	eventOut		SFFloat		indexTrigger_left
-	eventOut		SFFloat		indexTrigger_right
-	eventOut		SFFloat		handTrigger_left
-	eventOut		SFFloat		handTrigger_right
-	eventOut		SFVec2f		thumbstick_left
-	eventOut		SFVec2f		thumbstick_right
+	eventOut		SFBool		buttonThumbLeft
+	eventOut		SFBool		buttonThumbRight
+	eventOut		SFBool		buttonShoulderLeft
+	eventOut		SFBool		buttonShoulderRight
+	eventOut		SFFloat		indexTriggerLeft
+	eventOut		SFFloat		indexTriggerRight
+	eventOut		SFFloat		handTriggerLeft
+	eventOut		SFFloat		handTriggerRight
+	eventOut		SFVec2f		thumbstickLeft
+	eventOut		SFVec2f		thumbstickRight
+	eventOut		SFBool		buttonATouch
+	eventOut		SFBool		buttonBTouch
+	eventOut		SFBool		buttonXTouch
+	eventOut		SFBool		buttonYTouch
+	eventOut		SFBool		buttonThumbLeftTouch
+	eventOut		SFBool		buttonThumbRightTouch
+	eventOut		SFBool		buttonThumbLeftRest
+	eventOut		SFBool		buttonThumbRightRest
+	eventOut		SFBool		buttonIndexTriggerLeftTouch
+	eventOut		SFBool		buttonIndexTriggerRightTouch
+	eventOut		SFBool		buttonShoulderLeft
+	eventOut		SFBool		buttonShoulderRight
+	eventOut		SFFloat		indexTriggerLeft
+	eventOut		SFFloat		indexTriggerRight
+	eventOut		SFBool		buttonIndexTriggerLeftPointing
+	eventOut		SFBool		buttonIndexTriggerRightPointing
 	eventOut		SFTime		updateTime
 ] "urn:inet:bitmanagement.de:node:OculusTouch"
 
@@ -2127,6 +2144,28 @@ EXTERNPROTO OculusRemote [
 	eventOut		SFBool		home
 	eventOut		SFTime		updateTime
 ] "urn:inet:bitmanagement.de:node:OculusRemote"
+
+EXTERNPROTO XBoxController [
+	exposedField	SFNode		metadata
+	exposedField	SFBool		enabled
+	eventOut		SFBool		isActive
+	eventOut		SFBool		buttonA
+	eventOut		SFBool		buttonB
+	eventOut		SFBool		buttonX
+	eventOut		SFBool		buttonY
+	eventOut		SFBool		buttonShoulderLeft
+	eventOut		SFBool		buttonShoulderRight
+	eventOut		SFFloat		indexTriggerLeft
+	eventOut		SFFloat		indexTriggerRight
+	eventOut		SFBool		buttonThumbLeft
+	eventOut		SFBool		buttonThumbRight
+	eventOut		SFVec2f		thumbstickLeft
+	eventOut		SFVec2f		thumbstickRight
+	eventOut		SFVec2f		direction
+	eventOut		SFBool		start
+	eventOut		SFBool		back
+	eventOut		SFTime		updateTime
+] "urn:inet:bitmanagement.de:node:XBoxController"
 
 EXTERNPROTO Panorama [
 	exposedField	SFString	type
