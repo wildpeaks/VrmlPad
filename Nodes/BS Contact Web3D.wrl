@@ -2035,32 +2035,69 @@ EXTERNPROTO GeometryInstance [ #!%group
 ###################################################################
 
 EXTERNPROTO ScalarDamper [
-	exposedField	SFFloat		tau					#(1)
-	field			SFFloat		initialValue		#(0)
-	field			SFFloat		initialDestination	#(0)
 	eventIn			SFFloat		set_destination
 	eventIn			SFFloat		set_value
+	exposedField	SFNode		metadata			#(NULL)
+	exposedField	SFFloat		tau					#(1)
+	exposedField	SFFloat		tolerance			#(-1)
+	eventOut		SFBool		isActive
 	eventOut		SFFloat		value_changed
+	field			SFFloat		initialValue		#(0)
+	field			SFFloat		initialDestination	#(0)
+	field			SFInt32		order				#(0)
 ] "urn:inet:bitmanagement.de:node:ScalarDamper"
 
-
 EXTERNPROTO PositionDamper [
-	exposedField	SFFloat		tau					#(1)
-	field			SFVec3f		initialValue		#(0 0 0)
-	field			SFVec3f		initialDestination	#(0 0 0)
 	eventIn			SFVec3f		set_destination
 	eventIn			SFVec3f		set_value
+	exposedField	SFNode		metadata			#(NULL)
+	exposedField	SFFloat		tau					#(1)
+	exposedField	SFFloat		tolerance			#(-1)
+	eventOut		SFBool		isActive
 	eventOut		SFVec3f		value_changed
+	field			SFVec3f		initialValue		#(0 0 0)
+	field			SFVec3f		initialDestination	#(0 0 0)
+	field			SFInt32		order				#(0)
 ] "urn:inet:bitmanagement.de:node:PositionDamper"
 
 EXTERNPROTO OrientationDamper [
-	exposedField	SFFloat		tau					#(1)
-	field			SFRotation	initialValue		#(0 1 0 0)
-	field			SFRotation	initialDestination	#(0 1 0 0)
 	eventIn			SFRotation	set_destination
 	eventIn			SFRotation	set_value
+	exposedField	SFNode		metadata			#(NULL)
+	exposedField	SFFloat		tau					#(1)
+	exposedField	SFFloat		tolerance			#(-1)
+	eventOut		SFBool		isActive
 	eventOut		SFRotation	value_changed
+	field			SFRotation	initialValue		#(0 1 0 0)
+	field			SFRotation	initialDestination	#(0 1 0 0)
+	field			SFInt32		order				#(0)
 ] "urn:inet:bitmanagement.de:node:OrientationDamper"
+
+EXTERNPROTO ColorDamper [
+	eventIn			SFColor		set_destination
+	eventIn			SFColor		set_value
+	exposedField	SFNode		metadata			#(NULL)
+	exposedField	SFFloat		tau					#(1)
+	exposedField	SFFloat		tolerance			#(-1)
+	eventOut		SFBool		isActive
+	eventOut		SFColor		value_changed
+	field			SFColor		initialValue		#(0.8 0.8 0.8)
+	field			SFColor		initialDestination	#(0.8 0.8 0.8)
+	field			SFInt32		order				#(0)
+] "urn:inet:bitmanagement.de:node:ColorDamper"
+
+EXTERNPROTO CoordinateDamper [
+	eventIn			MFVec3f		set_destination
+	eventIn			MFVec3f		set_value
+	exposedField	SFNode		metadata			#(NULL)
+	exposedField	SFFloat		tau					#(1)
+	exposedField	SFFloat		tolerance			#(-1)
+	eventOut		SFBool		isActive
+	eventOut		MFVec3f		value_changed
+	field			MFVec3f		initialValue		#([0 0 0])
+	field			MFVec3f		initialDestination	#([0 0 0])
+	field			SFInt32		order				#(0)
+] "urn:inet:bitmanagement.de:node:CoordinateDamper"
 
 
 ###################################################################
