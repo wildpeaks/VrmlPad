@@ -2,11 +2,13 @@
 
 #!Author: Cecile Muller (contact@wildpeaks.fr)
 #!Description: BS Contact Web3D extension nodes
-#!Version: 8.205
+#!Version: 9.0
 #!Help path: https://github.com/wildpeaks/VrmlPad
 #!Download path: https://github.com/wildpeaks/VrmlPad/raw/master/Nodes/BS%20Contact%20Web3D.wrl
 
-WorldInfo{title "BS Contact 8.205 EXTERNPROTO definitions for VrmlPad"}
+WorldInfo {
+	title "BS Contact 8.205 EXTERNPROTO definitions for VrmlPad"
+}
 
 
 ###################################################################
@@ -14,75 +16,74 @@ WorldInfo{title "BS Contact 8.205 EXTERNPROTO definitions for VrmlPad"}
 # http://www.web3d.org/x3d/specifications/ISO-IEC-19775-X3DAbstractSpecification/Part01/components/utils.html
 ###################################################################
 
-
 EXTERNPROTO BooleanFilter [ #!%common{*}
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventIn			SFBool		set_boolean
-	eventOut		SFBool		inputFalse
-	eventOut		SFBool		inputNegate
-	eventOut		SFBool		inputTrue
+	exposedField  SFNode  metadata     #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	eventIn       SFBool  set_boolean
+	eventOut      SFBool  inputFalse
+	eventOut      SFBool  inputNegate
+	eventOut      SFBool  inputTrue
 ] ["urn:inet:bitmanagement.de:node:BooleanFilter"]
 
 
 EXTERNPROTO BooleanToggle [ #!%common{*}
-	eventIn				SFBool		set_boolean
-	exposedField		SFNode		metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField		SFBool		toggle      	#!(FALSE )
+	exposedField  SFNode  metadata     #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	eventIn       SFBool  set_boolean
+	exposedField  SFBool  toggle       #!(FALSE )
 ] ["urn:inet:bitmanagement.de:node:BooleanToggle"]
 
 
 EXTERNPROTO BooleanTrigger [ #!%common{*}
-	eventIn			SFTime		set_triggerTime
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventOut		SFBool		triggerTrue
+	exposedField  SFNode  metadata         #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	eventIn       SFTime  set_triggerTime
+	eventOut      SFBool  triggerTrue
 ] ["urn:inet:bitmanagement.de:node:BooleanTrigger"]
 
 
 EXTERNPROTO IntegerTrigger [ #!%common{*}
-	exposedField	SFInt32		integerKey			#!(-1)
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventIn			SFBool		set_boolean
-	eventOut		SFInt32		triggerValue
+	exposedField  SFNode   metadata      #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFInt32  integerKey    #!(-1)
+	eventIn       SFBool   set_boolean
+	eventOut      SFInt32  triggerValue
 ] ["urn:inet:bitmanagement.de:node:IntegerTrigger"]
 
 
 EXTERNPROTO TimeTrigger [ #!%common{*}
-	eventIn			SFBool		set_boolean
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventOut		SFTime		triggerTime
+	exposedField  SFNode   metadata     #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	eventIn       SFBool   set_boolean
+	eventOut      SFTime   triggerTime
 ] ["urn:inet:bitmanagement.de:node:TimeTrigger"]
 
 
 EXTERNPROTO IntegerSequencer [ #!%common{*}
-	eventIn			SFBool		next
-	eventIn			SFBool		previous
-	eventIn			SFFloat		set_fraction
-	exposedField 	MFFloat		key					#!([])
-	exposedField 	MFInt32		keyValue			#!([])
-	exposedField 	SFNode		metadata		    #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventOut		SFInt32		value_changed
+	exposedField  SFNode   metadata       #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  MFFloat  key            #!([])
+	exposedField  MFInt32  keyValue       #!([])
+	eventIn       SFBool   next
+	eventIn       SFBool   previous
+	eventIn       SFFloat  set_fraction
+	eventOut      SFInt32  value_changed
 ] ["urn:inet:bitmanagement.de:node:IntegerSequencer"]
 
 
 # (BS Contact 6.3/7.001+) - Non standard - Dunno
 EXTERNPROTO TriggerSensor [ #!%common{*}
-	eventIn			SFBool		set_trigger
-	eventIn			SFBool		set_isActive
-	exposedField	SFString	description			#!("")
-	exposedField	SFBool		enabled				#!(TRUE)
-	eventOut		SFBool		isActive
-	eventOut		SFTime		triggerTime
+	exposedField  SFString  description   #!("")
+	exposedField  SFBool    enabled       #!(TRUE)
+	eventIn       SFBool    set_trigger
+	eventIn       SFBool    set_isActive
+	eventOut      SFBool    isActive
+	eventOut      SFTime    triggerTime
 ] ["urn:inet:bitmanagement.de:node:TriggerSensor"]
 
 
 # (BS Contact 6.3/7.001+) - Non standard - SFNode interpolator
 EXTERNPROTO NodeSequencer [ #!%common{*}
-	eventIn			SFBool		next
-	eventIn			SFBool		previous
-	eventIn			SFFloat		set_fraction
-	exposedField	MFFloat		key					#!([])
-	exposedField	MFNode		keyValue			#!([]){*}
-	eventOut		SFNode		value
+	exposedField  MFFloat  key           #!([])
+	exposedField  MFNode   keyValue      #!([]){*}
+	eventIn       SFBool   next
+	eventIn       SFBool   previous
+	eventIn       SFFloat  set_fraction
+	eventOut      SFNode   value
 ] ["urn:inet:bitmanagement.de:node:NodeSequencer"]
 
 
@@ -97,36 +98,35 @@ EXTERNPROTO NodeSequencer [ #!%common{*}
 # useful for HUD (2D interfaces above the 3D scene), menus, or
 # overlaying "windows".
 EXTERNPROTO Layer3D [ #!%common{*}
-	exposedField MFNode children			#!{*}
-	exposedField MFNode childrenLayer		#!{Layer3D}
-	exposedField SFVec2f translation		#!(0 0)
-	exposedField SFInt32 depth				#!(0)
-	exposedField SFVec2f size				#!(-1 -1)
-	exposedField SFNode background			#!{Background}
-	exposedField SFNode fog					#!{Fog,Fog2}
-	exposedField SFNode navigationInfo		#!{NavigationInfo}
-	exposedField SFNode viewpoint			#!{Viewpoint, Camera, ViewVolume}
-	field SFVec3f bboxSize					#!(-1 -1 -1)
-	field SFVec3f bboxCenter				#!(0 0 0)
-	eventIn MFNode addChildrenLayer
-	eventIn MFNode removeChildrenLayer
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  MFNode   children             #!{*}
+	exposedField  MFNode   childrenLayer        #!{Layer3D}
+	exposedField  SFVec2f  translation          #!(0 0)
+	exposedField  SFInt32  depth                #!(0)
+	exposedField  SFVec2f  size                 #!(-1 -1)
+	exposedField  SFNode   background           #!{Background}
+	exposedField  SFNode   fog                  #!{Fog,Fog2}
+	exposedField  SFNode   navigationInfo       #!{NavigationInfo}
+	exposedField  SFNode   viewpoint            #!{Viewpoint, Camera, ViewVolume}
+	field         SFVec3f  bboxSize             #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter           #!(0 0 0)
+	eventIn       MFNode   addChildrenLayer
+	eventIn       MFNode   removeChildrenLayer
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:Layer3D"]
 
 
 # Same as Layer3D{}, but without depth (only 2D)
 # Note: not often used.
 EXTERNPROTO Layer2D[ #!%common{*}
-	exposedField 	MFNode		children		#!{*}
-	exposedField	SFVec2f 	translation		#!(0 0)
-	exposedField	SFVec2f 	size			#!(-1 -1)
-	exposedField	SFNode  	background		#!{Background2D}
-	exposedField	SFNode   	viewport		#!{Viewpoint, Camera, ViewVolume}
-	eventIn         MFNode		addChildren
-	eventIn         MFNode		removeChildren
+	exposedField  MFNode   children        #!{*}
+	exposedField  SFVec2f  translation     #!(0 0)
+	exposedField  SFVec2f  size            #!(-1 -1)
+	exposedField  SFNode   background      #!{Background2D}
+	exposedField  SFNode   viewport        #!{Viewpoint, Camera, ViewVolume}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:Layer2D"]
-
 
 
 
@@ -136,12 +136,12 @@ EXTERNPROTO Layer2D[ #!%common{*}
 
 # Used instead of the normal Appearance{} node when using a shader.
 EXTERNPROTO ShaderAppearance [ #!%appearance{Shape.appearance}
-	exposedField SFNode fragmentShader		#!{FragmentShader}
-	exposedField SFNode material			#!%material{Material}
-	exposedField SFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
-	exposedField SFNode textureTransform	#!{TextureTransform,TextureMatrixTransform}
-	exposedField SFNode vertexShader		#!{VertexShader}
-	exposedField SFBool transparent			#!(FALSE)
+	exposedField  SFNode  fragmentShader    #!{FragmentShader}
+	exposedField  SFNode  material          #!%material{Material}
+	exposedField  SFNode  texture           #!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField  SFNode  textureTransform  #!{TextureTransform,TextureMatrixTransform}
+	exposedField  SFNode  vertexShader      #!{VertexShader}
+	exposedField  SFBool  transparent       #!(FALSE)
 ] ["urn:inet:bitmanagement.de:node:ShaderAppearance"]
 
 # Specifies the code or the url of a vertex shader.
@@ -149,9 +149,9 @@ EXTERNPROTO ShaderAppearance [ #!%appearance{Shape.appearance}
 # who can't (for a reason or another) view that shader.
 EXTERNPROTO VertexShader [ #!%shader{ShaderAppearance.vertexShader}
 	exposedField  MFString  url
-	exposedField  SFBool    mustEvaluate	#!(FALSE)
-	exposedField  MFString  paramName
-	exposedField  MFString  paramType
+	exposedField  SFBool    mustEvaluate  #!(FALSE)
+	# exposedField  MFString  paramName
+	# exposedField  MFString  paramType
 ] ["urn:inet:bitmanagement.de:node:VertexShader"]
 
 # Specifies the code or the url of a fragment shader.
@@ -160,8 +160,8 @@ EXTERNPROTO VertexShader [ #!%shader{ShaderAppearance.vertexShader}
 EXTERNPROTO FragmentShader [ #!%shader{ShaderAppearance.fragmentShader}
 	exposedField  MFString  url
 	exposedField  SFBool    mustEvaluate	#!(FALSE)
-	exposedField  MFString  paramName
-	exposedField  MFString  paramType
+	# exposedField  MFString  paramName
+	# exposedField  MFString  paramType
 ] ["urn:inet:bitmanagement.de:node:FragmentShader"]
 
 
@@ -172,18 +172,18 @@ EXTERNPROTO FragmentShader [ #!%shader{ShaderAppearance.fragmentShader}
 
 # Combines several textures into one
 EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField SFBool materialColor		#!(FALSE)
-	exposedField SFBool materialAlpha		#!(FALSE)
-	exposedField SFBool transparent			#!(FALSE)
-	exposedField SFBool nomipmap			#!(FALSE)
-	exposedField MFString mode
-	exposedField MFString type
-	exposedField MFNode texture				#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
-	exposedField MFNode textureTransform	#!{TextureTransform,TextureMatrixTransform}
-	exposedField MFInt32 textureOp
-	exposedField SFColor color				#!(1 1 1)
-	exposedField SFFloat alpha				#!(1)
-    exposedField MFNode bumpTransform		#!{BumpTransform}
+	exposedField  SFBool    materialColor     #!(FALSE)
+	exposedField  SFBool    materialAlpha     #!(FALSE)
+	exposedField  SFBool    transparent       #!(FALSE)
+	exposedField  SFBool    nomipmap          #!(FALSE)
+	exposedField  MFString  mode
+	exposedField  MFString  type
+	exposedField  MFNode    texture           #!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField  MFNode    textureTransform  #!{TextureTransform,TextureMatrixTransform}
+	exposedField  MFInt32   textureOp
+	exposedField  SFColor   color             #!(1 1 1)
+	exposedField  SFFloat   alpha             #!(1)
+    exposedField  MFNode    bumpTransform     #!{BumpTransform}
 ] ["urn:inet:bitmanagement.de:node:MultiTexture"]
 
 
@@ -192,219 +192,242 @@ EXTERNPROTO MultiTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Sh
 # of one layer of the texture can be different from the coordinates
 # of another layer.
 EXTERNPROTO MultiTextureCoordinate[	#!{IndexedFaceSet.texCoord}
-	exposedField MFNode coord				#!{TextureCoordinate,TextureCoordGen}
+	exposedField  MFNode  coord  #!{TextureCoordinate,TextureCoordGen}
 ] ["urn:inet:bitmanagement.de:node:MultiTextureCoordinate"]
+
 
 # Like a TextureTransform, but uses a 4*4 matrix instead
 EXTERNPROTO TextureMatrixTransform [ #!{*}
 	exposedField  MFFloat  matrix
 ] ["urn:inet:bitmanagement.de:node:TextureMatrixTransform"]
 
+
 # SWF/Flash movie as texture
 EXTERNPROTO FlashMovieTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	SFBool		loop				#!(FALSE)
-	exposedField	SFFloat		speed				#!(1)
-	exposedField	MFString	url					#!([])
-	exposedField	SFTime		startTime			#!(-1)
-	exposedField	SFTime		stopTime			#!(-1)
-	exposedField	SFBool		repeatS				#!(TRUE)
-	exposedField	SFBool		repeatT				#!(TRUE)
-	exposedField	SFBool		scaleImage			#!(TRUE)
-	exposedField	MFString	parameter			#!([])
-	exposedField	SFInt32		currentFrame		#!(-1)
-	exposedField	SFInt32		totalFrames			#!(-1)
-	exposedField	SFString	flashVars			#!("")
-	exposedField	SFBool		thumbEnabled		#!(FALSE)
-	exposedField	SFVec2f		thumbSize			#!(0 0)
-	exposedField	SFNode		thumbTexture		#!(NULL)
-	exposedField	SFBool		showThumb			#!(FALSE)
-	exposedField	SFBool		stream				#!(FALSE)
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	eventIn			SFBool		set_unload
-	eventIn			SFTime		set_pause
-	eventIn			SFTime		set_play
-	eventIn			SFTime		set_stop
-	eventIn			SFTime		set_rewind
-	eventIn			SFTime		set_back
-	eventIn			SFTime		set_forward
-	eventIn			SFInt32		set_frame
-	eventIn			MFString	set_variable
-	eventIn			MFString	set_function
-	eventIn			SFBool		set_mouseActive
-	eventIn			SFVec2f		set_mousePosition
-	eventOut		SFTime		duration
-	eventOut		SFBool		isActive
-	eventOut		SFBool		isLoaded
-	eventOut		SFBool		isFlipped
-	eventOut		SFTime		mediaTime
-	eventOut		SFVec2f		imageSize
-	eventOut		SFFloat		imageAspect
+	exposedField  SFBool    loop               #!(FALSE)
+	exposedField  SFFloat   speed              #!(1)
+	exposedField  MFString  url                #!([])
+	exposedField  SFTime    startTime          #!(-1)
+	exposedField  SFTime    stopTime           #!(-1)
+	exposedField  SFBool    repeatS            #!(TRUE)
+	exposedField  SFBool    repeatT            #!(TRUE)
+	exposedField  SFBool    scaleImage         #!(TRUE)
+	exposedField  MFString  parameter          #!([])
+	exposedField  SFInt32   currentFrame       #!(-1)
+	exposedField  SFInt32   totalFrames        #!(-1)
+	exposedField  SFString  flashVars          #!("")
+	exposedField  SFBool    thumbEnabled       #!(FALSE)
+	exposedField  SFVec2f   thumbSize          #!(0 0)
+	exposedField  SFNode    thumbTexture       #!(NULL)
+	exposedField  SFBool    showThumb          #!(FALSE)
+	exposedField  SFBool    stream             #!(FALSE)
+	exposedField  SFNode    metadata           #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	eventIn       SFBool    set_unload
+	eventIn       SFTime    set_pause
+	eventIn       SFTime    set_play
+	eventIn       SFTime    set_stop
+	eventIn       SFTime    set_rewind
+	eventIn       SFTime    set_back
+	eventIn       SFTime    set_forward
+	eventIn       SFInt32   set_frame
+	eventIn       MFString  set_variable
+	eventIn       MFString  set_function
+	eventIn       SFBool    set_mouseActive
+	eventIn       SFVec2f   set_mousePosition
+	eventOut      SFTime    duration
+	eventOut      SFBool    isActive
+	eventOut      SFBool    isLoaded
+	eventOut      SFBool    isFlipped
+	eventOut      SFTime    mediaTime
+	eventOut      SFVec2f   imageSize
+	eventOut      SFFloat   imageAspect
 ] ["urn:inet:bitmanagement.de:node:FlashMovieTexture"]
+
 
 # Basically, always use this isntead of MovieTexture even for non-stereo
 # textures, because MovieTexture is totally buggy in Contact.
 EXTERNPROTO StereoMovieTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture}
-	eventOut		SFTime		duration
-	eventOut		SFFloat		imageAspect
-	eventOut		SFVec2f		imageSize
-	eventOut		SFBool		isActive
-	eventOut		SFBool		isEos
-	eventOut		SFBool		isFlipped
-	eventOut		SFBool		isLoaded
-	exposedField	SFBool		load				#!(TRUE)
-	exposedField	SFBool		loop				#!(FALSE)
-	eventOut		SFTime		mediaTime
-	exposedField	SFNode		metadata			#!(NULL)
-	exposedField	MFString	parameter
-	field			SFBool		repeatS				#!(TRUE)
-	field			SFBool		repeatT				#!(TRUE)
-	exposedField	MFString	rightUrl			#!([])
-	exposedField	SFBool		scaleImage			#!(TRUE)
-	eventIn			SFBool		set_pause
-	eventIn			SFTime		set_seekTime
-	eventIn			SFTime		set_startTime
-	eventIn			SFTime		set_stopTime
-	eventIn			SFBool		set_unload
-	eventIn			SFBool		set_volume
-	exposedField	SFBool		showThumb			#!(FALSE)
-	exposedField	SFFloat		speed				#!(1.0)
-	exposedField	SFTime		startTime			#!(-1)
-	exposedField	SFTime		stopTime			#!(-1)
-	exposedField	SFBool		stream				#!(FALSE)
-	exposedField	MFNode		textureTransform	#!([])
-	exposedField	SFBool		thumbEnabled		#!(FALSE)
-	exposedField	SFVec2f		thumbSize			#!(0 0)
-	exposedField	SFNode		thumbTexture		#!(NULL)
-	exposedField	SFString	type				#!("MONO")		# Possible values: "MONO" / "SPLIT-HORIZONTAL" / "SPLIT-VERTICAL"
-	exposedField	MFString	url					#!([])
+	eventOut      SFTime    duration
+	eventOut      SFFloat   imageAspect
+	eventOut      SFVec2f   imageSize
+	eventOut      SFBool    isActive
+	eventOut      SFBool    isEos
+	eventOut      SFBool    isFlipped
+	eventOut      SFBool    isLoaded
+	exposedField  SFBool    load              #!(TRUE)
+	exposedField  SFBool    loop              #!(FALSE)
+	eventOut      SFTime    mediaTime
+	exposedField  SFNode    metadata          #!(NULL)
+	exposedField  MFString  parameter
+	field         SFBool    repeatS           #!(TRUE)
+	field         SFBool    repeatT           #!(TRUE)
+	exposedField  MFString  rightUrl          #!([])
+	exposedField  SFBool    scaleImage        #!(TRUE)
+	eventIn       SFBool    set_pause
+	eventIn       SFTime    set_seekTime
+	eventIn       SFTime    set_startTime
+	eventIn       SFTime    set_stopTime
+	eventIn       SFBool    set_unload
+	eventIn       SFBool    set_volume
+	exposedField  SFBool    showThumb         #!(FALSE)
+	exposedField  SFFloat   speed             #!(1.0)
+	exposedField  SFTime    startTime         #!(-1)
+	exposedField  SFTime    stopTime          #!(-1)
+	exposedField  SFBool    stream            #!(FALSE)
+	exposedField  MFNode    textureTransform  #!([])
+	exposedField  SFBool    thumbEnabled      #!(FALSE)
+	exposedField  SFVec2f   thumbSize         #!(0 0)
+	exposedField  SFNode    thumbTexture      #!(NULL)
+	exposedField  SFString  type              #!("MONO")  # Possible values: "MONO" / "SPLIT-HORIZONTAL" / "SPLIT-VERTICAL"
+	exposedField  MFString  url               #!([])
 ] ["urn:inet:bitmanagement.de:node:StereoMovieTexture"]
+
+EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,GeoMap.fontTexture}
+	field  SFInt32   minChar
+	field  SFInt32   maxChar
+	field  SFNode    fontStyle  #!{FontStyle}
+	field  MFString  family
+	field  SFString  style
+] "urn:inet:bitmanagement.de:node:FontTexture"
 
 
 ###################################################################
 # BSP-Tree systems
 ###################################################################
+
 EXTERNPROTO Cell[ #!%group{CellGroup.cells, BspTree.front, BspTree.overlap, BspTree.back}
-	field SFVec3f bboxSize				#!(-1 -1 -1)
-	field SFVec3f bboxCenter			#!(0 0 0)
-	exposedField MFNode children		#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	exposedField MFNode portals			#!{Portal}
-	exposedField SFInt32 content        #!(0)
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{*}
+	exposedField  MFNode   portals         #!{Portal}
+	exposedField  SFInt32  content         #!(0)
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:Cell"]
 
+
 EXTERNPROTO Portal[ #!%common{Cell.portals, Inclusion.portals}
-	exposedField SFBool enabled			#!(TRUE)
-	exposedField SFBool ccw				#!(TRUE)
-	exposedField SFNode coord			#!{Coordinate}
-	exposedField SFNode cell			#!{Cell}
+	exposedField  SFBool  enabled  #!(TRUE)
+	exposedField  SFBool  ccw      #!(TRUE)
+	exposedField  SFNode  coord    #!{Coordinate}
+	exposedField  SFNode  cell     #!{Cell}
 ] ["urn:inet:bitmanagement.de:node:Portal"]
 
+
 EXTERNPROTO CellGroup [ #!%group{*}
-	field SFVec3f bboxSize				#!(-1 -1 -1)
-	field SFVec3f bboxCenter			#!(0 0 0)
-	exposedField SFInt32 range			#!(-50)
-	exposedField MFNode cells			#!{Cell}
-	exposedField MFNode children		#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	eventOut MFNode activeCells
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFInt32  range           #!(-50)
+	exposedField  MFNode   cells           #!{Cell}
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+	eventOut      MFNode   activeCells
 ] ["urn:inet:bitmanagement.de:node:CellGroup"]
 
-#(blaxxun/BS Contact 4.01+)
+
+# (blaxxun/BS Contact 4.01+)
 EXTERNPROTO BspTree[ #!{BspGroup.children}
-	exposedField SFRotation plane		#!(0 0 1 0)
-	exposedField SFNode front			#!{Cell}
-	exposedField SFNode overlap			#!{Cell}
-	exposedField SFNode back			#!{Cell}
+	exposedField  SFRotation  plane    #!(0 0 1 0)
+	exposedField  SFNode      front    #!{Cell}
+	exposedField  SFNode      overlap  #!{Cell}
+	exposedField  SFNode      back     #!{Cell}
 ] ["urn:inet:bitmanagement.de:node:BspTree"]
 
-#(blaxxun/BS Contact 4.01+)
+
+# (blaxxun/BS Contact 4.01+)
 EXTERNPROTO BspGroup [ #!%group{*}
-	field SFVec3f bboxSize				#!(-1 -1 -1)
-	field SFVec3f bboxCenter			#!(0 0 0)
-	exposedField MFNode children		#!{BspTree}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	eventOut SFNode bspTree
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{BspTree}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+	eventOut      SFNode   bspTree
 ] ["urn:inet:bitmanagement.de:node:BspGroup"]
 
-#(blaxxun/BS Contact 4.01+)
+
+# (blaxxun/BS Contact 4.01+)
 EXTERNPROTO Occlusion [ #!%group{*}
-	field SFVec3f bboxSize				#!(-1 -1 -1)
-	field SFVec3f bboxCenter			#!(0 0 0)
-	exposedField SFBool enabled			#!(TRUE)
-	exposedField SFNode proxy			#!{Shape}
-	exposedField MFNode children		#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	eventOut SFBool isActive
-	eventOut SFTime enterTime
-	eventOut SFTime exitTime
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFBool   enabled         #!(TRUE)
+	exposedField  SFNode   proxy           #!{Shape}
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+	eventOut      SFBool   isActive
+	eventOut      SFTime   enterTime
+	eventOut      SFTime   exitTime
 ] ["urn:inet:bitmanagement.de:node:Occlusion"]
 
-#(blaxxun/BS Contact 4.01+)
+
+# (blaxxun/BS Contact 4.01+)
 EXTERNPROTO Inclusion [ #!%group{*}
-	field SFVec3f bboxSize				#!(-1 -1 -1)
-	field SFVec3f bboxCenter			#!(0 0 0)
-	exposedField SFBool enabled			#!(TRUE)
-	exposedField SFNode proxy			#!{Shape}
-	exposedField MFNode portals			#!{Portal}
-	exposedField MFNode children		#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	eventOut SFBool isActive
-	eventOut SFBool isInside
-	eventOut SFTime enterTime
-	eventOut SFTime exitTime
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFBool   enabled         #!(TRUE)
+	exposedField  SFNode   proxy           #!{Shape}
+	exposedField  MFNode   portals         #!{Portal}
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+	eventOut      SFBool   isActive
+	eventOut      SFBool   isInside
+	eventOut      SFTime   enterTime
+	eventOut      SFTime   exitTime
 ] ["urn:inet:bitmanagement.de:node:Inclusion"]
 
-#(Some sources say blaxxun/BS Contact 3.051+, other sources say 4.01+)
-EXTERNPROTO CullGroup[ #!%group{*}
-	field SFVec3f bboxSize				#!(-1 -1 -1)
-	field SFVec3f bboxCenter			#!(0 0 0)
-	exposedField MFNode children		#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
 
-	#(blaxxun/BS Contact 4.3+)
-	exposedField SFBool lod
-	exposedField MFNode level			#!{*}
-	exposedField MFFloat range
+# (Some sources say blaxxun/BS Contact 3.051+, other sources say 4.01+)
+EXTERNPROTO CullGroup[ #!%group{*}
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+
+	# (blaxxun/BS Contact 4.3+)
+	exposedField  SFBool   lod
+	exposedField  MFNode   level           #!{*}
+	exposedField  MFFloat  range
 ] ["urn:inet:bitmanagement.de:node:CullGroup"]
+
 
 # Draws its children in the order specified.
 EXTERNPROTO OrderedGroup [ #!%group{*}
-	eventIn     MFNode  addChildren
-	eventIn      MFNode  removeChildren
-	exposedField MFNode  children   	 #!{*}
-	exposedField MFFloat   order
+	exposedField  MFFloat  order
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:OrderedGroup"]
 
-EXTERNPROTO OctTree[
-	exposedField SFVec3f bboxSize		#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter		#!(0 0 0)
-	exposedField MFNode  children		#!{*}
-	eventIn      MFNode  addChildren
-	eventIn      MFNode  removeChildren
+
+EXTERNPROTO OctTree [
+	exposedField  SFVec3f  bboxSize        #!(-1 -1 -1)
+	exposedField  SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:OctTree"]
 
-EXTERNPROTO QuadTree[
-	exposedField SFVec3f bboxSize		#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter		#!(0 0 0)
-	exposedField MFNode  children		#!{*}
-	eventIn      MFNode  addChildren
-	eventIn      MFNode  removeChildren
+
+EXTERNPROTO QuadTree [
+	exposedField  SFVec3f  bboxSize        #!(-1 -1 -1)
+	exposedField  SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:QuadTree"]
 
-EXTERNPROTO TreeGroup[
-	exposedField SFVec3f bboxSize		#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter		#!(0 0 0)
-	exposedField MFNode  children		#!{*}
-	eventIn      MFNode  addChildren
-	eventIn      MFNode  removeChildren
-	exposedField SFBool  buildTree
-	exposedField SFNode  tree			#!{OctTree,QuadTree,BspTree,CullGroup,BspGroup,BspTree,Group,Transform}
+
+EXTERNPROTO TreeGroup [
+	exposedField  SFVec3f  bboxSize        #!(-1 -1 -1)
+	exposedField  SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{*}
+	exposedField  SFBool   buildTree
+	exposedField  SFNode   tree            #!{OctTree,QuadTree,BspTree,CullGroup,BspGroup,BspTree,Group,Transform}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:TreeGroup"]
 
 
@@ -418,84 +441,91 @@ EXTERNPROTO TreeGroup[
 # In practice, you won't write this by hand, you'll export from your favorite modeller
 # (such as 3dsmax).
 EXTERNPROTO NurbsSurface [ #!%geometry{Shape.geometry}
-	field        SFInt32  uDimension			#!(0)
-	field        SFInt32  vDimension 			#!(0)
-	field        MFFloat  uKnot					#!([])
-	field        MFFloat  vKnot					#!([])
-	field        SFInt32  uOrder				#!(3)
-	field        SFInt32  vOrder				#!(3)
-	exposedField MFVec3f  controlPoint			#!%coord([])
-	exposedField MFFloat  weight				#!%coord([])
-	exposedField SFInt32  uTessellation			#!(0)
-	exposedField SFInt32  vTessellation			#!(0)
-	exposedField SFNode   texCoord				#!{Coordinate,NurbsTextureSurface}
-	field        SFBool   ccw					#!(TRUE)
-	field        SFBool   solid					#!(TRUE)
+	field         SFInt32  uDimension     #!(0)
+	field         SFInt32  vDimension     #!(0)
+	field         MFFloat  uKnot          #!([])
+	field         MFFloat  vKnot          #!([])
+	field         SFInt32  uOrder         #!(3)
+	field         SFInt32  vOrder         #!(3)
+	exposedField  MFVec3f  controlPoint   #!%coord([])
+	exposedField  MFFloat  weight         #!%coord([])
+	exposedField  SFInt32  uTessellation  #!(0)
+	exposedField  SFInt32  vTessellation  #!(0)
+	exposedField  SFNode   texCoord       #!{Coordinate,NurbsTextureSurface}
+	field         SFBool   ccw            #!(TRUE)
+	field         SFBool   solid          #!(TRUE)
 ] ["urn:inet:bitmanagement.de:node:NurbsSurface"]
 
+
 EXTERNPROTO NurbsTextureSurface [ #!{NurbsSurface.NurbsTextureSurface}
-  field        SFInt32  uDimension				#!(0)
-  field        SFInt32  vDimension				#!(0)
-  field        MFFloat  uKnot					#!([])
-  field        MFFloat  vKnot					#!([])
-  field        SFInt32  uOrder					#!(3)
-  field        SFInt32  vOrder					#!(3)
-  exposedField MFVec2f  controlPoint			#!([])
-  exposedField MFFloat  weight          		#!([])
+  field         SFInt32  uDimension    #!(0)
+  field         SFInt32  vDimension    #!(0)
+  field         MFFloat  uKnot         #!([])
+  field         MFFloat  vKnot         #!([])
+  field         SFInt32  uOrder        #!(3)
+  field         SFInt32  vOrder        #!(3)
+  exposedField  MFVec2f  controlPoint  #!([])
+  exposedField  MFFloat  weight        #!([])
 ] ["urn:inet:bitmanagement.de:node:NurbsTextureSurface"]
 
+
 EXTERNPROTO Contour2D [ #!{TrimmedSurface.trimmingContour}
-  exposedField MFNode  children         		#!{NurbsCurve2D,Polyline2D}
-  eventIn      MFNode  addChildren
-  eventIn      MFNode  removeChildren
+  exposedField  MFNode  children        #!{NurbsCurve2D,Polyline2D}
+  eventIn       MFNode  addChildren
+  eventIn       MFNode  removeChildren
 ] ["urn:inet:bitmanagement.de:node:Contour2D"]
 
+
 EXTERNPROTO NurbsCurve [
-	field             MFFloat   knot			#!([])
-	field             SFInt32   order			#!(3)
-	exposedField      MFVec3f   controlPoint	#!([])
-	exposedField      MFFloat   weight			#!([])
-	exposedField      SFInt32   tessellation	#!(0)
+	field             MFFloat  knot          #!([])
+	field             SFInt32  order         #!(3)
+	exposedField      MFVec3f  controlPoint  #!([])
+	exposedField      MFFloat  weight        #!([])
+	exposedField      SFInt32  tessellation  #!(0)
 ] ["urn:inet:bitmanagement.de:node:NurbsCurve"]
 
+
 EXTERNPROTO NurbsCurve2D [ #!{Contour2D.children}
-	field        MFFloat knot            		#!([])
-	field        SFInt32 order					#!(3)
-	exposedField MFVec2f controlPoint			#!([])
-	exposedField MFFloat weight					#!([])
-	exposedField SFInt32 tessellation			#!(0)
+	field         MFFloat  knot          #!([])
+	field         SFInt32  order         #!(3)
+	exposedField  MFVec2f  controlPoint  #!([])
+	exposedField  MFFloat  weight        #!([])
+	exposedField  SFInt32  tessellation  #!(0)
 ] ["urn:inet:bitmanagement.de:node:NurbsCurve2D"]
 
+
 EXTERNPROTO NurbsGroup [ #%group{*}
-	exposedField MFNode children        		#!{NurbsSurface,NurbsCurve}([])
-	exposedField SFFloat tessellationScale		#!(1.0)
-	field SFVec3f bboxSize						#!(-1 -1 -1)
-	field SFVec3f bboxCenter					#!(0 0 0)
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  MFNode   children           #!{NurbsSurface,NurbsCurve}([])
+	exposedField  SFFloat  tessellationScale  #!(1.0)
+	field         SFVec3f  bboxSize           #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter         #!(0 0 0)
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:NurbsGroup"]
 
-EXTERNPROTO NurbsPositionInterpolator [ #%interpolator
-  eventIn      SFFloat  set_fraction
-  exposedField SFBool   fractionAbsolute		#!(TRUE)
-  exposedField MFFloat  knot					#!([])
-  exposedField SFInt32  order					#!(3)
-  exposedField MFVec3f  keyValue				#!([])
-  exposedField MFFloat  keyWeight				#!([])
-  eventOut     SFVec3f  value_changed
+
+EXTERNPROTO NurbsPositionInterpolator [ #!%interpolator{*}
+  eventIn       SFFloat  set_fraction
+  exposedField  SFBool   fractionAbsolute  #!(TRUE)
+  exposedField  MFFloat  knot              #!([])
+  exposedField  SFInt32  order             #!(3)
+  exposedField  MFVec3f  keyValue          #!([])
+  exposedField  MFFloat  keyWeight         #!([])
+  eventOut      SFVec3f  value_changed
 ] ["urn:inet:bitmanagement.de:node:NurbsPositionInterpolator"]
 
+
 EXTERNPROTO Polyline2D [ #!{Contour2D.children}
-	exposedField MFVec2f  point					#!([])
+	exposedField  MFVec2f  point  #!([])
 ] ["urn:inet:bitmanagement.de:node:Polyline2D"]
 
-EXTERNPROTO TrimmedSurface [
-	exposedField MFNode  trimmingContour		#!{Contour2D}
-	exposedField SFNode  surface				#!{NurbsSurface}
-	eventIn      MFNode  addTrimmingContour
-	eventIn      MFNode  removeTrimmingContour
-] ["urn:inet:bitmanagement.de:node:TrimmedSurface"]
 
+EXTERNPROTO TrimmedSurface [
+	exposedField  MFNode  trimmingContour        #!{Contour2D}
+	exposedField  SFNode  surface                #!{NurbsSurface}
+	eventIn       MFNode  addTrimmingContour
+	eventIn       MFNode  removeTrimmingContour
+] ["urn:inet:bitmanagement.de:node:TrimmedSurface"]
 
 
 
@@ -506,191 +536,205 @@ EXTERNPROTO TrimmedSurface [
 # (BS Contact 6.3/7.001+) Enables the use of texture which are
 # larger than the maximum texture size. Use it like a normal ImageTexture{}.
 EXTERNPROTO	TiledImageTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	MFString	url					#!([])
-	exposedField	MFString	parameter			#!([])
-	eventIn			SFBool		set_unload
-	eventOut		SFBool		isLoaded
-	eventOut		SFVec2f		tileSize
-	eventOut		SFVec2f		size
-	eventOut		SFFloat		aspect
-	#Contact 7.1
-	eventOut        SFBool      isFlipped
+	exposedField  MFString  url         #!([])
+	exposedField  MFString  parameter   #!([])
+	eventIn       SFBool    set_unload
+	eventOut      SFBool    isLoaded
+	eventOut      SFVec2f   tileSize
+	eventOut      SFVec2f   size
+	eventOut      SFFloat   aspect
+
+	# Contact 7.1
+	eventOut      SFBool    isFlipped
 ] ["urn:inet:bitmanagement.de:node:TiledImageTexture"]
 
 
 # (BS Contact 6.3/7.001+) For displaying stereo images such as red/blue
 # or right-left types of display.
 EXTERNPROTO StereoTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	SFString	type		#!("")
-	exposedField	MFNode		texture		#!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
-	exposedField    SFNode      metadata	#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	#Contact 7.1
-	eventOut        SFBool      isFlipped
+	exposedField  SFString  type       #!("")
+	exposedField  MFNode    texture    #!{ImageTexture,MovieTexture,PixelTexture,ImageTexture2,MovieTexture2,ImageTextureLOD,ProceduralTexture,CompositeTexture3D,TiledImageTexture,StereoTexture,OffscreenDCTexture,FontTexture,FlashMovieTexture,BufferTexture}
+	exposedField  SFNode    metadata   #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+
+	# Contact 7.1
+	eventOut      SFBool    isFlipped
 ] ["urn:inet:bitmanagement.de:node:StereoTexture"]
 
 
 # (BS Contact 6.3/7.001+) For displaying stereo images such as red/blue
 # or right-left types of display.
 EXTERNPROTO OffscreenDCTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	SFBool		repeatS			#!(FALSE)
-	exposedField	SFBool		repeatT			#!(FALSE)
-	exposedField	SFInt32		pixelWidth		#!(-1)
-	exposedField	SFInt32		pixelHeight		#!(-1)
-	exposedField	SFInt32		textureWidth	#!(-1)
-	exposedField	SFInt32		textureHeigh	#!(-1)
-	exposedField	SFInt32		mipLevelLOD		#!(-1)
-	exposedField	SFBool		transparent		#!(FALSE)
-	exposedField	MFString	parameter		#!([])
-	exposedField	SFFloat		priority		#!(0)
-	eventIn			SFBool		set_unload
-	#Contact 7.1
-	eventOut        SFBool      isFlipped
+	exposedField  SFBool    repeatS       #!(FALSE)
+	exposedField  SFBool    repeatT       #!(FALSE)
+	exposedField  SFInt32   pixelWidth    #!(-1)
+	exposedField  SFInt32   pixelHeight   #!(-1)
+	exposedField  SFInt32   textureWidth  #!(-1)
+	exposedField  SFInt32   textureHeigh  #!(-1)
+	exposedField  SFInt32   mipLevelLOD   #!(-1)
+	exposedField  SFBool    transparent   #!(FALSE)
+	exposedField  MFString  parameter     #!([])
+	exposedField  SFFloat   priority      #!(0)
+	eventIn       SFBool    set_unload
+
+	# Contact 7.1
+	eventOut      SFBool    isFlipped
 ] ["urn:inet:bitmanagement.de:node:OffscreenDCTexture"]
 
 
 # (BS Contact 6.3/7.001+) For hiding part of the scene when it's hidden
 # behind an invisible occlusion group.
 EXTERNPROTO OccluderGroup [ #!%group{*}
-	exposedField	SFVec3f		bboxSize		#!(-1 -1 -1)
-	exposedField	SFVec3f		bboxCenter		#!(0 0 0)
-	exposedField	SFNode		metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField	MFNode		children		#!([])
-	eventIn			MFNode		addChildren
-	eventIn			MFNode		removeChildren
+	exposedField  SFVec3f  bboxSize        #!(-1 -1 -1)
+	exposedField  SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFNode   metadata        #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  MFNode   children        #!([])
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:OccluderGroup"]
 
 
 # To be used in the "texCoord" field of an IndexedFaceSet{}
 # in order to create, among other things, "chrome" textures.
 EXTERNPROTO TextureCoordGen [ #!%texcoord{IndexedFaceSet.texCoord}
-	exposedField SFString mode
-	exposedField MFFloat parameter
+	exposedField  SFString  mode
+	exposedField  MFFloat   parameter
 ] ["urn:inet:bitmanagement.de:node:TextureCoordGen"]
 
 
 # Creates a particles emitter (rain, smoke, ...)
 EXTERNPROTO Particles [ #!%geometry{Shape.geometry}
-	exposedField SFVec3f bboxSize					#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter					#!(0 0 0)
-	exposedField SFFloat lodRange					#!(100)
-	exposedField SFBool enabled						#!(TRUE)
-	exposedField SFFloat particleRadius				#!(0.1)
-	exposedField SFFloat particleRadiusVariation	#!(0)
-	exposedField SFFloat particleRadiusRate			#!(0)
-	exposedField SFNode geometry					#!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
-	exposedField SFVec3f emitterPosition			#!(0 3 0)
-	exposedField SFFloat emitterRadius				#!(0)
-	exposedField SFFloat emitterSpread				#!(0.25)
-	exposedField SFVec3f emitVelocity				#!(2.5 5 2.5)
-	exposedField SFFloat emitVelocityVariation		#!(0.5)
-	exposedField SFRotation emitterOrientation		#!(0 1 0 0)
-	exposedField SFFloat creationRate				#!(500)
-	exposedField SFFloat creationRateVariation		#!(0)
-	exposedField SFInt32 maxParticles				#!(500)
-	exposedField SFTime maxLifeTime					#!(5)
-	exposedField SFFloat maxLifeTimeVariation		#!(0)
-	exposedField SFVec3f gravity					#!(0 -9.8 0)
-	exposedField SFVec3f acceleration				#!(0 0 0)
-	exposedField SFColor emitColor					#!(1 1 1)
-	exposedField SFFloat emitColorVariation			#!(0)
-	exposedField SFColor fadeColor					#!(0.25 0.25 0.25)
-	exposedField SFFloat fadeAlpha					#!(1.0)
-	exposedField SFFloat fadeRate					#!(0.25)
-	exposedField SFInt32 numTrails					#!(0)
-	exposedField SFInt32 numSparks					#!(0)
-	exposedField SFVec3f sparkGravity				#!(0 -5 0)
-	exposedField SFColor sparkFadeColor				#!(0 0 0)
+	exposedField  SFVec3f     bboxSize                 #!(-1 -1 -1)
+	exposedField  SFVec3f     bboxCenter               #!(0 0 0)
+	exposedField  SFFloat     lodRange                 #!(100)
+	exposedField  SFBool      enabled                  #!(TRUE)
+	exposedField  SFFloat     particleRadius           #!(0.1)
+	exposedField  SFFloat     particleRadiusVariation  #!(0)
+	exposedField  SFFloat     particleRadiusRate       #!(0)
+	exposedField  SFNode      geometry                 #!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
+	exposedField  SFVec3f     emitterPosition          #!(0 3 0)
+	exposedField  SFFloat     emitterRadius            #!(0)
+	exposedField  SFFloat     emitterSpread            #!(0.25)
+	exposedField  SFVec3f     emitVelocity             #!(2.5 5 2.5)
+	exposedField  SFFloat     emitVelocityVariation    #!(0.5)
+	exposedField  SFRotation  emitterOrientation       #!(0 1 0 0)
+	exposedField  SFFloat     creationRate             #!(500)
+	exposedField  SFFloat     creationRateVariation    #!(0)
+	exposedField  SFInt32     maxParticles             #!(500)
+	exposedField  SFTime      maxLifeTime              #!(5)
+	exposedField  SFFloat     maxLifeTimeVariation     #!(0)
+	exposedField  SFVec3f     gravity                  #!(0 -9.8 0)
+	exposedField  SFVec3f     acceleration             #!(0 0 0)
+	exposedField  SFColor     emitColor                #!(1 1 1)
+	exposedField  SFFloat     emitColorVariation       #!(0)
+	exposedField  SFColor     fadeColor                #!(0.25 0.25 0.25)
+	exposedField  SFFloat     fadeAlpha                #!(1.0)
+	exposedField  SFFloat     fadeRate                 #!(0.25)
+	exposedField  SFInt32     numTrails                #!(0)
+	exposedField  SFInt32     numSparks                #!(0)
+	exposedField  SFVec3f     sparkGravity             #!(0 -5 0)
+	exposedField  SFColor     sparkFadeColor           #!(0 0 0)
 
-	#Contact 7.02+
-	exposedField SFNode emitter						#!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
-	exposedField SFFloat fadeStartFraction			#!(0)
-	exposedField SFBool sort						#!(FALSE)
-	exposedField SFBool billboard					#!(TRUE)
+	# Contact 7.02+
+	exposedField  SFNode      emitter                  #!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
+	exposedField  SFFloat     fadeStartFraction        #!(0)
+	exposedField  SFBool      sort                     #!(FALSE)
+	exposedField  SFBool      billboard                #!(TRUE)
 
-	#Contact 7.1
-	exposedField SFBool emitLocal	                #!(TRUE)
+	# Contact 7.1
+	exposedField  SFBool      emitLocal	               #!(TRUE)
 
-	#Contact 7.2
-	exposedField	SFBool		alignDirection		#!(TRUE)
+	# Contact 7.2
+	exposedField  SFBool      alignDirection           #!(TRUE)
 ] ["urn:inet:bitmanagement.de:node:Particles"]
 
 
 # This allows you use a 3D scene (external or part of the current scene)
 # as a texture (nothing prevents you from using it in a MultiTexture{} also ;-)
 EXTERNPROTO CompositeTexture3D [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField SFInt32 pixelWidth					#!(-1)
-	exposedField SFInt32 pixelHeight				#!(-1)
-	exposedField SFNode background					#!{Background}
-	exposedField SFNode fog							#!{Fog, Fog2}
-	exposedField SFNode navigationInfo				#!{NavigationInfo}
-	exposedField SFNode viewpoint					#!{Viewpoint, Camera, ViewVolume}
-	exposedField MFNode children					#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFInt32   pixelWidth                 #!(-1)
+	exposedField  SFInt32   pixelHeight                #!(-1)
+	exposedField  SFNode    background                 #!{Background}
+	exposedField  SFNode    fog                        #!{Fog, Fog2}
+	exposedField  SFNode    navigationInfo             #!{NavigationInfo}
+	exposedField  SFNode    viewpoint                  #!{Viewpoint, Camera, ViewVolume}
+	exposedField  MFNode    children                   #!([])
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
 
 	# from Contact 6.0
-	exposedField SFBool repeatS						#!(FALSE)
-	exposedField SFBool repeatT						#!(FALSE)
+	exposedField  SFBool    repeatS                    #!(FALSE)
+	exposedField  SFBool    repeatT                    #!(FALSE)
 
 	# from Contact 6.01
-   	exposedField MFString parameter					#!([])
+   	exposedField  MFString  parameter                  #!([])
 
 	# from Contact 6.3/7
-	exposedField SFString update					#!("ALWAYS")    # Possible values: "ALWAYS" / "NEXT_FRAME_ONLY" / "NONE"
+	exposedField  SFString  update                     #!("ALWAYS")    # Possible values: "ALWAYS" / "NEXT_FRAME_ONLY" / "NONE"
+
 	# from Contact 7.1
-	eventOut     SFBool isFlipped
+	eventOut      SFBool    isFlipped
+
+	# later builds
+	exposedField  SFNode    textureProperties          #!(NULL)
+	exposedField  SFNode    metadata                   #!(NULL)
+	eventOut      SFVec2f   resolution
+	eventOut      SFMatrix  viewMatrix
+	eventOut      SFMatrix  projectionsMatrix
+	eventOut      SFMatrix  previousViewMatrix
+	eventOut      SFMatrix  previousProjectionsMatrix
+	eventOut      SFVec2f   nearFar
 ] ["urn:inet:bitmanagement.de:node:CompositeTexture3D"]
 
 
 #(blaxxun/BS Contact 4.01+)
 # For adding custom menu items in the right-click menu
 EXTERNPROTO MenuSensor [ #!%sensor{*}
-	exposedField SFBool enabled						#!(TRUE)
-	exposedField SFString title
-	exposedField MFInt32 choices
-	exposedField MFString descriptions
-	exposedField SFString position
-	eventOut SFBool isActive
-	eventOut SFInt32 choice
+	exposedField  SFBool    enabled       #!(TRUE)
+	exposedField  SFString  title         #
+	exposedField  MFInt32   choices       #
+	exposedField  MFString  descriptions  #
+	exposedField  SFString  position      #
+	eventOut      SFBool    isActive
+	eventOut      SFInt32   choice
 ] ["urn:inet:bitmanagement.de:node:MenuSensor"]
 
 
 # Like the Collision{} node, but with more options (like being "transparent"
 # to the mouse, which is sometimes hell useful).
 EXTERNPROTO Selection [ #!%group{*}
-	field SFVec3f bboxSize							#!(-1 -1 -1)
-	field SFVec3f bboxCenter						#!(0 0 0)
-	exposedField SFBool collide						#!(TRUE)
-	exposedField SFBool select						#!(TRUE)
-	exposedField SFNode proxy						#!{Shape,*}
-	exposedField MFNode children					#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFBool   collide         #!(TRUE)
+	exposedField  SFBool   select          #!(TRUE)
+	exposedField  SFNode   proxy           #!{Shape,*}
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:Selection"]
 
 
 # Creates a grid containing the coordinates, so that you can "deform"
 # the coordinates by just modifying the coordinates of the grid.
 EXTERNPROTO CoordinateDeformer [ #!%sensor{*}
-	field SFVec3f bboxSize							#!(-1 -1 -1)
-	field SFVec3f bboxCenter						#!(0 0 0)
-	exposedField SFInt32 uDimension					#!(0)
-	exposedField SFInt32 vDimension					#!(0)
-	exposedField SFInt32 wDimension					#!(0)
-	exposedField MFFloat uKnot						#!([])
-	exposedField MFFloat vKnot						#!([])
-	exposedField MFFloat wKnot						#!([])
-	exposedField SFInt32 uOrder						#!(2)
-	exposedField SFInt32 vOrder						#!(2)
-	exposedField SFInt32 wOrder						#!(2)
-	exposedField MFVec3f controlPoint				#!%coord([])
-	exposedField MFFloat weight						#!%coord([])
-	exposedField MFNode inputCoord					#!{Coordinate}
-	exposedField MFNode inputTransform				#!{Transform}
-	exposedField MFNode outputCoord					#!{Coordinate}
-	exposedField MFNode children					#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFInt32  uDimension      #!(0)
+	exposedField  SFInt32  vDimension      #!(0)
+	exposedField  SFInt32  wDimension      #!(0)
+	exposedField  MFFloat  uKnot           #!([])
+	exposedField  MFFloat  vKnot           #!([])
+	exposedField  MFFloat  wKnot           #!([])
+	exposedField  SFInt32  uOrder          #!(2)
+	exposedField  SFInt32  vOrder          #!(2)
+	exposedField  SFInt32  wOrder          #!(2)
+	exposedField  MFVec3f  controlPoint    #!%coord([])
+	exposedField  MFFloat  weight          #!%coord([])
+	exposedField  MFNode   inputCoord      #!{Coordinate}
+	exposedField  MFNode   inputTransform  #!{Transform}
+	exposedField  MFNode   outputCoord     #!{Coordinate}
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:CoordinateDeformer"]
 
 
@@ -698,81 +742,81 @@ EXTERNPROTO CoordinateDeformer [ #!%sensor{*}
 # Used to make a Viewpoint{} that acts any way you want
 # (often used with DeviceSensor{} inputs).
 EXTERNPROTO	Camera [ #!%viewpoint{*}
-	exposedField	SFVec3f		position
-	exposedField	SFRotation	orientation
-	exposedField	SFString	description			#!("")
-	exposedField	SFVec3f		xyz
-	exposedField	SFVec3f		ypr
-	exposedField	SFVec3f		yp
-	exposedField	SFVec3f		examineCenter
-	exposedField	SFFloat		examineRadius		#!(0)
-	exposedField	SFBool		gravity				#!(TRUE)
-	exposedField	SFBool		groundDetect
-	exposedField	SFBool		collide				#!(TRUE)
-	exposedField	SFVec3f		moveTo
-	exposedField	SFVec3f		orientTo
-	exposedField	SFTime		duration			#!(0)
-	exposedField	SFVec3f		offset				#!(0 0 0)
-	exposedField	SFVec3f		upVector			#!(0 1 0)
-	exposedField	SFNode		metadata			#!(NULL)
-	eventIn			SFBool		set_bind
-	eventIn			SFBool		straighten
-	eventOut		SFTime		bindTime
-	eventOut		SFBool		isBound
+	exposedField  SFVec3f     position
+	exposedField  SFRotation  orientation
+	exposedField  SFString    description    #!("")
+	exposedField  SFVec3f     xyz
+	exposedField  SFVec3f     ypr
+	exposedField  SFVec3f     yp
+	exposedField  SFVec3f     examineCenter
+	exposedField  SFFloat     examineRadius  #!(0)
+	exposedField  SFBool      gravity        #!(TRUE)
+	exposedField  SFBool      groundDetect
+	exposedField  SFBool      collide        #!(TRUE)
+	exposedField  SFVec3f     moveTo
+	exposedField  SFVec3f     orientTo
+	exposedField  SFTime      duration       #!(0)
+	exposedField  SFVec3f     offset         #!(0 0 0)
+	exposedField  SFVec3f     upVector       #!(0 1 0)
+	exposedField  SFNode      metadata       #!(NULL)
+	eventIn       SFBool      set_bind
+	eventIn       SFBool      straighten
+	eventOut      SFTime      bindTime
+	eventOut      SFBool      isBound
 ] ["urn:inet:bitmanagement.de:node:Camera"]
 
 
 # (BS Contact 6.103+)
 #EXTERNPROTO ViewVolume [ #!%viewpoint{*}
-#	eventIn SFBool set_bind
-#	exposedField SFFloat fieldOfView			#!(0.785398)
-#	exposedField SFBool jump					#!(TRUE)
-#	exposedField SFRotation orientation			#!(0 0 1 0)
-#	exposedField SFVec3f position				#!(0 0 10)
-#	exposedField SFString description			#!("")
-#	exposedField SFBool perspective				#!(TRUE)
-#    exposedField SFVec2f center					#!(0 0)
-#	exposedField SFVec2f size					#!(2 2)
-#	exposedField MFInt32 viewport				#!([])
-#	exposedField SFFloat nearDistance			#!(0.1)
-#	exposedField SFFloat farDistance			#!(100)
-#	exposedField SFFloat focalDistance			#!(10)
-#	exposedField SFFloat eyeDistance			#!(0.6)
-#	exposedField SFString aspectMode			#!("FIT")	# Possible values: EQUAL, FIXED, FIT, STRETCH
-#	eventOut      SFTime bindTime
-#	eventOut      SFBool isBound
-#	exposedField SFMatrix projectionMatrix
-#	exposedField SFBool projectionMatrixEnabled #!(FALSE)
+#	eventIn       SFBool      set_bind
+#	exposedField  SFFloat     fieldOfView              #!(0.785398)
+#	exposedField  SFBool      jump                     #!(TRUE)
+#	exposedField  SFRotation  orientation              #!(0 0 1 0)
+#	exposedField  SFVec3f     position                 #!(0 0 10)
+#	exposedField  SFString    description              #!("")
+#	exposedField  SFBool      perspective              #!(TRUE)
+#	exposedField  SFVec2f     center                   #!(0 0)
+#	exposedField  SFVec2f     size                     #!(2 2)
+#	exposedField  MFInt32     viewport                 #!([])
+#	exposedField  SFFloat     nearDistance             #!(0.1)
+#	exposedField  SFFloat     farDistance              #!(100)
+#	exposedField  SFFloat     focalDistance            #!(10)
+#	exposedField  SFFloat     eyeDistance              #!(0.6)
+#	exposedField  SFString    aspectMode               #!("FIT")  # Possible values: EQUAL, FIXED, FIT, STRETCH
+#	eventOut      SFTime      bindTime
+#	eventOut      SFBool      isBound
+#	exposedField  SFMatrix    projectionMatrix
+#	exposedField  SFBool      projectionMatrixEnabled  #!(FALSE)
 #] ["urn:inet:bitmanagement.de:node:ViewVolume"]
 
 
 # The MouseSensor is a node to receive events from the mouse.
 EXTERNPROTO MouseSensor [ #!%sensor{*}
-    exposedField	SFBool	enabled				#!(TRUE)
-    exposedField	SFBool	eventsProcessed		#!(FALSE)
-    exposedField	SFBool	centerMousePos		#!(FALSE)
-    eventOut		SFBool	isActive
-    eventOut		SFBool	lButton
-    eventOut		SFBool	mButton
-    eventOut		SFBool	rButton
-    eventOut		SFFloat	mouseWheel
-    eventOut		SFVec2f	position
-    eventOut		SFVec2f	client
-    eventOut		SFVec2f	positionDelta
-    eventOut		SFTime	leftWindow
+    exposedField  SFBool   enabled          #!(TRUE)
+    exposedField  SFBool   eventsProcessed  #!(FALSE)
+    exposedField  SFBool   centerMousePos   #!(FALSE)
+    eventOut      SFBool   isActive
+    eventOut      SFBool   lButton
+    eventOut      SFBool   mButton
+    eventOut      SFBool   rButton
+    eventOut      SFFloat  mouseWheel
+    eventOut      SFVec2f  position
+    eventOut      SFVec2f  client
+    eventOut      SFVec2f  positionDelta
+    eventOut      SFTime   leftWindow
 ] ["urn:inet:bitmanagement.de:node:MouseSensor"]
 
 
 # Used to open a 2D web browser, an avatar, etc
 EXTERNPROTO Object [  #!%common
-	exposedField MFString url
-	exposedField SFString type
-	exposedField SFString title
-	exposedField MFString description
-	exposedField MFString properties
-	exposedField MFNode children					#!{*}
-	eventIn SFBool set_open
-	eventOut SFBool isOpen
+	exposedField  MFString  url
+	exposedField  SFString  type
+	exposedField  SFString  title
+	exposedField  MFString  description
+	exposedField  MFString  properties
+	exposedField  MFNode    children     #!{*}
+	eventIn       SFBool    set_open
+	eventOut      SFBool    isOpen
 ] ["urn:inet:bitmanagement.de:node:Object"]
 
 
@@ -780,17 +824,17 @@ EXTERNPROTO Object [  #!%common
 # and reads its events to know what's typed/pressed.
 # Note: only one can be active at the time.
 EXTERNPROTO KeySensor [ #!%sensor{*}
-	eventIn SFBool eventsProcessed
-	exposedField SFBool enabled						#!(TRUE)
-	eventOut SFBool isActive
-	eventOut SFInt32 keyPress
-	eventOut SFInt32 keyRelease
-	eventOut SFInt32 actionKeyPress
-	eventOut SFInt32 actionKeyRelease
-	eventOut SFBool shiftKey_changed
-	eventOut SFBool controlKey_changed
-	eventOut SFBool altKey_changed
-	eventOut SFString character
+	eventIn       SFBool eventsProcessed
+	exposedField  SFBool    enabled             #!(TRUE)
+	eventOut      SFBool    isActive
+	eventOut      SFInt32   keyPress
+	eventOut      SFInt32   keyRelease
+	eventOut      SFInt32   actionKeyPress
+	eventOut      SFInt32   actionKeyRelease
+	eventOut      SFBool    shiftKey_changed
+	eventOut      SFBool    controlKey_changed
+	eventOut      SFBool    altKey_changed
+	eventOut      SFString  character
 ] ["urn:inet:bitmanagement.de:node:KeySensor"]
 
 
@@ -799,78 +843,77 @@ EXTERNPROTO KeySensor [ #!%sensor{*}
 # even unusual hardwares by using the interface meant for it.
 # The DeviceSensor for using a joystick is already shipped with Contact.
 EXTERNPROTO DeviceSensor [ #!%sensor{*}
-	exposedField SFBool enabled				#!(TRUE)
-	exposedField SFString device			#!("STANDARD")
-	exposedField SFString eventType			#!("all")
-	eventOut SFNode event
-	eventOut SFBool isActive
+	exposedField  SFBool    enabled    #!(TRUE)
+	exposedField  SFString  device     #!("STANDARD")
+	exposedField  SFString  eventType  #!("all")
+	eventOut      SFNode    event
+	eventOut      SFBool    isActive
 ] ["urn:inet:bitmanagement.de:node:DeviceSensor"]
 
 
 # (BS Contact 5.1+) Used to create 3D shadows
 EXTERNPROTO ShadowGroup [ #!%group{*}
-	exposedField SFVec3f bboxSize		#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter		#!(0 0 0)
-	exposedField MFNode light			#!{DirectionalLight,SpotLight,PointLight}
-	exposedField MFNode plane			#!{Polygon,IndexedFaceSet}
-	exposedField MFNode appearance		#!{Appearance,ShaderAppearance}
-	exposedField MFNode emitter			#!{*}
-	exposedField MFNode children		#!{*}
-	exposedField SFString mode
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFVec3f   bboxSize                #!(-1 -1 -1)
+	exposedField  SFVec3f   bboxCenter              #!(0 0 0)
+	exposedField  MFNode    light                   #!{DirectionalLight,SpotLight,PointLight}
+	exposedField  MFNode    plane                   #!{Polygon,IndexedFaceSet}
+	exposedField  MFNode    appearance              #!{Appearance,ShaderAppearance}
+	exposedField  MFNode    emitter                 #!{*}
+	exposedField  MFNode    children                #!{*}
+	exposedField  SFString  mode
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
 
-	exposedField SFNode metadata		#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFNode    metadata                #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 
-	exposedField MFNode shadowMap
+	exposedField  MFNode    shadowMap
 
 	# 7.201+
-	#exposedField SFNode shadowMap
-	exposedField SFNode shadowMapGenAppearance
-	exposedField SFNode shadowMapUseAppearance
-	exposedField SFBool shadowMapBlurr
-	exposedField SFFloat shadowMapBlurrFactor
+	#exposedField SFNode    shadowMap
+	exposedField  SFNode    shadowMapGenAppearance
+	exposedField  SFNode    shadowMapUseAppearance
+	exposedField  SFBool    shadowMapBlurr
+	exposedField  SFFloat   shadowMapBlurrFactor
 ] ["urn:inet:bitmanagement.de:node:ShadowGroup"]
 
 
 # Used for making bump-looking textures
 EXTERNPROTO BumpTransform [ #!%common{MultiTexture.bumpTransform}
-	exposedField SFVec2f s		#!(1 0)
-	exposedField SFVec2f t		#!(0 1)
-	exposedField SFVec2f l		#!(1 0)
+	exposedField  SFVec2f  s  #!(1 0)
+	exposedField  SFVec2f  t  #!(0 1)
+	exposedField  SFVec2f  l  #!(1 0)
 ] ["urn:inet:bitmanagement.de:node:BumpTransform"]
 
 
 # For creating texture using mathematics
 EXTERNPROTO ProceduralTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField SFString format
-	exposedField SFInt32 pixelWidth		#!(64)
-	exposedField SFInt32 pixelHeight	#!(64)
-	exposedField SFInt32 pixelDepth		#!(1)
-	exposedField SFString mode
-	exposedField MFFloat parameter
-	exposedField SFVec3f scale			#!(1 1 1)
-	exposedField MFColor color
-	exposedField MFFloat alpha
-	#Contact 7.1
-	eventOut     SFBool isFlipped
+	exposedField  SFString  format
+	exposedField  SFInt32   pixelWidth   #!(64)
+	exposedField  SFInt32   pixelHeight  #!(64)
+	exposedField  SFInt32   pixelDepth   #!(1)
+	exposedField  SFString  mode
+	exposedField  MFFloat   parameter
+	exposedField  SFVec3f   scale        #!(1 1 1)
+	exposedField  MFColor   color
+	exposedField  MFFloat   alpha
+
+	# Contact 7.1
+	eventOut      SFBool    isFlipped
 ] ["urn:inet:bitmanagement.de:node:ProceduralTexture"]
 
 
 # (BS Contact 4.0+) Legacy node for displaying elements at a fixed location on the screen.
 # Advice: use Layer3D{} instead !
 EXTERNPROTO HUD [ #!%group{*}
-	field SFVec3f bboxSize					#!(-1 -1 -1)
-	field SFVec3f bboxCenter				#!(0 0 0)
-	exposedField MFNode children			#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	field         SFVec3f   bboxSize        #!(-1 -1 -1)
+	field         SFVec3f   bboxCenter      #!(0 0 0)
+	exposedField  MFNode    children        #!{*}
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
+
 	# This field is ignored
-	exposedField MFString align
+	exposedField  MFString  align
 ] ["urn:inet:bitmanagement.de:node:HUD"]
-
-
-
 
 
 ###################################################################
@@ -885,105 +928,108 @@ EXTERNPROTO HUD [ #!%group{*}
 # Like ImageTexture{} except that it tells you when it finished
 # loading the file (hell useful).
 EXTERNPROTO ImageTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	MFString	url
-	field			SFBool		repeatS 			#!(TRUE)
-	field			SFBool		repeatT 			#!(TRUE)
-	field			MFString	parameter
-	eventOut		SFBool		isLoaded
-	#Contact 7.1
-	eventOut        SFBool      isFlipped
+	exposedField  MFString  url
+	field         SFBool    repeatS    #!(TRUE)
+	field         SFBool    repeatT    #!(TRUE)
+	field         MFString  parameter
+	eventOut      SFBool    isLoaded
+
+	# Contact 7.1
+	eventOut      SFBool    isFlipped
 ] ["urn:inet:bitmanagement.de:node:ImageTexture"]
 
 
 # Like MovieTexture{} except that it tells you when it finished loading the file,
 # and can be paused too.
 EXTERNPROTO MovieTexture2 [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField SFBool   loop				#!(FALSE)
-	exposedField SFFloat  speed 			#!(0)
-	exposedField SFTime   startTime 		#!(-1)
-	exposedField SFTime   stopTime			#!(-1)
-	exposedField MFString url				#!([])
-	exposedField	SFBool		scaleImage		#!(TRUE)
-	field			SFBool		repeatS
-	field			SFBool		repeatT
-	eventIn			SFBool		set_pause
-	eventOut		SFBool		isActive
-	eventOut		SFFloat		imageAspect
-	eventOut		SFVec2f		imageSize
-	eventOut		SFTime		duration
-	eventOut		SFTime		mediaTime
-	#Contact 7.1
-	eventOut        SFBool      isFlipped
+	exposedField  SFBool    loop        #!(FALSE)
+	exposedField  SFFloat   speed       #!(0)
+	exposedField  SFTime    startTime   #!(-1)
+	exposedField  SFTime    stopTime    #!(-1)
+	exposedField  MFString  url         #!([])
+	exposedField  SFBool    scaleImage  #!(TRUE)
+	field         SFBool    repeatS
+	field         SFBool    repeatT
+	eventIn       SFBool    set_pause
+	eventOut      SFBool    isActive
+	eventOut      SFFloat   imageAspect
+	eventOut      SFVec2f   imageSize
+	eventOut      SFTime    duration
+	eventOut      SFTime    mediaTime
+
+	# Contact 7.1
+	eventOut      SFBool    isFlipped
 ] ["urn:inet:bitmanagement.de:node:MovieTexture"]
 
+
 EXTERNPROTO ImageTextureLOD [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	SFBool		repeatS
-	exposedField	SFBool		repeatT
-	exposedField	MFString	url
-	exposedField	SFVec2f		maxSize
-	exposedField	SFNode		loadingTexture
-	eventIn			SFInt32		set_lod
-	eventIn			SFFloat		set_priority
-	eventIn			SFBool		set_unload
-	exposedField	MFString	parameter
-	exposedField	SFBool		thumbEnabled
-	exposedField	SFVec2f		thumbSize
-	exposedField	SFNode		thumbTexture
-	exposedField	SFBool		showThumb
-	eventOut		SFBool		isLoaded
-	eventOut		SFBool		isFlipped
-	eventOut		SFVec2f		size
-	eventOut		SFFloat		aspect
-	exposedField	SFNode		metadata
+	exposedField  SFBool    repeatS
+	exposedField  SFBool    repeatT
+	exposedField  MFString  url
+	exposedField  SFVec2f   maxSize
+	exposedField  SFNode    loadingTexture
+	eventIn       SFInt32   set_lod
+	eventIn       SFFloat   set_priority
+	eventIn       SFBool    set_unload
+	exposedField  MFString  parameter
+	exposedField  SFBool    thumbEnabled
+	exposedField  SFVec2f   thumbSize
+	exposedField  SFNode    thumbTexture
+	exposedField  SFBool    showThumb
+	eventOut      SFBool    isLoaded
+	eventOut      SFBool    isFlipped
+	eventOut      SFVec2f   size
+	eventOut      SFFloat   aspect
+	exposedField  SFNode    metadata
 ] ["urn:inet:bitmanagement.de:node:ImageTextureLOD"]
 
 
 # Like Inline except that you can also access its inner nodes and load/unload it at will,
 # as well as knowing when it finished loading it (both are very useful).
 EXTERNPROTO Inline2 [ #!%common
-   field SFVec3f bboxSize					#!(-1 -1 -1)
-   field SFVec3f bboxCenter					#!(0 0 0)
-   exposedField MFString url
-   exposedField MFNode children				#!{*}
-   eventIn MFNode addChildren
-   eventIn MFNode removeChildren
-   eventOut SFBool isLoaded
-   eventIn SFBool set_unload
+   field         SFVec3f   bboxSize        #!(-1 -1 -1)
+   field         SFVec3f   bboxCenter      #!(0 0 0)
+   exposedField  MFString  url
+   exposedField  MFNode    children        #!{*}
+   eventIn       MFNode    addChildren
+   eventIn       MFNode    removeChildren
+   eventOut      SFBool    isLoaded
+   eventIn       SFBool    set_unload
 ] ["urn:inet:bitmanagement.de:node:Inline"]
 
 
 # (BS Contact 3.05+) Like the normal Fog{}, but with more
 # options available (like where to start the visibility fading).
 EXTERNPROTO Fog2 [ #!%common
-	exposedField SFColor color				#!(1 1 1)
-	exposedField SFString fogType			#!("LINEAR")
-	exposedField SFFloat visibilityRange	#!(0)
-	exposedField SFFloat visibilityStart	#!(0)
-	exposedField SFFloat density			#!(1)
-	exposedField SFBool radial				#!(FALSE)
-	eventIn SFBool set_bind
-	eventOut SFBool isBound
+	exposedField  SFColor   color            #!(1 1 1)
+	exposedField  SFString  fogType          #!("LINEAR")
+	exposedField  SFFloat   visibilityRange  #!(0)
+	exposedField  SFFloat   visibilityStart  #!(0)
+	exposedField  SFFloat   density          #!(1)
+	exposedField  SFBool    radial           #!(FALSE)
+	eventIn       SFBool    set_bind
+	eventOut      SFBool    isBound
 ] ["urn:inet:bitmanagement.de:node:Fog2"]
 
 
 # Like Sound{} except it has more properties
 EXTERNPROTO Sound2 [ #!%common
-	exposedField SFVec3f direction			#!(0 0 1)
-	exposedField SFFloat intensity			#!(1)
-	exposedField SFVec3f location			#!(0 0 0)
-	exposedField SFFloat maxBack			#!(10)
-	exposedField SFFloat maxFront			#!(10)
-	exposedField SFFloat minBack			#!(1)
-	exposedField SFFloat minFront			#!(1)
-	exposedField SFFloat priority			#!(0)
-	exposedField SFNode source				#!{AudioClip,MovieTexture}
-	field SFBool spatialize					#!(TRUE)
-	exposedField SFBool updateVelocity		#!(TRUE)
-	exposedField SFVec3f velocity			#!(0 0 0)
-	exposedField SFFloat insideConeAngle	#!(6.28)
-	exposedField SFFloat outsideConeAngle	#!(6.28)
-	exposedField SFFloat outsideVolume		#!(0)
-	exposedField MFNode parameter
+	exposedField  SFVec3f  direction         #!(0 0 1)
+	exposedField  SFFloat  intensity         #!(1)
+	exposedField  SFVec3f  location          #!(0 0 0)
+	exposedField  SFFloat  maxBack           #!(10)
+	exposedField  SFFloat  maxFront          #!(10)
+	exposedField  SFFloat  minBack           #!(1)
+	exposedField  SFFloat  minFront          #!(1)
+	exposedField  SFFloat  priority          #!(0)
+	exposedField  SFNode   source            #!{AudioClip,MovieTexture}
+	field         SFBool   spatialize        #!(TRUE)
+	exposedField  SFBool   updateVelocity    #!(TRUE)
+	exposedField  SFVec3f  velocity          #!(0 0 0)
+	exposedField  SFFloat  insideConeAngle   #!(6.28)
+	exposedField  SFFloat  outsideConeAngle  #!(6.28)
+	exposedField  SFFloat  outsideVolume     #!(0)
+	exposedField  MFNode   parameter
 ] ["urn:inet:bitmanagement.de:node:Sound2"]
 
 
@@ -994,87 +1040,90 @@ EXTERNPROTO Sound2 [ #!%common
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO Assembly [
-	exposedField SFVec3f bboxSize				#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter				#!(0 0 0)
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFBool visible					#!(TRUE)
-	exposedField SFString name					#!("")
-	exposedField SFString description			#!("")
-	exposedField MFString parameter				#!([])
-	exposedField MFString url					#!([])
-	exposedField SFNode appearance				#!(NULL){Appearance,ShaderAppearance}
-	exposedField SFFloat transparency			#!(-1)
-	exposedField MFNode children				#!([]){Part}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFVec3f   bboxSize       #!(-1 -1 -1)
+	exposedField  SFVec3f   bboxCenter     #!(0 0 0)
+	exposedField  SFNode    metadata       #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFBool    visible        #!(TRUE)
+	exposedField  SFString  name           #!("")
+	exposedField  SFString  description    #!("")
+	exposedField  MFString  parameter      #!([])
+	exposedField  MFString  url            #!([])
+	exposedField  SFNode    appearance     #!(NULL){Appearance,ShaderAppearance}
+	exposedField  SFFloat   transparency   #!(-1)
+	exposedField  MFNode    children       #!([]){Part}
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
 ] ["urn:inet:bitmanagement.de:node:Assembly"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO Part [ #!{Assembly.children}
-	exposedField SFVec3f bboxSize				#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter				#!(0 0 0)
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFBool visible					#!(TRUE)
-	exposedField SFString name					#!("")
-	exposedField SFString description			#!("")
-	exposedField MFString parameter				#!([])
-	exposedField MFString url					#!([])
-	exposedField SFNode appearance				#!(NULL){Appearance,ShaderAppearance}
-	exposedField SFFloat transparency			#!(-1)
-	exposedField MFNode children				#!([]){*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFVec3f   bboxSize        #!(-1 -1 -1)
+	exposedField  SFVec3f   bboxCenter      #!(0 0 0)
+	exposedField  SFNode    metadata        #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFBool    visible         #!(TRUE)
+	exposedField  SFString  name            #!("")
+	exposedField  SFString  description     #!("")
+	exposedField  MFString  parameter       #!([])
+	exposedField  MFString  url             #!([])
+	exposedField  SFNode    appearance      #!(NULL){Appearance,ShaderAppearance}
+	exposedField  SFFloat   transparency    #!(-1)
+	exposedField  MFNode    children        #!([]){*}
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
 ] ["urn:inet:bitmanagement.de:node:Part"]
 
 
 # (BS Contact 6.3/7.001+)
 #EXTERNPROTO CADLayer [
-#	exposedField SFVec3f bboxSize				#!(-1 -1 -1)
-#	exposedField SFVec3f bboxCenter				#!(0 0 0)
-#	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	exposedField SFString name					#!("")
-#	exposedField MFBool visible
-#	exposedField MFNode children				#!([]){CADAssembly}
-#	eventIn MFNode addChildren
-#	eventIn MFNode removeChildren
+#	exposedField  SFNode    metadata        #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	exposedField  SFVec3f   bboxSize        #!(-1 -1 -1)
+#	exposedField  SFVec3f   bboxCenter      #!(0 0 0)
+#	exposedField  SFString  name            #!("")
+#	exposedField  MFBool    visible
+#	exposedField  MFNode    children        #!([]){CADAssembly}
+#	eventIn       MFNode    addChildren
+#	eventIn       MFNode    removeChildren
 #] ["urn:inet:bitmanagement.de:node:CADLayer"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO CADAssembly [
-	exposedField SFVec3f bboxSize				#!(-1 -1 -1)
-	exposedField SFVec3f bboxCenter				#!(0 0 0)
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name					#!("")
-	exposedField MFNode children				#!([]){CADPart}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFNode    metadata        #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3f   bboxSize        #!(-1 -1 -1)
+	exposedField  SFVec3f   bboxCenter      #!(0 0 0)
+	exposedField  SFString  name            #!("")
+	exposedField  MFNode    children        #!([]){CADPart}
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
 ] ["urn:inet:bitmanagement.de:node:CADAssembly"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO CADPart [
-	exposedField SFVec3f bboxSize
-	exposedField SFVec3f bboxCenter
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name					#!("")
-	exposedField SFVec3f translation			#!(0 0 0)
-	exposedField SFRotation rotation			#!(0 0 1 0)
-	exposedField SFVec3f scale					#!(1 1 1)
-	exposedField SFRotation scaleOrientation	#!(0 0 1 0)
-	exposedField SFVec3f center					#!(0 0 0)
-	exposedField MFNode children				#!([]){CADFace}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFNode      metadata          #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3f     bboxSize
+	exposedField  SFVec3f     bboxCenter
+	exposedField  SFString    name              #!("")
+	exposedField  SFVec3f     translation       #!(0 0 0)
+	exposedField  SFRotation  rotation          #!(0 0 1 0)
+	exposedField  SFVec3f     scale             #!(1 1 1)
+	exposedField  SFRotation  scaleOrientation  #!(0 0 1 0)
+	exposedField  SFVec3f     center            #!(0 0 0)
+	exposedField  MFNode      children          #!([]){CADFace}
+	eventIn       MFNode      addChildren
+	eventIn       MFNode      removeChildren
 ] ["urn:inet:bitmanagement.de:node:CADPart"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO CADFace [
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name					#!("")
-	exposedField SFNode shape					#!(NULL){Shape,LOD}
+	exposedField  SFNode    metadata  #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFString  name      #!("")
+	exposedField  SFNode    shape     #!(NULL){Shape,LOD}
 ] ["urn:inet:bitmanagement.de:node:CADFace"]
+
 ###################################################################
-
-
 
 
 
@@ -1084,46 +1133,47 @@ EXTERNPROTO CADFace [
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO MetadataSet [
-	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name				#!("")
-	exposedField SFString reference			#!("")
-	exposedField MFNode value				#!([]){MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFNode    metadata   #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFString  name       #!("")
+	exposedField  SFString  reference  #!("")
+	exposedField  MFNode    value      #!([]){MetadataString,MetadataFloat,MetadataInteger}
 ] ["urn:inet:bitmanagement.de:node:MetadataSet"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO MetadataString [
-	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name				#!("")
-	exposedField SFString reference			#!("")
-	exposedField MFString value				#!("")
+	exposedField  SFNode    metadata   #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFString  name       #!("")
+	exposedField  SFString  reference  #!("")
+	exposedField  MFString  value      #!("")
 ] ["urn:inet:bitmanagement.de:node:MetadataString"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO MetadataFloat [
-	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name				#!("")
-	exposedField SFString reference			#!("")
-	exposedField MFFloat value				#!(0)
+	exposedField  SFNode    metadata   #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFString  name       #!("")
+	exposedField  SFString  reference  #!("")
+	exposedField  MFFloat   value      #!(0)
 ] ["urn:inet:bitmanagement.de:node:MetadataFloat"]
+
 
 # (BS Contact 6.3/7.001+)
 #EXTERNPROTO MetadataDouble [
-#	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	exposedField SFString name				#!("")
-#	exposedField SFString reference			#!("")
-#	exposedField MFDouble value				#!(0)
+#	exposedField  SFNode    metadata   #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+#	exposedField  SFString  name       #!("")
+#	exposedField  SFString  reference  #!("")
+#	exposedField  MFDouble  value      #!(0)
 #] ["urn:inet:bitmanagement.de:node:MetadataDouble"]
+
 
 # (BS Contact 6.3/7.001+)
 EXTERNPROTO MetadataInteger [
-	exposedField SFNode metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFString name				#!("")
-	exposedField SFString reference			#!("")
-	exposedField MFInt32 value				#!(0)
+	exposedField  SFNode    metadata   #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFString  name       #!("")
+	exposedField  SFString  reference  #!("")
+	exposedField  MFInt32   value      #!(0)
 ] ["urn:inet:bitmanagement.de:node:MetadataInteger"]
-###################################################################
-
-
 
 
 
@@ -1136,22 +1186,19 @@ EXTERNPROTO MetadataInteger [
 # In summary: a DrawGroup{} contains nodes on which to apply
 # the operations, and DrawOp operations.
 EXTERNPROTO DrawGroup [ #!%group{*}
-   field SFVec3f bboxSize					#!(-1 -1 -1)
-   field SFVec3f bboxCenter					#!(0 0 0)
-	exposedField SFBool sortedAlpha			#!(TRUE)
-	exposedField MFNode drawOp				#!{DrawOp}
-	exposedField MFNode children			#!{*}
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  SFBool   sortedAlpha     #!(TRUE)
+	exposedField  MFNode   drawOp          #!{DrawOp}
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:DrawGroup"]
 
 EXTERNPROTO DrawOp [ #!{DrawGroup.drawOp,DrawGroup.children}
-	exposedField MFInt32 op					#!([])
-	exposedField MFFloat args				#!([])
+	exposedField  MFInt32  op    #!([])
+	exposedField  MFFloat  args  #!([])
 ] ["urn:inet:bitmanagement.de:node:DrawOp"]
-
-
-
 
 
 
@@ -1160,56 +1207,55 @@ EXTERNPROTO DrawOp [ #!{DrawGroup.drawOp,DrawGroup.children}
 ###################################################################
 
 EXTERNPROTO IndexedFaceSet2D [ #!%geometry{Shape.geometry}
-	exposedField SFNode  color				#!{Color}
-	exposedField SFNode  coord				#!{Coordinate2D}
-	exposedField SFNode  texCoord			#!{TextureCoordinate,TextureCoordGen}
-	field        MFInt32 colorIndex			#!([])
-	field        SFBool  colorPerVertex		#!(TRUE)
-	field        SFBool  convex				#!(TRUE)
-	field        MFInt32 coordIndex     	#!([])
-	field        MFInt32 texCoordIndex		#!([])
-	eventIn      MFInt32 set_colorIndex
-	eventIn      MFInt32 set_coordIndex
-	eventIn      MFInt32 set_texCoordIndex
+	exposedField  SFNode   color              #!{Color}
+	exposedField  SFNode   coord              #!{Coordinate2D}
+	exposedField  SFNode   texCoord           #!{TextureCoordinate,TextureCoordGen}
+	field         MFInt32  colorIndex         #!([])
+	field         SFBool   colorPerVertex     #!(TRUE)
+	field         SFBool   convex             #!(TRUE)
+	field         MFInt32  coordIndex         #!([])
+	field         MFInt32  texCoordIndex      #!([])
+	eventIn       MFInt32  set_colorIndex
+	eventIn       MFInt32  set_coordIndex
+	eventIn       MFInt32  set_texCoordIndex
 ] ["urn:inet:bitmanagement.de:node:IndexedFaceSet2D"]
 
 
 EXTERNPROTO IndexedLineSet2D [ #!%geometry{Shape.geometry}
-  exposedField SFNode  color        		#!{Color}
-  exposedField SFNode  coord        		#!{Coordinate2D}
-  field        MFInt32 colorIndex
-  field        SFBool  colorPerVertex		#!(TRUE)
-  field        MFInt32 coordIndex
-  eventIn      MFInt32 set_colorIndex
-  eventIn      MFInt32 set_coordIndex
+  exposedField  SFNode   color           #!{Color}
+  exposedField  SFNode   coord           #!{Coordinate2D}
+  field         MFInt32  colorIndex
+  field         SFBool   colorPerVertex  #!(TRUE)
+  field         MFInt32  coordIndex
+  eventIn       MFInt32  set_colorIndex
+  eventIn       MFInt32  set_coordIndex
 ] ["urn:inet:bitmanagement.de:node:IndexedLineSet2D"]
 
 
 EXTERNPROTO PointSet2D [ #!%geometry{Shape.geometry}
-  exposedField SFNode color					#!{Color}
-  exposedField SFNode coord					#!{Coordinate2D}
+  exposedField  SFNode  color  #!{Color}
+  exposedField  SFNode  coord  #!{Coordinate2D}
 ] ["urn:inet:bitmanagement.de:node:PointSet2D"]
 
 
-
 EXTERNPROTO Coordinate2D [ #!%coord{IndexedFaceSet2D.coord,IndexedLineSet2D.coord,Coordinate2D.point}
-	exposedField MFVec2f point				#!([])
+	exposedField  MFVec2f  point  #!([])
 ] ["urn:inet:bitmanagement.de:node:Coordinate2D"]
 
 
 # Type: 0 = MoveTo, 1 = LineTo, 2 = CurveTo, 3 = NextCurveto
 EXTERNPROTO Curve2D [ #!%geometry{Shape.geometry}
-	exposedField SFNode  point  			#!{Coordinate2D}
-	exposedField SFFloat fineness			#!(0.5)
-	exposedField MFInt32 type				#!([])
+	exposedField  SFNode   point     #!{Coordinate2D}
+	exposedField  SFFloat  fineness  #!(0.5)
+	exposedField  MFInt32  type      #!([])
 ] ["urn:inet:bitmanagement.de:node:Curve2D"]
 
 
 EXTERNPROTO Material2D [ #!%material{Appearance.material}
-	exposedField	SFColor		emissiveColor		#!(0.8 0.8 0.8)
-	exposedField	SFBool		filled				#!(FALSE)
-	exposedField	SFNode		lineProps			#!{LineProperties}
-	exposedField	SFFloat		transparency		#!(0)
+	exposedField  SFColor  emissiveColor  #!(0.8 0.8 0.8)
+	exposedField  SFBool   filled         #!(FALSE)
+	exposedField  SFNode   lineProps      #!{LineProperties}
+	exposedField  SFFloat  transparency   #!(0)
 ] ["urn:inet:bitmanagement.de:node:Material2D"]
 
 
@@ -1217,93 +1263,93 @@ EXTERNPROTO Material2D [ #!%material{Appearance.material}
 EXTERNPROTO LineProperties [ #!{Material2D.lineProps}
 	# Not supported after BS Contact 7.1
 	# lineStyle values: 0=solid, 1=dash, 2=dot, 3=dash-dot, 4=dash-dash-dot, 5=dash-dot-dot
-#	exposedField	SFColor		lineColor			#!(0 0 0)
-#	exposedField	SFInt32		lineStyle			#!(0)
-#	exposedField	SFFloat		width
+#	exposedField  SFColor   lineColor            #!(0 0 0)
+#	exposedField  SFInt32   lineStyle            #!(0)
+#	exposedField  SFFloat   width
 
 	# BS Contact 7.2+
 	# linetype values: 1=solid, 2=dash, 3=dot, 4=dash-dot, 5=dash-dash-dot, 6=dash-dot-dot
-	exposedField	SFBool		applied					#!(TRUE)
-	exposedField	SFInt32		linetype				#!(1)
-	exposedField	SFFloat		linewidthScaleFactor	#!(0)
+	exposedField  SFBool   applied               #!(TRUE)
+	exposedField  SFInt32  linetype              #!(1)
+	exposedField  SFFloat  linewidthScaleFactor  #!(0)
 ] ["urn:inet:bitmanagement.de:node:LineProperties"]
 
 
 EXTERNPROTO Bitmap [ #!%geometry{Shape.geometry}
-	exposedField SFVec2f scale						#!(-1 -1)
-	exposedField SFBool pixelMetric					#!(FALSE)
+	exposedField  SFVec2f  scale        #!(-1 -1)
+	exposedField  SFBool   pixelMetric  #!(FALSE)
 ] ["urn:inet:bitmanagement.de:node:Bitmap"]
 
 
 EXTERNPROTO Circle [ #!%geometry{Shape.geometry}
-	exposedField SFFloat radius
-] ["urn:inet:blaxxun.com:node:Circle"]
+	exposedField  SFFloat  radius
+] ["urn:inet:bitmanagement.de:node:Circle"]
 
 
 EXTERNPROTO Rectangle [ #!%geometry{Shape.geometry}
-    exposedField SFVec2f size						#!(2 2)
+    exposedField  SFVec2f  size  #!(2 2)
 ] ["urn:inet:bitmanagement.de:node:Rectangle"]
 
 
 EXTERNPROTO Background2D [ #!%background
-	eventIn		    SFBool	set_bind
-	exposedField	SFColor	backColor 				#!(0 0 0)
-	exposedField	MFString	url					#!([])
-	eventOut	    SFBool	isBound
+	exposedField  SFColor   backColor  #!(0 0 0)
+	exposedField  MFString  url        #!([])
+	eventIn       SFBool    set_bind
+	eventOut      SFBool    isBound
 ] ["urn:inet:bitmanagement.de:node:Background2D"]
 
 
 EXTERNPROTO Transform2D [ #!%group
-	eventIn		    MFNode	addChildren
-	eventIn		    MFNode	removeChildren
-	exposedField	MFNode	children				#!(*)
-	exposedField	SFVec2f		center				#!(0 0)
-	exposedField	SFFloat		rotationAngle		#!(0)
-	exposedField	SFVec2f		scale				#!(1 1)
-	exposedField	SFFloat		scaleOrientation	#!(0)
-	exposedField	SFVec2f		translation			#!(0 0)
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+	exposedField  MFNode   children          #!(*)
+	exposedField  SFVec2f  center            #!(0 0)
+	exposedField  SFFloat  rotationAngle     #!(0)
+	exposedField  SFVec2f  scale             #!(1 1)
+	exposedField  SFFloat  scaleOrientation  #!(0)
+	exposedField  SFVec2f  translation       #!(0 0)
 ] ["urn:inet:bitmanagement.de:node:Transform2D"]
 
 
 EXTERNPROTO PlaneSensor2D [ #!%sensor{*}
-	exposedField SFBool  autoOffset					#!(TRUE)
-	exposedField SFBool  enabled					#!(TRUE)
-	exposedField SFVec2f maxPosition
-	exposedField SFVec2f minPosition
-	exposedField SFVec2f offset						#!(0 0)
-	eventOut     SFBool  isActive
-	eventOut     SFVec2f trackPoint_changed
-	eventOut     SFVec2f translation_changed
+	exposedField  SFBool   autoOffset           #!(TRUE)
+	exposedField  SFBool   enabled              #!(TRUE)
+	exposedField  SFVec2f  maxPosition
+	exposedField  SFVec2f  minPosition
+	exposedField  SFVec2f  offset               #!(0 0)
+	eventOut      SFBool   isActive
+	eventOut      SFVec2f  trackPoint_changed
+	eventOut      SFVec2f  translation_changed
 ] ["urn:inet:bitmanagement.de:node:PlaneSensor2D"]
 
 
 EXTERNPROTO Polygon [ #!%geometry{Shape.geometry}
-	exposedField SFNode color						#!{Color}
-	exposedField SFNode coord						#!{Coordinate}
-	exposedField SFNode normal						#!{Normal}
-	exposedField MFNode texCoord					#!{TextureCoordinate,TextureCoordGen}
-	exposedField SFBool ccw							#!(TRUE)
-	exposedField MFInt32 coordIndex
-	exposedField SFBool solid						#!(TRUE)
+	exposedField  SFNode   color       #!{Color}
+	exposedField  SFNode   coord       #!{Coordinate}
+	exposedField  SFNode   normal      #!{Normal}
+	exposedField  MFNode   texCoord    #!{TextureCoordinate,TextureCoordGen}
+	exposedField  SFBool   ccw         #!(TRUE)
+	exposedField  MFInt32  coordIndex
+	exposedField  SFBool   solid       #!(TRUE)
 ] ["urn:inet:bitmanagement.de:node:Polygon"]
 
 
 # An SFVec2f interpolator
 EXTERNPROTO PositionInterpolator2D [ #!%interpolator{*}
-	eventIn SFFloat set_fraction
-	exposedField MFFloat key				#!%intkey
-	exposedField MFVec2f keyValue			#!%texcrd
-	eventOut SFVec2f value_changed
+	exposedField  MFFloat key            #!%intkey
+	exposedField  MFVec2f keyValue       #!%texcrd
+	eventIn       SFFloat set_fraction
+	eventOut      SFVec2f value_changed
 ] ["urn:inet:bitmanagement.de:node:PositionInterpolator2D"]
+
 
 # An MFVec2f interpolator
 EXTERNPROTO CoordinateInterpolator2D [ #!%interpolator{*}
-	eventIn SFFloat set_fraction
-	exposedField MFFloat key				#!%intkey
-	exposedField MFVec2f keyValue			#!%texcrd
-	eventOut MFVec2f value_changed
+	exposedField  MFFloat  key            #!%intkey
+	exposedField  MFVec2f  keyValue       #!%texcrd
+	eventIn       SFFloat  set_fraction
+	eventOut      MFVec2f  value_changed
 ] ["urn:inet:bitmanagement.de:node:CoordinateInterpolator2D"]
-
 
 
 
@@ -1313,79 +1359,81 @@ EXTERNPROTO CoordinateInterpolator2D [ #!%interpolator{*}
 ###################################################################
 
 EXTERNPROTO Joint [ #!%common{Humanoid.joints,Humanoid.skeleton}
-	exposedField SFVec3f center					#!(0 0 0)
-	exposedField MFNode children				#!(*)
-	exposedField MFFloat llimit
-	exposedField SFRotation limitOrientation	#!(0 0 1 0)
-	exposedField SFString name
-	exposedField SFRotation rotation			#!(0 0 1 0)
-	exposedField SFVec3f scale					#!(1 1 1)
-	exposedField SFRotation scaleOrientation	#!(0 0 1 0)
-	exposedField MFInt32 skinCoordIndex
-	exposedField MFFloat skinCoordWeight
-	exposedField MFFloat stiffness				#!([0 0 0])
-	exposedField SFVec3f translation			#!(0 0 0)
-	exposedField MFFloat ulimit
+	exposedField  SFVec3f     center            #!(0 0 0)
+	exposedField  MFNode      children          #!(*)
+	exposedField  MFFloat     llimit
+	exposedField  SFRotation  limitOrientation  #!(0 0 1 0)
+	exposedField  SFString    name
+	exposedField  SFRotation  rotation          #!(0 0 1 0)
+	exposedField  SFVec3f     scale             #!(1 1 1)
+	exposedField  SFRotation  scaleOrientation  #!(0 0 1 0)
+	exposedField  MFInt32     skinCoordIndex
+	exposedField  MFFloat     skinCoordWeight
+	exposedField  MFFloat     stiffness         #!([0 0 0])
+	exposedField  SFVec3f     translation       #!(0 0 0)
+	exposedField  MFFloat     ulimit
 ] ["urn:inet:bitmanagement.de:node:Joint"]
 
+
 EXTERNPROTO Segment [ #!%common{Humanoid.segments}
-	field SFVec3f bboxCenter					#!(0 0 0)
-	field SFVec3f bboxSize						#!(-1 -1 -1)
-	exposedField SFVec3f centerOfMass			#!(0 0 0)
-	exposedField MFNode children				#!{*}
-	exposedField SFNode coord					#!{Coordinate}
-	exposedField MFNode displacers				#!{Displacer}
-	exposedField SFFloat mass					#!(0)
-	exposedField MFFloat momentsOfInertia		#!([0 0 0 0 0 0 0 0 0])
-	exposedField SFString name
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	field         SFVec3f   bboxCenter        #!(0 0 0)
+	field         SFVec3f   bboxSize          #!(-1 -1 -1)
+	exposedField  SFVec3f   centerOfMass      #!(0 0 0)
+	exposedField  MFNode    children          #!{*}
+	exposedField  SFNode    coord             #!{Coordinate}
+	exposedField  MFNode    displacers        #!{Displacer}
+	exposedField  SFFloat   mass              #!(0)
+	exposedField  MFFloat   momentsOfInertia  #!([0 0 0 0 0 0 0 0 0])
+	exposedField  SFString  name
+	eventIn       MFNode    addChildren
+	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:Segment"]
 
+
 EXTERNPROTO Site[ #!%common{Humanoid.sites}
-	exposedField SFVec3f center					#!(0 0 0)
-	exposedField MFNode children				#!{*}
-	exposedField SFString name
-	exposedField SFRotation rotation			#!(0 0 1 0)
-	exposedField SFVec3f scale					#!(1 1 1)
-	exposedField SFRotation scaleOrientation	#!(0 0 1 0)
-	exposedField SFVec3f translation			#!(0 0 0)
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
+	exposedField  SFString    name
+	exposedField  SFVec3f     translation       #!(0 0 0)
+	exposedField  SFRotation  rotation          #!(0 0 1 0)
+	exposedField  SFVec3f     center            #!(0 0 0)
+	exposedField  SFVec3f     scale             #!(1 1 1)
+	exposedField  SFRotation  scaleOrientation  #!(0 0 1 0)
+	exposedField  MFNode      children          #!{*}
+	eventIn       MFNode      addChildren
+	eventIn       MFNode      removeChildren
 ] ["urn:inet:bitmanagement.de:node:Site"]
 
+
 EXTERNPROTO Displacer[ #!%common{Segment.displacers}
-	exposedField MFInt32 coordIndex				#!([])
-	exposedField MFVec3f displacements			#!([])
-	exposedField SFString name					#!("")
+	exposedField  MFInt32   coordIndex     #!([])
+	exposedField  MFVec3f   displacements  #!([])
+	exposedField  SFString  name           #!("")
 ] ["urn:inet:bitmanagement.de:node:Displacer"]
 
+
 EXTERNPROTO Humanoid [ #!%geometry{*}
-	eventIn SFFloat set_fraction
-	eventIn MFNode set_joints
-	eventIn MFNode set_skeleton
-	eventIn SFNode set_skinCoord
-	field SFVec3f bboxCenter					#!(0 0 0)
-	field SFVec3f bboxSize						#!(-1 -1 -1)
-	exposedField SFVec3f center					#!(0 0 0)
-	exposedField MFNode skeleton				#!{Joint}
-	exposedField MFString info					#!([])
-	exposedField MFNode joints					#!{Joint}
-	exposedField SFString name					#!("")
-	exposedField SFRotation rotation			#!(0 0 1 0)
-	exposedField SFVec3f scale					#!(1 1 1)
-	exposedField SFRotation scaleOrientation	#!(0 0 1 0)
-	exposedField MFNode segments				#!{Segment}
-	exposedField MFNode sites					#!{Site}
-	exposedField MFNode skin					#!{IndexedFaceSet}
-	exposedField SFNode skinCoord				#!{Coordinate}
-	exposedField SFNode skinNormal				#!{Normal}
-	exposedField SFVec3f translation			#!(0 0 0)
-	exposedField SFString version				#!("2.0")
-	exposedField MFNode viewpoints				#!{Viewpoint,Camera}
+	eventIn       SFFloat     set_fraction
+	eventIn       MFNode      set_joints
+	eventIn       MFNode      set_skeleton
+	eventIn       SFNode      set_skinCoord
+	field         SFVec3f     bboxCenter        #!(0 0 0)
+	field         SFVec3f     bboxSize          #!(-1 -1 -1)
+	exposedField  SFVec3f     center            #!(0 0 0)
+	exposedField  MFNode      skeleton          #!{Joint}
+	exposedField  MFString    info              #!([])
+	exposedField  MFNode      joints            #!{Joint}
+	exposedField  SFString    name              #!("")
+	exposedField  SFRotation  rotation          #!(0 0 1 0)
+	exposedField  SFVec3f     scale             #!(1 1 1)
+	exposedField  SFRotation  scaleOrientation  #!(0 0 1 0)
+	exposedField  MFNode      segments          #!{Segment}
+	exposedField  MFNode      sites             #!{Site}
+	exposedField  MFNode      skin              #!{IndexedFaceSet}
+	exposedField  SFNode      skinCoord         #!{Coordinate}
+	exposedField  SFNode      skinNormal        #!{Normal}
+	exposedField  SFVec3f     translation       #!(0 0 0)
+	exposedField  SFString    version           #!("2.0")
+	exposedField  MFNode      viewpoints        #!{Viewpoint,Camera}
 ] ["urn:inet:bitmanagement.de:node:Humanoid"]
-
-
 
 
 
@@ -1395,63 +1443,64 @@ EXTERNPROTO Humanoid [ #!%geometry{*}
 
 # Used by Browser.computeRayHit()
 #EXTERNPROTO RayHitInfo [ #!%common
-#  eventOut MFNode hitPath
-#  eventOut SFVec3f hitNormal
-#  eventOut SFVec3f hitPoint
-#  eventOut SFVec2f hitTexCoord
-#  eventOut SFMatrix hitMatrix
-#  eventOut SFVec3f hitNormalLocal
-#  eventOut SFVec3f hitPointLocal
-#  eventOut MFInt32 hitInfo
+#  eventOut  MFNode    hitPath
+#  eventOut  SFVec3f   hitNormal
+#  eventOut  SFVec3f   hitPoint
+#  eventOut  SFVec2f   hitTexCoord
+#  eventOut  SFMatrix  hitMatrix
+#  eventOut  SFVec3f   hitNormalLocal
+#  eventOut  SFVec3f   hitPointLocal
+#  eventOut  MFInt32   hitInfo
 #] ["urn:inet:bitmanagement.de:node:RayHitInfo"]
 
 
 # Used by Browser.event_changed
 EXTERNPROTO Event [ #!%common
-  eventIn  SFBool   cancelBubble
-  eventOut SFString type
-  eventIn  SFBool   returnValue
-  eventOut SFVec2f  screen
-  eventOut SFVec2f  client
-  eventOut SFVec2f  position
-  eventOut SFVec3f  xyz
-  eventOut SFVec3f  ypr
-  eventOut SFBool   altKey
-  eventOut SFBool   ctrlKey
-  eventOut SFBool   shiftKey
-  eventOut SFInt32  keyCode
-  eventOut SFString dataType
-  eventOut SFString data
-  eventOut SFInt32  button
+  eventIn   SFBool    cancelBubble
+  eventOut  SFString  type
+  eventIn   SFBool    returnValue
+  eventOut  SFVec2f   screen
+  eventOut  SFVec2f   client
+  eventOut  SFVec2f   position
+  eventOut  SFVec3f   xyz
+  eventOut  SFVec3f   ypr
+  eventOut  SFBool    altKey
+  eventOut  SFBool    ctrlKey
+  eventOut  SFBool    shiftKey
+  eventOut  SFInt32   keyCode
+  eventOut  SFString  dataType
+  eventOut  SFString  data
+  eventOut  SFInt32   button
 ] ["urn:inet:bitmanagement.de:node:Event"]
 
-#Use by various functions, such as Browser.computeRayHit()
-EXTERNPROTO Scene [ #!%group
-	exposedField	MFNode		children			#!{*}
-	field			SFVec3f		bboxCenter			#!(0 0 0)
-	field			SFVec3f		bboxSize			#!(-1 -1 -1)
-	exposedField	MFNode		protos				#!{*}
-	exposedField	MFNode		routes				#!{*}
-	exposedField	MFNode		timeSensors			#!{TimeSensor}
-	exposedField	MFNode		viewpoints			#!{Viewpoint,Camera}
-	exposedField	MFNode		createVrmlFromUrls	#!{*}
-	exposedField	SFString	worldUrl
-	exposedField	SFString	baseUrl
-	exposedField	SFNode		worldInfo			#!{WorldInfo}
-	eventIn			MFNode		addChildren
-	eventIn			MFNode		removeChildren
 
-	exposedField	SFTime		worldStartTime		#-1
-	exposedField	SFTime		worldEndTime		#-1
+# Use by various functions, such as Browser.computeRayHit()
+EXTERNPROTO Scene [ #!%group
+	exposedField  MFNode    children            #!{*}
+	field         SFVec3f   bboxCenter          #!(0 0 0)
+	field         SFVec3f   bboxSize            #!(-1 -1 -1)
+	exposedField  MFNode    protos              #!{*}
+	exposedField  MFNode    routes              #!{*}
+	exposedField  MFNode    timeSensors         #!{TimeSensor}
+	exposedField  MFNode    viewpoints          #!{Viewpoint,Camera}
+	exposedField  MFNode    createVrmlFromUrls  #!{*}
+	exposedField  SFString  worldUrl
+	exposedField  SFString  baseUrl
+	exposedField  SFNode    worldInfo           #!{WorldInfo}
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
+
+	exposedField  SFTime    worldStartTime      #!(-1)
+	exposedField  SFTime    worldEndTime        #!(-1)
 
 	# Contact 6.3/7.001
-	exposedField	SFBool		x3d					#FALSE
-	exposedField	SFBool		is2D				#FALSE
-	exposedField	MFNode		imports				#[]
-	exposedField	MFNode		exports				#[]
-	exposedField	MFString	components			#[]
-	exposedField	SFString	profile				#""
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFBool    x3d                 #!(FALSE)
+	exposedField  SFBool    is2D                #!(FALSE)
+	exposedField  MFNode    imports             #!([])
+	exposedField  MFNode    exports             #!([])
+	exposedField  MFString  components          #!([])
+	exposedField  SFString  profile             #!("")
+	exposedField  SFNode    metadata            #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
 ] ["urn:inet:bitmanagement.de:node:Scene"]
 
 
@@ -1461,169 +1510,172 @@ EXTERNPROTO Scene [ #!%group
 ###################################################################
 
 EXTERNPROTO Avatar [
-	exposedField SFString   nickname			#!("")
-	exposedField MFFloat    avatarSize  		#!([0.25 1.7500])
-	exposedField SFBool     isAvatar    		#!(TRUE)
-	exposedField SFRotation rotation    		#!(0 1 0 0)
-	exposedField SFInt32    whichChoice 		#!(0)
-	exposedField SFBool     isOver      		#!(FALSE)
-	exposedField SFTime     touchTime   		#!(0)
-	exposedField SFBool     isPilot     		#!(FALSE)
-	eventIn      SFInt32    set_state
-	eventIn      SFTime     set_gestureX
-	eventIn      SFInt32    set_gesture
-	eventIn      SFVec3f    set_position
+	exposedField  SFString    nickname      #!("")
+	exposedField  MFFloat     avatarSize    #!([0.25 1.7500])
+	exposedField  SFBool      isAvatar      #!(TRUE)
+	exposedField  SFRotation  rotation      #!(0 1 0 0)
+	exposedField  SFInt32     whichChoice   #!(0)
+	exposedField  SFBool      isOver        #!(FALSE)
+	exposedField  SFTime      touchTime     #!(0)
+	exposedField  SFBool      isPilot       #!(FALSE)
+	eventIn       SFInt32     set_state
+	eventIn       SFTime      set_gestureX
+	eventIn       SFInt32     set_gesture
+	eventIn       SFVec3f     set_position
 ] ["urn:inet:bitmanagement.de:node:Avatar"]
 
 
 EXTERNPROTO BlaxxunZone [ #!%group{*}
-	exposedField SFBool enabled 				#!(TRUE)
-	eventIn MFNode addEvents
-	eventIn MFNode removeEvents
-	eventIn MFNode addAvatars
-	eventIn MFNode removeAvatars
-	exposedField    MFNode   events				#!{SharedEvent,SharedObjectEvent}
-	exposedField MFNode avatars					#!{*}
-	eventOut MFNode events_added
-	eventOut MFNode events_removed
-	eventOut MFNode avatars_added
-	eventOut MFNode avatars_removed
-	eventIn SFString set_myAvatarURL
-	eventOut SFString myAvatarURL_changed
-	eventIn SFInt32 set_myAvatarGesture
-	eventIn SFInt32 myAvatarGestureFromServer
-	exposedField SFNode beamToViewpoint 		#!{Viewpoint,Camera}
-	eventOut SFInt32 myAvatarGesture_changed
-	eventOut SFInt32 myAvatarGestureToServer
-	exposedField MFNode avatarLOD				#!{*}
-	exposedField MFFloat avatarRange
-	exposedField MFString sendToChat
-	exposedField SFInt32 sendToChatInput		#!(-1)
-	exposedField SFFloat beamToDistance			#!(3)
-	exposedField MFString groupChatName
-	exposedField MFString groupChat
-	exposedField SFString myAvatarName
-	eventIn MFNode addObjects
-	eventIn MFNode removeObjects
-	eventIn SFString set_action
-	eventOut MFNode objects_added
-	eventOut MFNode objects_removed
-	eventIn SFString beamto
-	eventIn SFBool calcDropPosition
-	eventOut SFString dropPosition
-	eventIn SFString loadScene
+	exposedField  SFBool    enabled                    #!(TRUE)
+	eventIn       MFNode    addEvents
+	eventIn       MFNode    removeEvents
+	eventIn       MFNode    addAvatars
+	eventIn       MFNode    removeAvatars
+	exposedField  MFNode    events                     #!{SharedEvent,SharedObjectEvent}
+	exposedField  MFNode    avatars                    #!{*}
+	eventOut      MFNode    events_added
+	eventOut      MFNode    events_removed
+	eventOut      MFNode    avatars_added
+	eventOut      MFNode    avatars_removed
+	eventIn       SFString  set_myAvatarURL
+	eventOut      SFString  myAvatarURL_changed
+	eventIn       SFInt32   set_myAvatarGesture
+	eventIn       SFInt32   myAvatarGestureFromServer
+	exposedField  SFNode    beamToViewpoint            #!{Viewpoint,Camera}
+	eventOut      SFInt32   myAvatarGesture_changed
+	eventOut      SFInt32   myAvatarGestureToServer
+	exposedField  MFNode    avatarLOD                  #!{*}
+	exposedField  MFFloat   avatarRange
+	exposedField  MFString  sendToChat
+	exposedField  SFInt32   sendToChatInput            #!(-1)
+	exposedField  SFFloat   beamToDistance             #!(3)
+	exposedField  MFString  groupChatName
+	exposedField  MFString  groupChat
+	exposedField  SFString  myAvatarName
+	eventIn       MFNode    addObjects
+	eventIn       MFNode    removeObjects
+	eventIn       SFString  set_action
+	eventOut      MFNode    objects_added
+	eventOut      MFNode    objects_removed
+	eventIn       SFString  beamto
+	eventIn       SFBool    calcDropPosition
+	eventOut      SFString  dropPosition
+	eventIn       SFString  loadScene
 ] ["urn:inet:blaxxun.com:node:BlaxxunZone"]
 
+
 EXTERNPROTO SharedEvent [#!%sensor{BlaxxunZone.events}
-	exposedField SFString    name
-	exposedField SFString    type
-	exposedField SFString    toNickname
-	exposedField SFString    toGroup
-	eventIn   SFBool    boolFromServer
-	eventIn   SFColor   colorFromServer
-	eventIn   SFFloat   floatFromServer
-	eventIn   SFInt32   int32FromServer
-	eventIn   SFRotation     rotationFromServer
-	eventIn   SFString  stringFromServer
-	eventIn   SFTime    timeFromServer
-	eventIn   SFVec2f   vec2fFromServer
-	eventIn   SFVec3f   vec3fFromServer
-	eventOut  SFBool    boolToServer
-	eventOut  SFColor   colorToServer
-	eventOut  SFFloat   floatToServer
-	eventOut  SFInt32   int32ToServer
-	eventOut  SFRotation     rotationToServer
-	eventOut  SFString  stringToServer
-	eventOut  SFTime    timeToServer
-	eventOut  SFVec2f   vec2fToServer
-	eventOut  SFVec3f   vec3fToServer
-	eventIn   SFBool    set_bool
-	eventIn   SFColor   set_color
-	eventIn   SFFloat   set_float
-	eventIn   SFInt32   set_int32
-	eventIn   SFRotation     set_rotation
-	eventIn   SFString  set_string
-	eventIn   SFTime    set_time
-	eventIn   SFVec2f   set_vec2f
-	eventIn   SFVec3f   set_vec3f
-	eventOut  SFBool    bool_changed
-	eventOut  SFColor   color_changed
-	eventOut  SFFloat   float_changed
-	eventOut  SFInt32   int32_changed
-	eventOut  SFRotation     rotation_changed
-	eventOut  SFString  string_changed
-	eventOut  SFTime    time_changed
-	eventOut  SFVec2f   vec2f_changed
-	eventOut  SFVec3f   vec3f_changed
-	eventOut  SFBool    initialized
-] ["urn:inet:blaxxun.com:node:SharedEvent"]
+	exposedField  SFString    name
+	exposedField  SFString    type
+	exposedField  SFString    toNickname
+	exposedField  SFString    toGroup
+	eventIn       SFBool      boolFromServer
+	eventIn       SFColor     colorFromServer
+	eventIn       SFFloat     floatFromServer
+	eventIn       SFInt32     int32FromServer
+	eventIn       SFRotation  rotationFromServer
+	eventIn       SFString    stringFromServer
+	eventIn       SFTime      timeFromServer
+	eventIn       SFVec2f     vec2fFromServer
+	eventIn       SFVec3f     vec3fFromServer
+	eventOut      SFBool      boolToServer
+	eventOut      SFColor     colorToServer
+	eventOut      SFFloat     floatToServer
+	eventOut      SFInt32     int32ToServer
+	eventOut      SFRotation  rotationToServer
+	eventOut      SFString    stringToServer
+	eventOut      SFTime      timeToServer
+	eventOut      SFVec2f     vec2fToServer
+	eventOut      SFVec3f     vec3fToServer
+	eventIn       SFBool      set_bool
+	eventIn       SFColor     set_color
+	eventIn       SFFloat     set_float
+	eventIn       SFInt32     set_int32
+	eventIn       SFRotation  set_rotation
+	eventIn       SFString    set_string
+	eventIn       SFTime      set_time
+	eventIn       SFVec2f     set_vec2f
+	eventIn       SFVec3f     set_vec3f
+	eventOut      SFBool      bool_changed
+	eventOut      SFColor     color_changed
+	eventOut      SFFloat     float_changed
+	eventOut      SFInt32     int32_changed
+	eventOut      SFRotation  rotation_changed
+	eventOut      SFString    string_changed
+	eventOut      SFTime      time_changed
+	eventOut      SFVec2f     vec2f_changed
+	eventOut      SFVec3f     vec3f_changed
+	eventOut      SFBool      initialized
+] ["urn:inet:bitmanagement.de:node:SharedEvent"]
+
 
 EXTERNPROTO SharedObject [ #!%common
-	exposedField SFVec3f translation			#!(0 0 0)
-	exposedField SFRotation rotation			#!(0 0 1 0)
-	exposedField SFString name
-	exposedField SFString id
-	exposedField MFNode children				#!{*}
-	eventIn SFBool startMove
-	eventIn MFString attributesFromServer
-	eventOut MFString attributes_changed
-	eventOut SFTime touchTime
-	eventOut SFBool isOver
-	eventOut SFVec3f newPosition
-	eventOut SFRotation newRotation
-] ["urn:inet:blaxxun.com:node:SharedObject"]
+	exposedField  SFVec3f     translation           #!(0 0 0)
+	exposedField  SFRotation  rotation              #!(0 0 1 0)
+	exposedField  SFString    name
+	exposedField  SFString    id
+	exposedField  MFNode      children              #!{*}
+	eventIn       SFBool      startMove
+	eventIn       MFString    attributesFromServer
+	eventOut      MFString    attributes_changed
+	eventOut      SFTime      touchTime
+	eventOut      SFBool      isOver
+	eventOut      SFVec3f     newPosition
+	eventOut      SFRotation  newRotation
+] ["urn:inet:bitmanagement.de:node:SharedObject"]
+
 
 EXTERNPROTO SharedObjectEvent [ #!%sensor{BlaxxunZone.events}
-	eventIn SFString  set_name
-	eventOut SFString name_changed
-	eventIn  SFString set_action
-	eventOut SFString action_changed
-	eventIn  MFString set_attributes
-	eventOut MFString attributes_changed
-	eventIn  MFString attributesFromServer
-	eventOut MFString attributesToServer
-	eventIn  SFTime   set_touchTime
-	eventOut SFTime   touchTime
-	eventIn  SFBool   set_isOver
-	eventOut SFBool   isOver
-	eventIn   SFBool    boolFromServer
-	eventIn   SFColor   colorFromServer
-	eventIn   SFFloat   floatFromServer
-	eventIn   SFInt32   int32FromServer
-	eventIn   SFRotation     rotationFromServer
-	eventIn   SFString  stringFromServer
-	eventIn   SFTime    timeFromServer
-	eventIn   SFVec2f   vec2fFromServer
-	eventIn   SFVec3f   vec3fFromServer
-	eventOut  SFBool    boolToServer
-	eventOut  SFColor   colorToServer
-	eventOut  SFFloat   floatToServer
-	eventOut  SFInt32   int32ToServer
-	eventOut  SFRotation     rotationToServer
-	eventOut  SFString  stringToServer
-	eventOut  SFTime    timeToServer
-	eventOut  SFVec2f   vec2fToServer
-	eventOut  SFVec3f   vec3fToServer
-	eventIn   SFBool    set_bool
-	eventIn   SFColor   set_color
-	eventIn   SFFloat   set_float
-	eventIn   SFInt32   set_int32
-	eventIn   SFRotation     set_rotation
-	eventIn   SFString  set_string
-	eventIn   SFTime    set_time
-	eventIn   SFVec2f   set_vec2f
-	eventIn   SFVec3f   set_vec3f
-	eventOut  SFBool    bool_changed
-	eventOut  SFColor   color_changed
-	eventOut  SFFloat   float_changed
-	eventOut  SFInt32   int32_changed
-	eventOut  SFRotation     rotation_changed
-	eventOut  SFString  string_changed
-	eventOut  SFTime    time_changed
-	eventOut  SFVec2f   vec2f_changed
-	eventOut  SFVec3f   vec3f_changed
-	eventOut  SFBool    initialized
-] ["urn:inet:blaxxun.com:node:SharedObjectEvent"]
+	eventIn   SFString    set_name
+	eventOut  SFString    name_changed
+	eventIn   SFString    set_action
+	eventOut  SFString    action_changed
+	eventIn   MFString    set_attributes
+	eventOut  MFString    attributes_changed
+	eventIn   MFString    attributesFromServer
+	eventOut  MFString    attributesToServer
+	eventIn   SFTime      set_touchTime
+	eventOut  SFTime      touchTime
+	eventIn   SFBool      set_isOver
+	eventOut  SFBool      isOver
+	eventIn   SFBool      boolFromServer
+	eventIn   SFColor     colorFromServer
+	eventIn   SFFloat     floatFromServer
+	eventIn   SFInt32     int32FromServer
+	eventIn   SFRotation  rotationFromServer
+	eventIn   SFString    stringFromServer
+	eventIn   SFTime      timeFromServer
+	eventIn   SFVec2f     vec2fFromServer
+	eventIn   SFVec3f     vec3fFromServer
+	eventOut  SFBool      boolToServer
+	eventOut  SFColor     colorToServer
+	eventOut  SFFloat     floatToServer
+	eventOut  SFInt32     int32ToServer
+	eventOut  SFRotation  rotationToServer
+	eventOut  SFString    stringToServer
+	eventOut  SFTime      timeToServer
+	eventOut  SFVec2f     vec2fToServer
+	eventOut  SFVec3f     vec3fToServer
+	eventIn   SFBool      set_bool
+	eventIn   SFColor     set_color
+	eventIn   SFFloat     set_float
+	eventIn   SFInt32     set_int32
+	eventIn   SFRotation  set_rotation
+	eventIn   SFString    set_string
+	eventIn   SFTime      set_time
+	eventIn   SFVec2f     set_vec2f
+	eventIn   SFVec3f     set_vec3f
+	eventOut  SFBool      bool_changed
+	eventOut  SFColor     color_changed
+	eventOut  SFFloat     float_changed
+	eventOut  SFInt32     int32_changed
+	eventOut  SFRotation  rotation_changed
+	eventOut  SFString    string_changed
+	eventOut  SFTime      time_changed
+	eventOut  SFVec2f     vec2f_changed
+	eventOut  SFVec3f     vec3f_changed
+	eventOut  SFBool      initialized
+] ["urn:inet:bitmanagement.de:node:SharedObjectEvent"]
 
 
 
@@ -1634,68 +1686,67 @@ EXTERNPROTO SharedObjectEvent [ #!%sensor{BlaxxunZone.events}
 # The node BSCollaborate is for managing user events such as Avatar movement,
 # Login/Logout events and Chat messages
 EXTERNPROTO	BSCollaborate[
-	field          SFNode      connection    #!(NULL){NetConnection}     #Node with connection to server
-	field          SFString    roomName      #!("")
-	field          MFNode      users         #!([]){UserData}            #Node array with user informations
-	eventIn        SFString    sceneName                                 #Name of the scene to wich this node belong
+	field          SFNode      connection     #!(NULL){NetConnection}  # Node with connection to server
+	field          SFString    roomName       #!("")
+	field          MFNode      users          #!([]){UserData}         # Node array with user informations
+	eventIn        SFString    sceneName                               # Name of the scene to wich this node belong
 
-	eventIn        MFString    tryLogin                                  #Credentials for login to the server
-	eventOut       SFBool      loginResult                               #The login result
-	eventOut       SFInt32     sessionId                                 #Session ID from server
-	eventOut       SFNode      hasJoined                                 #Event if someone joined the server
-	eventIn        SFTime      logOut                                    #Logout from the server
+	eventIn        MFString    tryLogin                                # Credentials for login to the server
+	eventOut       SFBool      loginResult                             # The login result
+	eventOut       SFInt32     sessionId                               # Session ID from server
+	eventOut       SFNode      hasJoined                               # Event if someone joined the server
+	eventIn        SFTime      logOut                                  # Logout from the server
 	eventOut       SFNode      hasLeft
 
 	eventIn        SFVec3f     ownPosition
 	eventIn        SFRotation  ownOrientation
 
-	eventIn        SFVec3f     userPos                                   #User Position
-	eventIn        SFRotation  userOri                                   #User Orientaion
-	eventOut       SFNode      hasLeft                                   #Event if someone leave the server
-	eventOut       SFNode      hasMoved                                  #Event if a user moved around
+	eventIn        SFVec3f     userPos                                 # User Position
+	eventIn        SFRotation  userOri                                 # User Orientaion
+	eventOut       SFNode      hasLeft                                 # Event if someone leave the server
+	eventOut       SFNode      hasMoved                                # Event if a user moved around
 
-	eventIn        MFString    meSay                                     #Sending chat messages to the server
-	eventOut       SFNode      hasSaid                                   #Chat messages from server
+	eventIn        MFString    meSay                                   # Sending chat messages to the server
+	eventOut       SFNode      hasSaid                                 # Chat messages from server
 ] ["urn:inet:bitmanagement.de:node:BSCollaborate" ]
 
 
 # Contact 7.1+
 # Establishes a connection between a server and BS Contact
 EXTERNPROTO	NetConnection [ #!%common{BSCollaborate.connection,EventStreamSensor.connection}
-   exposedField   SFBool     enabled   #!(TRUE)           # Enable or disable the connection
-   exposedField   MFString	 address   #!("localhost")    # Address of the server to connect
-   exposedField   SFInt32	 port      #!(0)              # Port number from the server
-   exposedField   SFInt32	 protocol  #!(3)              # Protocol number to use
-   eventOut       SFBool     isActive  #!(FALSE)		  # Event for established connection to server
+   exposedField   SFBool     enabled   #!(TRUE)         # Enable or disable the connection
+   exposedField   MFString   address   #!("localhost")  # Address of the server to connect
+   exposedField   SFInt32    port      #!(0)            # Port number from the server
+   exposedField   SFInt32    protocol  #!(3)            # Protocol number to use
+   eventOut       SFBool     isActive  #!(FALSE)        # Event for established connection to server
 ] ["urn:inet:bitmanagement.de:node:NetConnection"]
 
 
 # Contact 7.1+
 # The node EventStreamSensor is like a proto or script interface. It can handle many variables for sending and reciving events.
 EXTERNPROTO	EventStreamSensor [ #!%common
-	exposedField	SFNode		connection		#!(NULL){NetConnection}		# Node with connection to server
-	field			SFString	streamName		#("")						# Real name of the EventStream
-	field			SFString	lockMode		#("weak")
-	eventIn			SFBool		requestLock
-	eventOut		SFBool		initialized									# TRUE when the initial values transmitted from server
-	eventOut		SFBool		hasLock
-	eventOut		SFNode		lockOwner		#!{User}
+	exposedField  SFNode    connection   #!(NULL){NetConnection}  # Node with connection to server
+	field         SFString  streamName   #("")                    # Real name of the EventStream
+	field         SFString  lockMode     #("weak")
+	eventIn       SFBool    requestLock
+	eventOut      SFBool    initialized                           # TRUE when the initial values transmitted from server
+	eventOut      SFBool    hasLock
+	eventOut      SFNode    lockOwner    #!{User}
 ] ["urn:inet:bitmanagement.de:node:EventStreamSensor"]
 
 
 EXTERNPROTO	UserData [ #!%common{BSCollaborate.users}
-    field      SFInt32       idx
-    field      SFInt32       sessionId
-    field      SFString      nickname
-    field      SFString      avatarString
-    eventOut   SFString      loginState
-    eventOut   SFVec3f       position
-    eventOut   SFRotation    orientation
-    eventOut   SFBool        isMoving
-    eventOut   MFString      chat
-    field      SFNode        userData
+    field     SFInt32     idx
+    field     SFInt32     sessionId
+    field     SFString    nickname
+    field     SFString    avatarString
+    eventOut  SFString    loginState
+    eventOut  SFVec3f     position
+    eventOut  SFRotation  orientation
+    eventOut  SFBool      isMoving
+    eventOut  MFString    chat
+    field     SFNode      userData
 ] ["urn:inet:bitmanagement.de:node:UserData"]
-
 
 
 
@@ -1703,154 +1754,169 @@ EXTERNPROTO	UserData [ #!%common{BSCollaborate.users}
 # GeoSpatial nodes
 ###################################################################
 
-EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,GeoMap.fontTexture}
-	field	SFInt32		minChar
-	field	SFInt32		maxChar
-	field	SFNode		fontStyle					#!{FontStyle}
-	field	MFString	family
-	field	SFString	style
-] "urn:inet:bitmanagement.de:node:FontTexture"
+EXTERNPROTO GeoLocation [ #!%common
+	exposedField  SFNode    metadata       #!(NULL)
+	exposedField  SFVec3f   bboxCenter     #!(0 0 0)
+	exposedField  SFVec3f   bboxSize       #!(-1 -1 -1)
+	exposedField  SFVec3d   geoCoords      #!(0 0 0)
+	exposedField  SFNode    geoOrigin      #!(NULL)
+	exposedField  MFString  geoSystem      #!([GD, WE])
+	exposedField  SFBool    clampToGround  #!(FALSE)
+	exposedField  SFBool    alignToGCC     #!(FALSE)
+	exposedField  MFNode    children       #!([])
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
+] ["urn:inet:bitmanagement.de:node:GeoLocation"]
 
-#EXTERNPROTO GeoSphere [ #!%geometry
-#	exposedField SFVec3f bboxSize
-#	exposedField SFVec3f bboxCenter
-#	field SFNode geoOrigin
-#	field MFString geoSystem
-#	exposedField SFBool enabled
-#	exposedField SFBool solid
-#	exposedField SFVec3d rangeMin
-#	exposedField SFVec3d rangeMax
-#	exposedField SFBool zbuffer
-#	exposedField SFBool zwrite
-#	exposedField SFVec2f depthBias
-#	exposedField SFBool gridEnabled
-#	exposedField SFColor gridColor
-#	exposedField SFVec2f gridSpacing
-#	exposedField SFString imageMap
-#	exposedField SFInt32 imageLevelMax
-#	exposedField SFInt32 imageLevelBias
-#	exposedField SFBool imageBorder
-#	exposedField SFBool elevationEnabled
-#	exposedField SFString elevationMap
-#	exposedField SFInt32 elevationLevelMax
-#	exposedField SFInt32 elevationLevelBias
-#	exposedField SFDouble elevationScale
-#	exposedField SFDouble elevationClamp
-#	exposedField SFDouble elevationOffset
-#	exposedField SFVec2f elevationSubdivision
-#	exposedField SFBool shaded
-#	exposedField SFDouble  TER_MAP_W
-#	exposedField SFDouble  TER_MAP_H
-#	exposedField SFDouble  TER_MAP_X
-#	exposedField SFDouble  TER_MAP_Y
-#	exposedField MFNode layer
-#	eventOut SFBool isLoaded
-#	eventOut SFString currentImageMap
-#	eventOut SFString currentElevationMap
-#	eventOut SFInt32 renderedLevel
-#	eventOut SFInt32 waitingResources
-#	eventOut SFInt32 pendingResources
-#	eventOut SFInt32 loadedResources
-#] "urn:inet:bitmanagement.de:node:GeoSphere"
 
-#EXTERNPROTO GeoLocation [
-#	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	field SFVec3f bboxCenter						#(0 0 0)
-#	field SFVec3f bboxSize							#(-1 -1 -1)
-#	exposedField SFVec3d geoCoords
-#	field SFNode geoOrigin
-#	field MFString geoSystem
-#	exposedField MFNode children
-#] "urn:inet:bitmanagement.de:node:GeoLocation"
+EXTERNPROTO GeoSphere [ #!%geometry
+	exposedField  SFVec3f   bboxSize
+	exposedField  SFVec3f   bboxCenter
+	field         SFNode    geoOrigin
+	field         MFString  geoSystem
+	exposedField  SFBool    enabled
+	exposedField  SFBool    solid
+	exposedField  SFVec3d   rangeMin
+	exposedField  SFVec3d   rangeMax
+	exposedField  SFBool    zbuffer
+	exposedField  SFBool    zwrite
+	exposedField  SFVec2f   depthBias
+	exposedField  SFBool    gridEnabled
+	exposedField  SFColor   gridColor
+	exposedField  SFVec2f   gridSpacing
+	exposedField  SFString  imageMap
+	exposedField  SFInt32   imageLevelMax
+	exposedField  SFInt32   imageLevelBias
+	exposedField  SFBool    imageBorder
+	exposedField  SFBool    elevationEnabled
+	exposedField  SFString  elevationMap
+	exposedField  SFInt32   elevationLevelMax
+	exposedField  SFInt32   elevationLevelBias
+	exposedField  SFDouble  elevationScale
+	exposedField  SFDouble  elevationClamp
+	exposedField  SFDouble  elevationOffset
+	exposedField  SFVec2f   elevationSubdivision
+	exposedField  SFBool    shaded
+	exposedField  SFDouble  TER_MAP_W
+	exposedField  SFDouble  TER_MAP_H
+	exposedField  SFDouble  TER_MAP_X
+	exposedField  SFDouble  TER_MAP_Y
+	exposedField  MFNode    layer
+	eventOut      SFBool    isLoaded
+	eventOut      SFString  currentImageMap
+	eventOut      SFString  currentElevationMap
+	eventOut      SFInt32   renderedLevel
+	eventOut      SFInt32   waitingResources
+	eventOut      SFInt32   pendingResources
+	eventOut      SFInt32   loadedResources
+] "urn:inet:bitmanagement.de:node:GeoSphere"
 
-#EXTERNPROTO GeoCoordinate[
-#	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	exposedField MFVec3d point
-#	field SFNode geoOrigin
-#	field MFString geoSystem
-#] "urn:inet:bitmanagement.de:node:GeoCoordinate"
 
-#EXTERNPROTO GeoViewpoint[
-#	exposedField SFNode metadata					#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	field SFNode geoOrigin
-#	field MFString geoSystem
-#	field SFVec3d position
-#	field SFRotation orientation
-#	exposedField SFFloat fieldOfView
-#	exposedField SFBool jump
-#	exposedField MFString navType
-#	exposedField SFBool headlight
-#	field SFString description
-#	field SFFloat speedFactor
-#	eventIn SFVec3d set_position
-#	eventIn SFRotation set_orientation
-#	eventIn SFBool set_bind
-#	eventOut SFTime bindTime
-#	eventOut SFBool isBound
-#] "urn:inet:bitmanagement.de:node:GeoViewpoint"
+EXTERNPROTO GeoLocation [
+	exposedField  SFNode    metadata    #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	field         SFVec3f   bboxCenter  #(0 0 0)
+	field         SFVec3f   bboxSize    #(-1 -1 -1)
+	exposedField  SFVec3d   geoCoords
+	field         SFNode    geoOrigin
+	field         MFString  geoSystem
+	exposedField  MFNode    children
+] "urn:inet:bitmanagement.de:node:GeoLocation"
 
-#EXTERNPROTO GeoProximitySensor [
-#	exposedField SFVec3d geoCenter
-#	exposedField SFVec3d size
-#	exposedField SFBool enabled
-#	eventOut SFBool isActive
-#	eventOut SFVec3f position
-#	eventOut SFRotation orientation
-#	eventOut SFTime enterTime
-#	eventOut SFTime exitTime
-#	eventOut SFVec3d centerOfRotation
-#	exposedField SFVec3d geoCoord
-#	exposedField SFNode geoOrigin
-#	eventOut MFString geoSystem
-#	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#] "urn:inet:bitmanagement.de:node:GeoProximitySensor"
 
-#EXTERNPROTO	GeoLOD [
-#	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	field			SFVec3f		bboxCenter
-#	field			SFVec3f		bboxSize
-#	field			MFString	rootUrl
-#	field			MFNode		rootNode
-#	field			MFString	child1Url
-#	field			MFString	child2Url
-#	field			MFString	child3Url
-#	field			MFString	child4Url
-#	field			SFFloat		range
-#	field			SFNode		geoOrigin
-#	field			MFString	geoSystem
-#	field			SFVec3d		center
-#] "urn:inet:bitmanagement.de:node:GeoLOD"
+EXTERNPROTO GeoCoordinate[
+	exposedField  SFNode    metadata    #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  MFVec3d   point
+	field         SFNode    geoOrigin
+	field         MFString  geoSystem
+] "urn:inet:bitmanagement.de:node:GeoCoordinate"
 
-#EXTERNPROTO	GeoMap [
-#	exposedField	SFBool		enabled
-#	field			SFString	url
-#	field			MFString	layerAttributes
-#	eventIn			SFString	set_layerAttribute
-#	exposedField	MFNode		fontTexture				#!{FontTexture}
-#	exposedField	SFNode		symbolTexture
-#	field			SFString	labelField
-#	field			SFString	labelChars
-#	exposedField	SFBool		zbuffer
-#	exposedField	SFBool		zwrite
-#	exposedField	SFDouble	scaleMin
-#	exposedField	SFDouble	scaleMax
-#	exposedField	SFDouble	scaleLevel
-#] "urn:inet:bitmanagement.de:node:GeoMap"
 
-#EXTERNPROTO GeoTouchSensor [
-#	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-#	field SFNode geoOrigin
-#	field MFString geoSystem
-#	exposedField SFBool enabled
-#	eventOut SFVec3f hitNormal
-#	eventOut SFVec3f hitPoint
-#	eventOut SFVec2f hitTexCoord
-#	eventOut SFVec3d hitGeoCoord
-#	eventOut SFBool isActive
-#	eventOut SFBool isOver
-#	eventOut SFTime touchTime
-#	exposedField SFString description
-#] "urn:inet:bitmanagement.de:node:GeoTouchSensor"
+EXTERNPROTO GeoViewpoint[
+	exposedField  SFNode      metadata    #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	field         SFNode      geoOrigin
+	field         MFString    geoSystem
+	field         SFVec3d     position
+	field         SFRotation  orientation
+	exposedField  SFFloat     fieldOfView
+	exposedField  SFBool      jump
+	exposedField  MFString    navType
+	exposedField  SFBool      headlight
+	field         SFString    description
+	field         SFFloat     speedFactor
+	eventIn       SFVec3d     set_position
+	eventIn       SFRotation  set_orientation
+	eventIn       SFBool      set_bind
+	eventOut      SFTime      bindTime
+	eventOut      SFBool      isBound
+] "urn:inet:bitmanagement.de:node:GeoViewpoint"
+
+
+EXTERNPROTO GeoProximitySensor [
+	exposedField  SFNode      metadata          #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3d     geoCenter
+	exposedField  SFVec3d     size
+	exposedField  SFBool      enabled
+	eventOut      SFBool      isActive
+	eventOut      SFVec3f     position
+	eventOut      SFRotation  orientation
+	eventOut      SFTime      enterTime
+	eventOut      SFTime      exitTime
+	eventOut      SFVec3d     centerOfRotation
+	exposedField  SFVec3d     geoCoord
+	exposedField  SFNode      geoOrigin
+	eventOut      MFString    geoSystem
+] "urn:inet:bitmanagement.de:node:GeoProximitySensor"
+
+
+EXTERNPROTO GeoLOD [
+	exposedField  SFNode      metadata          #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	field         SFVec3f     bboxCenter
+	field         SFVec3f     bboxSize
+	field         MFString    rootUrl
+	field         MFNode      rootNode
+	field         MFString    child1Url
+	field         MFString    child2Url
+	field         MFString    child3Url
+	field         MFString    child4Url
+	field         SFFloat     range
+	field         SFNode      geoOrigin
+	field         MFString    geoSystem
+	field         SFVec3d     center
+] "urn:inet:bitmanagement.de:node:GeoLOD"
+
+
+EXTERNPROTO GeoMap [
+	exposedField  SFNode    metadata          #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFBool    enabled
+	field         SFString  url
+	field         MFString  layerAttributes
+	eventIn       SFString  set_layerAttribute
+	exposedField  MFNode    fontTexture         #!{FontTexture}
+	exposedField  SFNode    symbolTexture
+	field         SFString  labelField
+	field         SFString  labelChars
+	exposedField  SFBool    zbuffer
+	exposedField  SFBool    zwrite
+	exposedField  SFDouble  scaleMin
+	exposedField  SFDouble  scaleMax
+	exposedField  SFDouble  scaleLevel
+] "urn:inet:bitmanagement.de:node:GeoMap"
+
+
+EXTERNPROTO GeoTouchSensor [
+	exposedField  SFNode    metadata     #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	field         SFNode    geoOrigin
+	field         MFString  geoSystem
+	exposedField  SFBool    enabled
+	eventOut      SFVec3f   hitNormal
+	eventOut      SFVec3f   hitPoint
+	eventOut      SFVec2f   hitTexCoord
+	eventOut      SFVec3d   hitGeoCoord
+	eventOut      SFBool    isActive
+	eventOut      SFBool    isOver
+	eventOut      SFTime    touchTime
+	exposedField  SFString  description
+] "urn:inet:bitmanagement.de:node:GeoTouchSensor"
 
 
 
@@ -1860,57 +1926,56 @@ EXTERNPROTO FontTexture [ #!%texture{Appearance.texture,MultiTexture.texture,Geo
 
 # The GroupAntiAlias node is rendering the content of the Group to a texture buffer of a different resolution and then renders the buffer with antialising applied
 EXTERNPROTO GroupAntiAlias[
-	exposedField SFVec3f bboxSize
-	exposedField SFVec3f bboxCenter
-	exposedField SFNode metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField SFBool enabled
-	exposedField SFVec2f resolution
-	exposedField MFString parameter
-	eventIn MFNode addChildren
-	eventIn MFNode removeChildren
-	exposedField MFNode children
-]
-"urn:inet:bitmanagement.de:node:GroupAntiAlias"
+	exposedField  SFNode    metadata        #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3f   bboxSize
+	exposedField  SFVec3f   bboxCenter
+	exposedField  SFBool    enabled
+	exposedField  SFVec2f   resolution
+	exposedField  MFString  parameter
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
+	exposedField  MFNode    children
+] "urn:inet:bitmanagement.de:node:GroupAntiAlias"
 
 
 # A composite texture that also outputs the depth map (which is very handy for fancy post-processing shaders)
 EXTERNPROTO GroupRenderToTexture [ #!%group
-	exposedField	SFVec3f		bboxSize
-	exposedField	SFVec3f		bboxCenter
-	exposedField	SFNode		metadata				#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField	SFBool		enabled
-	exposedField	SFString	path
-	exposedField	SFNode		background
-	exposedField	MFNode		children
-	exposedField	MFNode		outputChildren
-	exposedField	MFNode		outputTexture
-	exposedField	SFNode		outputDepthTexture
-	eventIn			MFNode		addChildren
-	eventIn			MFNode		removeChildren
+	exposedField  SFNode    metadata            #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3f   bboxSize
+	exposedField  SFVec3f   bboxCenter
+	exposedField  SFBool    enabled
+	exposedField  SFString  path
+	exposedField  SFNode    background
+	exposedField  MFNode    children
+	exposedField  MFNode    outputChildren
+	exposedField  MFNode    outputTexture
+	exposedField  SFNode    outputDepthTexture
+	eventIn       MFNode    addChildren
+	eventIn       MFNode    removeChildren
 ] "urn:inet:bitmanagement.de:node:GroupRenderToTexture"
 
 
 EXTERNPROTO PostProcessing [ #!%group
-	exposedField	SFVec3f		bboxSize
-	exposedField	SFVec3f		bboxCenter
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField	SFBool		enabled
-	exposedField	MFNode		inputTexture
-	exposedField	MFNode		outputTexture
-	exposedField	SFNode		outputDepthTexture
-	exposedField	MFNode		shaders
-	eventIn			MFNode		addChildren
-	eventIn			MFNode		removeChildren
-	exposedField	MFNode		children
-	exposedField	MFNode		outputChildren
-	exposedField	SFNode		background
+	exposedField  SFNode   metadata            #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3f  bboxSize
+	exposedField  SFVec3f  bboxCenter
+	exposedField  SFBool   enabled
+	exposedField  MFNode   inputTexture
+	exposedField  MFNode   outputTexture
+	exposedField  SFNode   outputDepthTexture
+	exposedField  MFNode   shaders
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+	exposedField  MFNode   children
+	exposedField  MFNode   outputChildren
+	exposedField  SFNode   background
 ] "urn:inet:bitmanagement.de:node:PostProcessing"
 
 
 # A .fx shader shipped with BS Contact
 EXTERNPROTO PackagedShader [ #!%script
-	field			SFString	language
-	field			MFString	url
+	field  SFString  language
+	field  MFString  url
 	#
 	# (and user-defined fields, like Script nodes)
 	#
@@ -1925,25 +1990,25 @@ EXTERNPROTO PackagedShader [ #!%script
 # Contact 7.1+
 # The node PhysicTransform is like a normal Transform node with special fields for physic relevant values.
 EXTERNPROTO	PhysicsTransform[
-	eventIn        MFNode     addChildren
-    eventIn        MFNode     removeChildren
-    exposedField   MFNode     children
-    exposedField   SFVec3f    translation
-    exposedField   SFRotation rotation
-    exposedField   SFVec3f    scale
-    exposedField   SFRotation scaleOrientation
-    exposedField   SFVec3f    center
-    field          SFVec3f    bboxCenter
-    field          SFVec3f    bboxSize
+	eventIn       MFNode      addChildren
+    eventIn       MFNode      removeChildren
+    exposedField  MFNode      children
+    exposedField  SFVec3f     translation
+    exposedField  SFRotation  rotation
+    exposedField  SFVec3f     scale
+    exposedField  SFRotation  scaleOrientation
+    exposedField  SFVec3f     center
+    field         SFVec3f     bboxCenter
+    field         SFVec3f     bboxSize
 
     # Physics fields
-    field          SFBool     fixed					#!(FALSE)			# Field for static or non static objects
-    exposedField   SFString   mode					#!("auto")			# Keywords for physic initialization
-    exposedField   SFFloat    mass					#!(1)				# Mass of the object
-    exposedField   SFVec3f    forceDir				#!(0 0 0)			# Force direction to manipulate the object
-    exposedField   SFVec3f    forceAt				#!(0 0 0)			# Force at wich point
-    exposedField   SFBool     forceDirLocal			#!(FALSE)			# In local or global coordinates
-    exposedField   SFBool     forceAtLocal			#!(TRUE)			# In local or global coordinates
+    field         SFBool      fixed             #!(FALSE)   # Field for static or non static objects
+    exposedField  SFString    mode              #!("auto")  # Keywords for physic initialization
+    exposedField  SFFloat     mass              #!(1)       # Mass of the object
+    exposedField  SFVec3f     forceDir          #!(0 0 0)   # Force direction to manipulate the object
+    exposedField  SFVec3f     forceAt           #!(0 0 0)   # Force at wich point
+    exposedField  SFBool      forceDirLocal     #!(FALSE)   # In local or global coordinates
+    exposedField  SFBool      forceAtLocal      #!(TRUE)    # In local or global coordinates
 
 ]["urn:inet:bitmanagement.de:node:PhysicsTransform"]
 
@@ -1951,81 +2016,80 @@ EXTERNPROTO	PhysicsTransform[
 # Contact 7.1+
 # To define special physicalized shapes with a high poly model and a simpler physic shape, BS Contact 7.1 provide the node PhysicShape.
 EXTERNPROTO	PhysicsShape[
-     exposedField   SFNode     appearance          #!{Appearance,ShaderAppearance}
-     exposedField   SFNode     geometry            #!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
+     exposedField  SFNode    appearance          #!{Appearance,ShaderAppearance}
+     exposedField  SFNode    geometry            #!%geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}geometry{Box,Cone,Cylinder,Sphere,ElevationGrid,Extrusion,IndexedFaceSet,IndexedLineSet,PointSet,NurbsSurface,Rectangle,Bitmap,Circle,Curve2D,IndexedFaceSet2D,IndexedLineSet2D,PointSet2D,Particles}
 
      # Physics fields
-     exposedField   SFFloat    mass                #!(0)													# Mass of the shape
-     exposedField   SFString   mode                #!("auto")												# Keywords for physic initialization
-     exposedField   SFNode     collision_geometry  #!(NULL){box,sphere,cone,cylinder,indexedFaceSet}		# Proxy collision geomtry
+     exposedField  SFFloat   mass                #!(0)                                              # Mass of the shape
+     exposedField  SFString  mode                #!("auto")                                         # Keywords for physic initialization
+     exposedField  SFNode    collision_geometry  #!(NULL){box,sphere,cone,cylinder,indexedFaceSet}  # Proxy collision geomtry
 ]["urn:inet:bitmanagement.de:node:PhysicsShape"]
 
 
 # Contact 7.1+
 # You can customize the physics engine and set some global threshholds with the physics node PhysicsInfo
 EXTERNPROTO	PhysicsInfo [
-	exposedField	SFFloat		skinWidth			#!(0.01)			# Defining how thik the skin is
-	exposedField	SFVec3f		gravity				#!(0 -9.81 0)		# The global gravity
-	exposedField	SFFloat		bounceThreshold		#!(-2.0)			# At which threshold objects stops with bouncing
-	field			SFBool		collision			#!(TRUE)			# Objects can collide
-	exposedField	SFFloat		sleepLinVel			#!(0.1)				# At which linear velocity objects stops with moving
-	exposedField	SFFloat		sleepAngVel			#!(0.1)				# At which angle velocity objects stops wich rotating
-	exposedField	SFInt32		iterations			#!(8)				# Maximum of iterations to divide a timestep into
-	exposedField	SFFloat		timeStep			#!(0.016)			# Maximum size to take for a timestep
-	exposedField	SFFloat		angularDamping		#!(0.05)			# Default angular Damping
-	exposedField	SFFloat		linearDamping		#!(0.0)				# Default linear Damping
+	exposedField  SFFloat  skinWidth        #!(0.01)       # Defining how thik the skin is
+	exposedField  SFVec3f  gravity          #!(0 -9.81 0)  # The global gravity
+	exposedField  SFFloat  bounceThreshold  #!(-2.0)       # At which threshold objects stops with bouncing
+	field         SFBool   collision        #!(TRUE)       # Objects can collide
+	exposedField  SFFloat  sleepLinVel      #!(0.1)        # At which linear velocity objects stops with moving
+	exposedField  SFFloat  sleepAngVel      #!(0.1)        # At which angle velocity objects stops wich rotating
+	exposedField  SFInt32  iterations       #!(8)          # Maximum of iterations to divide a timestep into
+	exposedField  SFFloat  timeStep         #!(0.016)      # Maximum size to take for a timestep
+	exposedField  SFFloat  angularDamping   #!(0.05)       # Default angular Damping
+	exposedField  SFFloat  linearDamping    #!(0.0)        # Default linear Damping
 ]["urn:inet:bitmanagement.de:node:PhysicsInfo"]
 
 
 # Wrapper for Windows' text-to-speech.
 EXTERNPROTO TextToSpeech [
-	exposedField	SFString	description			#!("")
-	exposedField	SFFloat		pitch				#!(0)
-	exposedField	SFFloat		volume				#!(0)
-	exposedField	SFFloat		speed				#!(0)
-	exposedField	SFBool		enabled				#!(TRUE)
-	eventIn			SFString	text									# Send a value to this eventIn to trigger the voice.
-	eventOut		SFBool		isActive
+	exposedField  SFString  description  #!("")
+	exposedField  SFFloat   pitch        #!(0)
+	exposedField  SFFloat   volume       #!(0)
+	exposedField  SFFloat   speed        #!(0)
+	exposedField  SFBool    enabled      #!(TRUE)
+	eventIn       SFString  text         # Send a value to this eventIn to trigger the voice.
+	eventOut      SFBool    isActive
 ] "urn:inet:bitmanagement.de:node:TextToSpeech"
 
 
 # Contact 7.2+
 EXTERNPROTO BufferTexture [ #!%texture{Appearance.texture,MultiTexture.texture,ShaderAppearance.texture,FlashMovieTexture.texture}
-	exposedField	SFBool		repeatS				#!(FALSE)
-	exposedField	SFBool		repeatT				#!(FALSE)
-	exposedField	SFString	format				#!("X8R8G8B8")
-	exposedField	SFInt32		pixelWidth			#!(128)
-	exposedField	SFInt32		pixelHeight			#!(128)
-	exposedField	SFInt32		levels				#!(1)
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField	MFString	parameter			#!([])				# For example: ["nomipmap" "animated"]
-	eventIn			SFBool		set_unload
-	eventIn			SFInt32		set_lod
-	eventOut		SFBool		isLoaded
-	eventOut		SFBool		isFlipped
+	exposedField  SFBool    repeatS      #!(FALSE)
+	exposedField  SFBool    repeatT      #!(FALSE)
+	exposedField  SFString  format       #!("X8R8G8B8")
+	exposedField  SFInt32   pixelWidth   #!(128)
+	exposedField  SFInt32   pixelHeight  #!(128)
+	exposedField  SFInt32   levels       #!(1)
+	exposedField  SFNode    metadata     #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  MFString  parameter    #!([])  # For example: ["nomipmap" "animated"]
+	eventIn       SFBool    set_unload
+	eventIn       SFInt32   set_lod
+	eventOut      SFBool    isLoaded
+	eventOut      SFBool    isFlipped
 ] "urn:inet:bitmanagement.de:node:BufferTexture"
 
 
 # Contact 7.2+ (IVN build only)
 EXTERNPROTO KinectSensor [
-	exposedField	SFVec2f		depthRangeClamp		#(1 1200)
-	exposedField	SFNode		colorTexture		#{BufferTexture}
-	exposedField	MFString	parameter			#([])				# Example: ["faceDetection=false", "faceDetectionSimple=true", "faceDetection2=true", "faceDetectionDepth=false", "averageDepth=1"]
+	exposedField  SFVec2f   depthRangeClamp  #(1 1200)
+	exposedField  SFNode    colorTexture     #{BufferTexture}
+	exposedField  MFString  parameter        #([])  # Example: ["faceDetection=false", "faceDetectionSimple=true", "faceDetection2=true", "faceDetectionDepth=false", "averageDepth=1"]
 ] "urn:inet:bitmanagement.de:node:KinectSensor"
-
 
 
 # Contact 7.2+
 EXTERNPROTO GeometryInstance [ #!%group
-	exposedField	SFNode		metadata			#!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
-	exposedField	SFVec3f		bboxSize			#!(-1 -1 -1)
-	exposedField	SFVec3f		bboxCenter			#!(0 0 0)
-	exposedField	SFVec2f		range				#!(0 100)
-	exposedField	SFNode		shader				#!(NULL){PackagedShader}
-	exposedField	MFVec3f		translation			#!(0 0 0)
-	exposedField	MFRotation	rotation			#!(0 0 1 0)
-	exposedField	MFVec3f		scale				#!(1 1 1)
-	exposedField	SFNode		shape				#!(NULL){Shape}
+	exposedField  SFNode      metadata     #!(NULL){MetadataSet,MetadataString,MetadataFloat,MetadataInteger}
+	exposedField  SFVec3f     bboxSize     #!(-1 -1 -1)
+	exposedField  SFVec3f     bboxCenter   #!(0 0 0)
+	exposedField  SFVec2f     range        #!(0 100)
+	exposedField  SFNode      shader       #!(NULL){PackagedShader}
+	exposedField  MFVec3f     translation  #!(0 0 0)
+	exposedField  MFRotation  rotation     #!(0 0 1 0)
+	exposedField  MFVec3f     scale        #!(1 1 1)
+	exposedField  SFNode      shape        #!(NULL){Shape}
 ] "urn:inet:bitmanagement.de:node:GeometryInstance"
 
 
@@ -2034,182 +2098,356 @@ EXTERNPROTO GeometryInstance [ #!%group
 # Dampers
 ###################################################################
 
-EXTERNPROTO ScalarDamper [
-	eventIn			SFFloat		set_destination
-	eventIn			SFFloat		set_value
-	exposedField	SFNode		metadata			#(NULL)
-	exposedField	SFFloat		tau					#(1)
-	exposedField	SFFloat		tolerance			#(-1)
-	eventOut		SFBool		isActive
-	eventOut		SFFloat		value_changed
-	field			SFFloat		initialValue		#(0)
-	field			SFFloat		initialDestination	#(0)
-	field			SFInt32		order				#(0)
-] "urn:inet:bitmanagement.de:node:ScalarDamper"
-
-EXTERNPROTO PositionDamper [
-	eventIn			SFVec3f		set_destination
-	eventIn			SFVec3f		set_value
-	exposedField	SFNode		metadata			#(NULL)
-	exposedField	SFFloat		tau					#(1)
-	exposedField	SFFloat		tolerance			#(-1)
-	eventOut		SFBool		isActive
-	eventOut		SFVec3f		value_changed
-	field			SFVec3f		initialValue		#(0 0 0)
-	field			SFVec3f		initialDestination	#(0 0 0)
-	field			SFInt32		order				#(0)
-] "urn:inet:bitmanagement.de:node:PositionDamper"
-
-EXTERNPROTO OrientationDamper [
-	eventIn			SFRotation	set_destination
-	eventIn			SFRotation	set_value
-	exposedField	SFNode		metadata			#(NULL)
-	exposedField	SFFloat		tau					#(1)
-	exposedField	SFFloat		tolerance			#(-1)
-	eventOut		SFBool		isActive
-	eventOut		SFRotation	value_changed
-	field			SFRotation	initialValue		#(0 1 0 0)
-	field			SFRotation	initialDestination	#(0 1 0 0)
-	field			SFInt32		order				#(0)
-] "urn:inet:bitmanagement.de:node:OrientationDamper"
-
 EXTERNPROTO ColorDamper [
-	eventIn			SFColor		set_destination
-	eventIn			SFColor		set_value
-	exposedField	SFNode		metadata			#(NULL)
-	exposedField	SFFloat		tau					#(1)
-	exposedField	SFFloat		tolerance			#(-1)
-	eventOut		SFBool		isActive
-	eventOut		SFColor		value_changed
-	field			SFColor		initialValue		#(0.8 0.8 0.8)
-	field			SFColor		initialDestination	#(0.8 0.8 0.8)
-	field			SFInt32		order				#(0)
+	exposedField  SFNode   metadata            #!(NULL)
+	eventOut      SFBool   isActive
+	exposedField  SFFloat  tau                 #!(1)
+	exposedField  SFFloat  tolerance           #!(-1)
+	exposedField  SFInt32  order               #!(3)
+	eventIn       SFColor  set_destination
+	eventIn       SFColor  set_value
+	eventOut      SFColor  value_changed
+	exposedField  SFColor  initialDestination  #!(0 0 0)
+	exposedField  SFColor  initialValue        #!(0 0 0)
 ] "urn:inet:bitmanagement.de:node:ColorDamper"
 
+
 EXTERNPROTO CoordinateDamper [
-	eventIn			MFVec3f		set_destination
-	eventIn			MFVec3f		set_value
-	exposedField	SFNode		metadata			#(NULL)
-	exposedField	SFFloat		tau					#(1)
-	exposedField	SFFloat		tolerance			#(-1)
-	eventOut		SFBool		isActive
-	eventOut		MFVec3f		value_changed
-	field			MFVec3f		initialValue		#([0 0 0])
-	field			MFVec3f		initialDestination	#([0 0 0])
-	field			SFInt32		order				#(0)
-] "urn:inet:bitmanagement.de:node:CoordinateDamper"
+	exposedField  SFNode  metadata             #!(NULL)
+	eventOut      SFBool  isActive
+	exposedField  SFFloat  tau                 #!(1)
+	exposedField  SFFloat  tolerance           #!(-1)
+	exposedField  SFInt32  order               #!(3)
+	eventIn       MFVec3f  set_destination
+	eventIn       MFVec3f  set_value
+	eventOut      MFVec3f  value_changed
+	exposedField  MFVec3f  initialDestination  #!([])
+	exposedField  MFVec3f  initialValue        #!([])
+]["urn:inet:bitmanagement.de:node:CoordinateDamper"]
+
+
+EXTERNPROTO OrientationDamper [
+	exposedField  SFNode      metadata            #!(NULL)
+	eventOut      SFBool      isActive
+	exposedField  SFFloat     tau                 #!(1)
+	exposedField  SFFloat     tolerance           #!(-1)
+	exposedField  SFInt32     order               #!(3)
+	eventIn       SFRotation  set_destination
+	eventIn       SFRotation  set_value
+	eventOut      SFRotation  value_changed
+	exposedField  SFRotation  initialDestination  #!(0 0 1 0)
+	exposedField  SFRotation  initialValue        #!(0 0 1 0)
+]["urn:inet:bitmanagement.de:node:OrientationDamper"]
+
+
+EXTERNPROTO PositionDamper [
+	exposedField  SFNode   metadata            #!(NULL)
+	eventOut      SFBool   isActive
+	exposedField  SFFloat  tau                 #!(1)
+	exposedField  SFFloat  tolerance           #!(-1)
+	exposedField  SFInt32  order               #!(3)
+	eventIn       SFVec3f  set_destination
+	eventIn       SFVec3f  set_value
+	eventOut      SFVec3f  value_changed
+	exposedField  SFVec3f  initialDestination  #!(0 0 0)
+	exposedField  SFVec3f  initialValue        #!(0 0 0)
+]["urn:inet:bitmanagement.de:node:PositionDamper"]
+
+
+EXTERNPROTO PositionDamper2D [
+	exposedField  SFNode   metadata            #!(NULL)
+	eventOut      SFBool   isActive
+	exposedField  SFFloat  tau                 #!(1)
+	exposedField  SFFloat  tolerance           #!(-1)
+	exposedField  SFInt32  order               #!(3)
+	eventIn       SFVec2f  set_destination
+	eventIn       SFVec2f  set_value
+	eventOut      SFVec2f  value_changed
+	exposedField  SFVec2f  initialDestination  #!(0 0)
+	exposedField  SFVec2f  initialValue        #!(0 0)
+]["urn:inet:bitmanagement.de:node:PositionDamper2D"]
+
+
+EXTERNPROTO ScalarDamper [
+	exposedField  SFNode   metadata           #!(NULL)
+	eventOut      SFBool   isActive
+	exposedField  SFFloat  tau                #!(1)
+	exposedField  SFFloat  tolerance          #!(-1)
+	exposedField  SFInt32  order              #!(3)
+	eventIn       SFFloat  set_destination
+	eventIn       SFFloat  set_value
+	eventOut      SFFloat  value_changed
+	exposedField  SFFloat  initialDestination  #!(0)
+	exposedField  SFFloat  initialValue        #!(0)
+]["urn:inet:bitmanagement.de:node:ScalarDamper"]
+
+
+EXTERNPROTO TexCoordDamper2D [
+	exposedField  SFNode   metadata            #!(NULL)
+	eventOut      SFBool   isActive
+	exposedField  SFFloat  tau                 #!(1)
+	exposedField  SFFloat  tolerance           #!(-1)
+	exposedField  SFInt32  order               #!(3)
+	eventIn       MFVec2f  set_destination
+	eventIn       MFVec2f  set_value
+	eventOut      MFVec2f  value_changed
+	exposedField  MFVec2f  initialDestination  #!([])
+	exposedField  MFVec2f  initialValue        #!([])
+]["urn:inet:bitmanagement.de:node:TexCoordDamper2D"]
 
 
 ###################################################################
-# VR nodes
+# Former VR nodes
 ###################################################################
 
-EXTERNPROTO VrController [
-	exposedField	SFNode		metadata
-	exposedField	SFBool		enabled
-	eventOut		SFBool		isActive
-	eventOut		SFVec3f		positionLeft
-	eventOut		SFVec3f		positionRight
-	eventOut		SFRotation	orientationLeft
-	eventOut		SFRotation	orientationRight
-	eventOut		MFBool		eventsAvailable
-	exposedField	MFNode		extensions
-] "urn:inet:bitmanagement.de:node:VrController"
+#EXTERNPROTO VrDevice [
+#	exposedField  SFNode      metadata
+#	exposedField  SFBool      enabled
+#	eventOut      SFBool      isActive
+#	eventOut      SFString    type
+#	eventOut      SFVec3f     eyeOffsetLeft
+#	eventOut      SFVec3f     eyeOffsetRight
+#	eventOut      SFBool      hasTouchController
+#	eventOut      SFBool      hasRemoteController
+#	eventOut      SFBool      hasXBoxController
+#	eventOut      SFVec3f     headPosition
+#	eventOut      SFRotation  headOrientation
+#	exposedField  SFBool      gazeEnabled
+#	exposedField  MFNode      controller
+#] "urn:inet:bitmanagement.de:node:VrDevice"
 
-EXTERNPROTO VrDevice [
-	exposedField	SFNode		metadata
-	exposedField	SFBool		enabled
-	eventOut		SFBool		isActive
-	eventOut		SFString	type
-	eventOut		SFVec3f		eyeOffsetLeft
-	eventOut		SFVec3f		eyeOffsetRight
-	eventOut		SFBool		hasTouchController
-	eventOut		SFBool		hasRemoteController
-	eventOut		SFBool		hasXBoxController
-	eventOut		SFVec3f		headPosition
-	eventOut		SFRotation	headOrientation
-	exposedField	SFBool		gazeEnabled
-	exposedField	MFNode		controller
-] "urn:inet:bitmanagement.de:node:VrDevice"
+#EXTERNPROTO VrController [
+#	exposedField  SFNode      metadata
+#	exposedField  SFBool      enabled
+#	eventOut      SFBool      isActive
+#	eventOut      SFVec3f     positionLeft
+#	eventOut      SFVec3f     positionRight
+#	eventOut      SFRotation  orientationLeft
+#	eventOut      SFRotation  orientationRight
+#	eventOut      MFBool      eventsAvailable
+#	exposedField  MFNode      extensions
+#] "urn:inet:bitmanagement.de:node:VrController"
 
-EXTERNPROTO OculusTouch [
-	exposedField	SFNode		metadata
-	exposedField	SFBool		enabled
-	eventOut		SFBool		isActive
-	eventOut		SFBool		buttonA
-	eventOut		SFBool		buttonB
-	eventOut		SFBool		buttonX
-	eventOut		SFBool		buttonY
-	eventOut		SFBool		buttonThumbLeft
-	eventOut		SFBool		buttonThumbRight
-	eventOut		SFBool		buttonShoulderLeft
-	eventOut		SFBool		buttonShoulderRight
-	eventOut		SFFloat		indexTriggerLeft
-	eventOut		SFFloat		indexTriggerRight
-	eventOut		SFFloat		handTriggerLeft
-	eventOut		SFFloat		handTriggerRight
-	eventOut		SFVec2f		thumbstickLeft
-	eventOut		SFVec2f		thumbstickRight
-	eventOut		SFBool		buttonATouch
-	eventOut		SFBool		buttonBTouch
-	eventOut		SFBool		buttonXTouch
-	eventOut		SFBool		buttonYTouch
-	eventOut		SFBool		buttonThumbLeftTouch
-	eventOut		SFBool		buttonThumbRightTouch
-	eventOut		SFBool		buttonThumbLeftRest
-	eventOut		SFBool		buttonThumbRightRest
-	eventOut		SFBool		buttonIndexTriggerLeftTouch
-	eventOut		SFBool		buttonIndexTriggerRightTouch
-	eventOut		SFBool		buttonShoulderLeft
-	eventOut		SFBool		buttonShoulderRight
-	eventOut		SFFloat		indexTriggerLeft
-	eventOut		SFFloat		indexTriggerRight
-	eventOut		SFBool		buttonIndexTriggerLeftPointing
-	eventOut		SFBool		buttonIndexTriggerRightPointing
-	eventOut		SFTime		updateTime
-] "urn:inet:bitmanagement.de:node:OculusTouch"
+#EXTERNPROTO OculusTouch [
+#	exposedField  SFNode    metadata
+#	exposedField  SFBool    enabled
+#	eventOut      SFBool    isActive
+#	eventOut      SFBool    buttonA
+#	eventOut      SFBool    buttonB
+#	eventOut      SFBool    buttonX
+#	eventOut      SFBool    buttonY
+#	eventOut      SFBool    buttonThumbLeft
+#	eventOut      SFBool    buttonThumbRight
+#	eventOut      SFBool    buttonShoulderLeft
+#	eventOut      SFBool    buttonShoulderRight
+#	eventOut      SFFloat   indexTriggerLeft
+#	eventOut      SFFloat   indexTriggerRight
+#	eventOut      SFFloat   handTriggerLeft
+#	eventOut      SFFloat   handTriggerRight
+#	eventOut      SFVec2f   thumbstickLeft
+#	eventOut      SFVec2f   thumbstickRight
+#	eventOut      SFBool    buttonATouch
+#	eventOut      SFBool    buttonBTouch
+#	eventOut      SFBool    buttonXTouch
+#	eventOut      SFBool    buttonYTouch
+#	eventOut      SFBool    buttonThumbLeftTouch
+#	eventOut      SFBool    buttonThumbRightTouch
+#	eventOut      SFBool    buttonThumbLeftRest
+#	eventOut      SFBool    buttonThumbRightRest
+#	eventOut      SFBool    buttonIndexTriggerLeftTouch
+#	eventOut      SFBool    buttonIndexTriggerRightTouch
+#	eventOut      SFBool    buttonShoulderLeft
+#	eventOut      SFBool    buttonShoulderRight
+#	eventOut      SFFloat   indexTriggerLeft
+#	eventOut      SFFloat   indexTriggerRight
+#	eventOut      SFBool    buttonIndexTriggerLeftPointing
+#	eventOut      SFBool    buttonIndexTriggerRightPointing
+#	eventOut      SFTime    updateTime
+#] "urn:inet:bitmanagement.de:node:OculusTouch"
 
-EXTERNPROTO OculusRemote [
-	exposedField	SFNode		metadata
-	exposedField	SFBool		enabled
-	eventOut		SFBool		isActive
-	eventOut		SFVec2f		direction
-	eventOut		SFBool		enter
-	eventOut		SFBool		back
-	eventOut		SFBool		volumeUp
-	eventOut		SFBool		volumeDown
-	eventOut		SFBool		home
-	eventOut		SFTime		updateTime
-] "urn:inet:bitmanagement.de:node:OculusRemote"
+#EXTERNPROTO OculusRemote [
+#	exposedField  SFNode   metadata    #!(NULL)
+#	exposedField  SFBool   enabled     #!(TRUE)
+#	eventOut      SFBool   isActive
+#	eventOut      SFVec2f  direction
+#	eventOut      SFBool   enter
+#	eventOut      SFBool   back
+#	eventOut      SFTime   updateTime
+#
+#	## Removed in recent builds ?
+#	# eventOut    SFBool   volumeUp
+#	# eventOut    SFBool   volumeDown
+#	# eventOut    SFBool   home
+#] "urn:inet:bitmanagement.de:node:OculusRemote"
 
-EXTERNPROTO XBoxController [
-	exposedField	SFNode		metadata
-	exposedField	SFBool		enabled
-	eventOut		SFBool		isActive
-	eventOut		SFBool		buttonA
-	eventOut		SFBool		buttonB
-	eventOut		SFBool		buttonX
-	eventOut		SFBool		buttonY
-	eventOut		SFBool		buttonShoulderLeft
-	eventOut		SFBool		buttonShoulderRight
-	eventOut		SFFloat		indexTriggerLeft
-	eventOut		SFFloat		indexTriggerRight
-	eventOut		SFBool		buttonThumbLeft
-	eventOut		SFBool		buttonThumbRight
-	eventOut		SFVec2f		thumbstickLeft
-	eventOut		SFVec2f		thumbstickRight
-	eventOut		SFVec2f		direction
-	eventOut		SFBool		start
-	eventOut		SFBool		back
-	eventOut		SFTime		updateTime
-] "urn:inet:bitmanagement.de:node:XBoxController"
+#EXTERNPROTO XBoxController [
+#	exposedField  SFNode   metadata             #!(NULL)
+#	exposedField  SFBool   enabled              #!(TRUE)
+#	eventOut      SFBool   isActive
+#	eventOut      SFBool   buttonA
+#	eventOut      SFBool   buttonB
+#	eventOut      SFBool   buttonX
+#	eventOut      SFBool   buttonY
+#	eventOut      SFBool   buttonShoulderLeft
+#	eventOut      SFBool   buttonShoulderRight
+#	eventOut      SFFloat  indexTriggerLeft
+#	eventOut      SFFloat  indexTriggerRight
+#	eventOut      SFBool   buttonThumbLeft
+#	eventOut      SFBool   buttonThumbRight
+#	eventOut      SFVec2f  thumbstickLeft
+#	eventOut      SFVec2f  thumbstickRight
+#	eventOut      SFVec2f  direction
+#	eventOut      SFBool   start
+#	eventOut      SFBool   back
+#	eventOut      SFTime   updateTime
+#] "urn:inet:bitmanagement.de:node:XBoxController"
 
-EXTERNPROTO Panorama [
-	exposedField	SFString	type
-	exposedField	SFVec3f		center
-	exposedField	MFFloat		parameter
-	exposedField	SFBool		solid
-	exposedField	SFInt32		useTransparentQuality
-	exposedField	SFNode		metadata
+
+###################################################################
+# VR Nodes
+###################################################################
+
+EXTERNPROTO VrSystem [ #!%sensor{*}
+	exposedField  SFNode      metadata              #!(NULL)
+	exposedField  SFBool      enabled               #!(TRUE)
+	eventOut      SFBool      isActive
+	eventOut      SFString    type
+	eventOut      SFString    description
+	eventOut      SFVec3f     eyeOffsetLeft
+	eventOut      SFVec3f     eyeOffsetRight
+	eventOut      SFBool      hasOculusRemote
+	eventOut      SFBool      hasOculusTouchLeft
+	eventOut      SFBool      hasOculusTouchRight
+	eventOut      SFBool      hasXBoxController
+	eventOut      SFVec3f     referencePosition
+	eventOut      SFRotation  referenceOrientation
+	eventOut      MFBool      eventsAvailable
+]["urn:inet:bitmanagement.de:node:VrSystem"]
+
+EXTERNPROTO VrController [ #!%sensor{*}
+	exposedField  SFNode      metadata          #!(NULL)
+	exposedField  SFBool      enabled           #!(TRUE)
+	eventOut      SFBool      isActive
+	eventOut      SFVec3f     positionLeft
+	eventOut      SFVec3f     positionRight
+	eventOut      SFRotation  orientationLeft
+	eventOut      SFRotation  orientationRight
+	eventOut      SFBool      triggerLeft
+	eventOut      SFBool      triggerRight
+	eventOut      SFBool      buttonMenu
+	eventOut      MFBool      eventsAvailable
+]["urn:inet:bitmanagement.de:node:VrController"]
+
+EXTERNPROTO OculusRemote [ #!%sensor{*}
+	exposedField  SFNode   metadata           #!(NULL)
+	exposedField  SFBool   enabled            #!(TRUE)
+	exposedField  SFBool   navigationEnabled  #!(TRUE)
+	eventOut      SFBool   isActive
+	eventOut      SFVec2f  direction
+	eventOut      SFBool   enter
+	eventOut      SFBool   back
+	eventOut      SFBool   navigationIsActive
+]["urn:inet:bitmanagement.de:node:OculusRemote"]
+
+EXTERNPROTO OculusTouch [ #!%sensor{*}
+	exposedField  SFNode   metadata                         #!(NULL)
+	exposedField  SFBool   enabled                          #!(TRUE)
+	exposedField  SFBool   navigationEnabledLeft            #!(TRUE)
+	exposedField  SFBool   navigationEnabledRight           #!(TRUE)
+	eventOut      SFBool   isActive
+	eventOut      SFBool   buttonA
+	eventOut      SFBool   buttonB
+	eventOut      SFBool   buttonX
+	eventOut      SFBool   buttonY
+	eventOut      SFBool   buttonThumbLeft
+	eventOut      SFBool   buttonThumbRight
+	eventOut      SFFloat  indexTriggerLeft
+	eventOut      SFFloat  indexTriggerRight
+	eventOut      SFFloat  handTriggerLeft
+	eventOut      SFFloat  handTriggerRight
+	eventOut      SFVec2f  thumbstickLeft
+	eventOut      SFVec2f  thumbstickRight
+	eventOut      SFBool   buttonATouch
+	eventOut      SFBool   buttonBTouch
+	eventOut      SFBool   buttonXTouch
+	eventOut      SFBool   buttonYTouch
+	eventOut      SFBool   buttonThumbLeftTouch
+	eventOut      SFBool   buttonThumbRightTouch
+	eventOut      SFBool   buttonThumbLeftRest
+	eventOut      SFBool   buttonThumbRightRest
+	eventOut      SFBool   buttonIndexTriggerLeftTouch
+	eventOut      SFBool   buttonIndexTriggerRightTouch
+	eventOut      SFBool   buttonIndexTriggerLeftPointing
+	eventOut      SFBool   buttonIndexTriggerRightPointing
+	eventOut      SFBool   navigationIsActiveLeft
+	eventOut      SFBool   navigationIsActiveRight
+	eventOut      SFTime   updateTime
+]["urn:inet:bitmanagement.de:node:OculusTouch"]
+
+EXTERNPROTO XBoxController [ #!%sensor{*}
+	exposedField  SFNode   metadata             #!(NULL)
+	exposedField  SFBool   enabled              #!(TRUE)
+	eventOut      SFBool   isActive
+	eventOut      SFBool   buttonA
+	eventOut      SFBool   buttonB
+	eventOut      SFBool   buttonX
+	eventOut      SFBool   buttonY
+	eventOut      SFBool   buttonShoulderLeft
+	eventOut      SFBool   buttonShoulderRight
+	eventOut      SFFloat  indexTriggerLeft
+	eventOut      SFFloat  indexTriggerRight
+	eventOut      SFBool   buttonThumbLeft
+	eventOut      SFBool   buttonThumbRight
+	eventOut      SFVec2f  thumbstickLeft
+	eventOut      SFVec2f  thumbstickRight
+	eventOut      SFVec2f  direction
+	eventOut      SFBool   start
+	eventOut      SFBool   back
+	eventOut      SFTime   updateTime
+]["urn:inet:bitmanagement.de:node:XBoxController"]
+
+EXTERNPROTO GazeSensor [ #!%sensor{*}
+	exposedField  SFNode    metadata                 #!(NULL)
+	exposedField  SFBool    autoTrigger              #!(TRUE)
+	exposedField  SFBool    clockEnabled             #!(TRUE)
+	exposedField  SFBool    enabled                  #!(TRUE)
+	eventIn       SFString  trigger
+	eventOut      SFFloat   clockFraction
+	eventOut      SFBool    clockIsActive
+	eventOut      SFBool    clockIsRunningBackwards
+	eventOut      SFBool    isActive
+	eventOut      SFNode    triggered
+]["urn:inet:bitmanagement.de:node:GazeSensor"]
+
+EXTERNPROTO AntiPerspectiveTransform [ #!%common
+  exposedField  SFNode      metadata        #!(NULL)
+  exposedField  SFVec3f     bboxSize        #!(-1 -1 -1)
+  exposedField  SFVec3f     bboxCenter      #!(0 0 0)
+  exposedField  MFNode      children        #!([])
+  exposedField  SFVec3f     translation     #!(0 0 0)
+  exposedField  SFRotation  rotation        #!(0 0 1 0)
+  exposedField  SFVec3f     scale           #!(1 1 1)
+  eventIn       MFNode      addChildren
+  eventIn       MFNode      removeChildren
+]["urn:inet:bitmanagement.de:node:AntiPerspectiveTransform"]
+
+
+###################################################################
+# Miscellanous
+###################################################################
+
+EXTERNPROTO Panorama [ #!%geometry
+	exposedField  SFString  type                   #("PLANAR")
+	exposedField  SFVec3f   center                 #!(0 0 0)
+	exposedField  MFFloat   parameter              #!([])
+	exposedField  SFBool    solid                  #!(TRUE)
+	exposedField  SFInt32   useTransparentQuality  #!(0)
+	exposedField  SFNode    metadata               #!(NULL)
 ] "urn:inet:bitmanagement.de:node:Panorama"
 
+EXTERNPROTO	LineSet [ #!%geometry
+	exposedField  SFNode   color        #!(NULL)
+	exposedField  SFNode   coord        #!(NULL)
+	exposedField  MFInt32  vertexCount  #!([])
+	exposedField  SFNode   metadata     #!(NULL)
+] "urn:inet:bitmanagement.de:node:LineSet"
