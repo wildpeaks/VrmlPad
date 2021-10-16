@@ -1,0 +1,18 @@
+# Ignore everything by default:
+/*
+/*/
+
+# But allow these files and folders:
+!/README.md
+!/.editorconfig
+!/.gitignore
+!/Nodes
+
+# But make sure to ignore these regardless:
+/Nodes/Blaxxun Contact 3D 5.0.wrl
+/Nodes/GeoVRML 1.0 Classic.wrl
+/Nodes/GeoVRML 1.0 Cortona Native.wrl
+/Nodes/ParallelGraphics Cortona 4.0.wrl
+/Nodes/ParallelGraphics Cortona 4.1.wrl
+/Nodes/ParallelGraphics Cortona 5.1.wrl
+/Nodes/ParallelGraphics Cortona 6.0.wrl
