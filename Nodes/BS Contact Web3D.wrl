@@ -2485,16 +2485,17 @@ EXTERNPROTO Panorama [ #!%geometry
 ] "urn:inet:bitmanagement.de:node:Panorama"
 
 EXTERNPROTO LineSet [ #!%geometry
-	exposedField  SFNode   color        #!(NULL)
-	exposedField  SFNode   coord        #!(NULL)
-	exposedField  MFInt32  vertexCount  #!([])
-	exposedField  SFNode   metadata     #!(NULL)
+	exposedField  SFNode   color                   #!(NULL)
+	exposedField  SFNode   coord                   #!(NULL)
+	exposedField  MFInt32  vertexCount             #!([])
+	exposedField  SFNode   metadata                #!(NULL)
 ] "urn:inet:bitmanagement.de:node:LineSet"
 
 EXTERNPROTO StaticGroup[ #!%group
-	field         SFVec3f  bboxSize        #!(-1 -1 -1)
-	field         SFVec3f  bboxCenter      #!(0 0 0)
-	exposedField  MFNode   children        #!{*}
+	field         SFVec3f  bboxSize                #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter              #!(0 0 0)
+	exposedField  MFNode   children                #!([])
+	exposedField  SFNode   metadata                #!(NULL)
 	eventIn       MFNode   addChildren
 	eventIn       MFNode   removeChildren
 ] ["urn:inet:bitmanagement.de:node:StaticGroup"]
