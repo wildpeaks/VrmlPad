@@ -2491,3 +2491,10 @@ EXTERNPROTO LineSet [ #!%geometry
 	exposedField  SFNode   metadata     #!(NULL)
 ] "urn:inet:bitmanagement.de:node:LineSet"
 
+EXTERNPROTO StaticGroup[ #!%group
+	field         SFVec3f  bboxSize        #!(-1 -1 -1)
+	field         SFVec3f  bboxCenter      #!(0 0 0)
+	exposedField  MFNode   children        #!{*}
+	eventIn       MFNode   addChildren
+	eventIn       MFNode   removeChildren
+] ["urn:inet:bitmanagement.de:node:StaticGroup"]
